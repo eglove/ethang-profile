@@ -1,17 +1,19 @@
-import {type PropsWithChildren, StrictMode} from "react";
 import {
-    QueryClient,
-    QueryClientProvider,
-} from '@tanstack/react-query'
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { type PropsWithChildren, StrictMode, Suspense } from "react";
 
 export const queryClient = new QueryClient();
 
-export function ReactLayout({children}: PropsWithChildren) {
-    return (
-        <StrictMode>
-            <QueryClientProvider client={queryClient}>
-                {children}
-            </QueryClientProvider>
-        </StrictMode>
-    )
+export function ReactProviders({ children }: Readonly<PropsWithChildren>) {
+  return (
+    <StrictMode>
+      <Suspense>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </Suspense>
+    </StrictMode>
+  );
 }

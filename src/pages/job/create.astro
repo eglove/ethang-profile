@@ -1,10 +1,7 @@
 ---
-import HtmlLayout from "../layouts/HtmlLayout.astro";
-import {Jobs} from "../components/jobs/jobs";
-import {getJobs} from "./api/job";
-
-const jobs = await getJobs();
+import HtmlLayout from "../../layouts/HtmlLayout.astro";
+import {JobCreate} from "../../components/job-create/job-create";
 ---
 <HtmlLayout>
-    <Jobs client:load initialData={jobs} />
+    <JobCreate client:load />
 </HtmlLayout>
