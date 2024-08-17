@@ -7,7 +7,7 @@ import type { JobUpsertForm } from "./use-job-form.ts";
 
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
-import { jobCreateSerialize } from "./job-utils.ts";
+import { jobUpsertSerialize } from "./job-utils.ts";
 
 type UseJobUpsertProperties = {
   formState: JobUpsertForm;
@@ -22,7 +22,7 @@ export function useJobUpsert({
     mutationFn: async () => {
       const response = await attemptAsync(async () => {
         return fetch("/api/job", {
-          body: jobCreateSerialize(formState),
+          body: jobUpsertSerialize(formState),
           method: isNil(job)
             ? "POST"
             : "PUT",

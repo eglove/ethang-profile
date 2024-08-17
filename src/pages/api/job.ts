@@ -9,7 +9,11 @@ import prisma from "../../clients/prisma.ts";
 export type GetJobsJson = Jsonify<Awaited<ReturnType<typeof getJobs>>>;
 
 export async function getJobs() {
-  const jobs = await prisma.job.findMany();
+  const jobs = await prisma.job.findMany({
+    orderBy: {
+      endDate: "desc",
+    },
+  });
 
   return map(jobs, (item) => {
     return [{

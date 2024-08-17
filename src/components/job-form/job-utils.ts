@@ -1,17 +1,35 @@
 import isEmpty from "lodash/isEmpty";
 import isNil from "lodash/isNil";
+import isSet from "lodash/isSet";
+import mapValues from "lodash/mapValues";
+import omitBy from "lodash/omitBy";
 import { DateTime } from "luxon";
 
 import type { GetJobsJson } from "../../pages/api/job.ts";
 import type { JobUpsertForm } from "./use-job-form.ts";
 
-export function jobCreateSerialize(job: JobUpsertForm) {
+import { americaChicago, dateInputFormat } from "../../consntants/constants.ts";
+
+
+export function jobUpsertSerialize(job: JobUpsertForm) {
+  const structured = mapValues(omitBy(job, isEmpty), (value) => {
+    if (isSet(value)) {
+      return [...value];
+    }
+
+    return value;
+  });
+
   return JSON.stringify({
-    ...job,
+    ...structured,
     endDate: isEmpty(job.endDate)
       ? undefined
-      : new Date(job.endDate).toISOString(),
-    startDate: new Date(job.startDate).toISOString(),
+      : DateTime
+        .fromFormat(job.endDate, dateInputFormat, { zone: americaChicago })
+        .toISO(),
+    startDate: DateTime
+      .fromFormat(job.startDate, dateInputFormat, { zone: americaChicago })
+      .toISO(),
   });
 }
 
@@ -20,11 +38,15 @@ export function jobUpdateSerialize(job: GetJobsJson[0]) {
     company: job.company,
     endDate: isNil(job.endDate)
       ? ""
-      : DateTime.fromJSDate(new Date(job.endDate)).toFormat("yyyy-MM-dd"),
+      : DateTime
+        .fromJSDate(new Date(job.endDate))
+        .toFormat(dateInputFormat),
     id: job.id,
     methodologiesUsed: new Set(job.methodologiesUsed),
     shortDescription: job.shortDescription,
-    startDate: DateTime.fromJSDate(new Date(job.startDate)).toFormat("yyyy-MM-dd"),
+    startDate: DateTime
+      .fromJSDate(new Date(job.startDate))
+      .toFormat(dateInputFormat),
     techUsed: new Set(job.techUsed),
     title: job.title,
   } satisfies { id: string } & JobUpsertForm;

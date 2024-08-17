@@ -1,13 +1,15 @@
 import { Button } from "@nextui-org/button";
-import { Link, Spinner } from "@nextui-org/react";
+import { Link, type SortDescriptor, Spinner } from "@nextui-org/react";
 import { getKeyValue, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
 import { useQuery } from "@tanstack/react-query";
 import endsWith from "lodash/endsWith";
 import isArray from "lodash/isArray";
 import isNil from "lodash/isNil";
 import isString from "lodash/isString";
+import orderBy from "lodash/orderBy";
+import { useState } from "react";
 
-import { ReactProviders } from "../../layouts/react-providers.tsx";
+import { queryClient, ReactProviders } from "../../layouts/react-providers.tsx";
 import { queryFunctions } from "../../query/query-functions.ts";
 import { JobActions } from "./job-actions.tsx";
 import { JobDetails } from "./job-details.tsx";
@@ -24,7 +26,12 @@ export function Jobs() {
 
 // eslint-disable-next-line max-lines-per-function
 function JobsWithProviders() {
-  const { data, isFetching } = useQuery(queryFunctions.jobs());
+  const { data } = useQuery(queryFunctions.jobs());
+  const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
+    column: "endDate",
+    direction: "descending",
+  });
+
 
   return (
     <div>
@@ -43,12 +50,26 @@ function JobsWithProviders() {
             };
           });
         }}
+        onSortChange={({ column, direction }) => {
+          const sorted = orderBy(data, String(column), "ascending" === direction
+            ? "asc"
+            : "desc");
+          queryClient.setQueryData(queryFunctions.jobs().queryKey, sorted);
+          setSortDescriptor({
+            column: String(column),
+            direction: direction ?? "ascending",
+          });
+        }}
         aria-label="Jobs"
+        sortDescriptor={sortDescriptor}
       >
         <TableHeader columns={columns}>
           {(column) => {
             return (
-              <TableColumn key={column.key}>
+              <TableColumn
+                allowsSorting
+                key={column.key}
+              >
                 {column.label}
               </TableColumn>
             );
@@ -58,7 +79,7 @@ function JobsWithProviders() {
           emptyContent={
             <Spinner />
           }
-          items={!isFetching && isArray(data)
+          items={isArray(data)
             ? data
             : []}
         >

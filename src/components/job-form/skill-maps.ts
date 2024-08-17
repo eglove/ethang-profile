@@ -7,6 +7,7 @@ export const methodologyMap = {
   mvc: "MVC",
   onPremHosting: "On-Prem Hosting",
   rest: "REST",
+  seo: "SEO",
   serverless: "Serverless",
   tdd: "TDD",
 } as const;
@@ -53,7 +54,6 @@ export const techMap = {
   redux: "Redux",
   rust: "Rust",
   sanity: "Sanity",
-  seo: "SEO",
   sitecore: "Sitecore",
   solid: "SolidJS",
   solidStart: "Solid Start",
