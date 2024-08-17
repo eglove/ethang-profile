@@ -1,17 +1,17 @@
-import { Input, Textarea } from "@nextui-org/react";
+import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import map from "lodash/map";
 
-import type { useJobForm } from "./use-job-form.ts";
-
+import { setInputs, type useJobForm } from "./use-job-form.ts";
 import { jobCreateStringInputs } from "./use-job-form.ts";
 
 type JobInputsProperties = {
   readonly formState: ReturnType<typeof useJobForm>["formState"];
   readonly handleChange: ReturnType<typeof useJobForm>["handleChange"];
+  readonly handleSetChange: ReturnType<typeof useJobForm>["handleSetChange"];
 };
 
 export function JobInputs({
-  formState, handleChange,
+  formState, handleChange, handleSetChange,
 }: JobInputsProperties) {
   return (
     <>
@@ -26,6 +26,26 @@ export function JobInputs({
             type={input.type}
             value={formState[input.key]}
           />
+        );
+      })}
+      {map(setInputs, (input) => {
+        return (
+          <Select
+            key={input.key}
+            label={input.label}
+            name={input.key}
+            onSelectionChange={handleSetChange(input.key)}
+            selectedKeys={formState[input.key]}
+            selectionMode="multiple"
+          >
+            {map(input.values, (item) => {
+              return (
+                <SelectItem key={item}>
+                  {item}
+                </SelectItem>
+              );
+            })}
+          </Select>
         );
       })}
       <Textarea

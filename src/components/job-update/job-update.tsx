@@ -15,7 +15,7 @@ type JobUpdateProperties = {
 
 export function JobUpdate({ job }: JobUpdateProperties) {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
-  const { formState, handleChange, isPending, mutate } = useJobForm({
+  const { formState, handleChange, handleSetChange, isPending, mutate } = useJobForm({
     job: jobUpdateSerialize(job),
     onSuccess: closeModal,
   });
@@ -43,6 +43,7 @@ export function JobUpdate({ job }: JobUpdateProperties) {
                 <JobUpdateModalForm
                   formState={formState}
                   handleChange={handleChange}
+                  handleSetChange={handleSetChange}
                   id={job.id}
                   isPending={isPending}
                   mutate={mutate}

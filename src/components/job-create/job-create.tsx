@@ -15,7 +15,7 @@ export function JobCreate() {
 
 
 function JobCreateWithProviders() {
-  const { formState, handleChange, isPending, mutate } = useJobForm({
+  const { formState, handleChange, handleSetChange, isPending, mutate } = useJobForm({
     onSuccess() {
       // eslint-disable-next-line lodash/prefer-lodash-method
       location.replace("/job");
@@ -34,6 +34,7 @@ function JobCreateWithProviders() {
         <JobInputs
           formState={formState}
           handleChange={handleChange}
+          handleSetChange={handleSetChange}
         />
         <div className="flex justify-end">
           <Button

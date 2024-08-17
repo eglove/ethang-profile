@@ -9,6 +9,7 @@ import { JobInputs } from "../job-form/job-inputs.tsx";
 type JobUpdateModalFormProperties = {
   readonly formState: ReturnType<typeof useJobForm>["formState"];
   readonly handleChange: ReturnType<typeof useJobForm>["handleChange"];
+  readonly handleSetChange: ReturnType<typeof useJobForm>["handleSetChange"];
   readonly id: string;
   readonly isPending: boolean;
   readonly mutate: () => void;
@@ -16,7 +17,7 @@ type JobUpdateModalFormProperties = {
 };
 
 export function JobUpdateModalForm({
-  formState, handleChange, isPending, mutate, onClose,
+  formState, handleChange, handleSetChange, isPending, mutate, onClose,
 }: JobUpdateModalFormProperties) {
   return (
     <form onSubmit={preventDefault(mutate)}>
@@ -24,6 +25,7 @@ export function JobUpdateModalForm({
         <JobInputs
           formState={formState}
           handleChange={handleChange}
+          handleSetChange={handleSetChange}
         />
       </ModalBody>
       <ModalFooter>
