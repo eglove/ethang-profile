@@ -1,0 +1,10 @@
+---
+import HtmlLayout from "../layouts/HtmlLayout.astro";
+import {Jobs} from "../components/jobs/jobs";
+import {getJobs} from "./api/job";
+
+const jobs = await getJobs();
+---
+<HtmlLayout>
+    <Jobs client:load initialData={jobs} />
+</HtmlLayout>
