@@ -6,11 +6,10 @@ import { LearningProfileLinks } from "./learning-profile-links.tsx";
 
 
 export function CertificationsLayout({
-  clerkKey, currentPathname,
+  currentPathname,
 }: MainLayoutProperties) {
   return (
     <MainLayout
-      clerkKey={clerkKey}
       currentPathname={currentPathname}
     >
       <CertificationCreateWithProviders />

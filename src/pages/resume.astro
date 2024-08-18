@@ -1,11 +1,9 @@
 ---
-import {getEnvironmentVariable} from "../util/environment";
 import HtmlLayout from "../layouts/HtmlLayout.astro";
 import {Jobs} from "../components/jobs/jobs";
 
 const pathname = Astro.url.pathname;
-const clerkKey = getEnvironmentVariable('CLERK_PUBLISHABLE_KEY');
 ---
 <HtmlLayout>
-    <Jobs client:load clerkKey={clerkKey} currentPathname={pathname} />
+    <Jobs client:load currentPathname={pathname} />
 </HtmlLayout>

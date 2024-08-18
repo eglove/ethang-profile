@@ -3,11 +3,10 @@ import { ProjectCreate } from "./project-form/create/project-create.tsx";
 import { ProjectTable } from "./project-table/project-table.tsx";
 
 export function ProjectLayout({
-  clerkKey, currentPathname,
+  currentPathname,
 }: MainLayoutProperties) {
   return (
     <MainLayout
-      clerkKey={clerkKey}
       currentPathname={currentPathname}
     >
       <ProjectLayoutWithProviders />

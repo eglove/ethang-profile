@@ -1,17 +1,17 @@
 import type { PropsWithChildren } from "react";
 
 import { Navigation } from "../components/navigation/navigation.tsx";
-import { ReactProviders, type ReactProvidersProperties } from "./react-providers.tsx";
+import { ReactProviders } from "./react-providers.tsx";
 
 export type MainLayoutProperties = {
   readonly currentPathname: string;
-} & ReactProvidersProperties & Readonly<PropsWithChildren>;
+} & Readonly<PropsWithChildren>;
 
 export function MainLayout({
-  children, clerkKey, currentPathname,
+  children, currentPathname,
 }: MainLayoutProperties) {
   return (
-    <ReactProviders clerkKey={clerkKey}>
+    <ReactProviders>
       <Navigation currentPathname={currentPathname} />
       <main className="mx-auto my-4 max-w-screen-xl">
         {children}

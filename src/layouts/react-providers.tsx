@@ -5,19 +5,17 @@ import {
 } from "@tanstack/react-query";
 import { type PropsWithChildren, StrictMode, Suspense } from "react";
 
+import { CLERK_PUBLISHABLE_KEY } from "../util/constants.ts";
+
 export const queryClient = new QueryClient();
 
-export type ReactProvidersProperties = {
-  readonly clerkKey?: string;
-};
-
 export function ReactProviders({
-  children, clerkKey,
-}: ReactProvidersProperties & Readonly<PropsWithChildren>) {
+  children,
+}: Readonly<PropsWithChildren>) {
   return (
     <StrictMode>
       <Suspense>
-        <ClerkProvider publishableKey={clerkKey ?? ""}>
+        <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
           <QueryClientProvider client={queryClient}>
             {children}
           </QueryClientProvider>

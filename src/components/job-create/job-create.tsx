@@ -5,10 +5,9 @@ import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout
 import { JobInputs } from "../job-form/job-inputs.tsx";
 import { useJobForm } from "../job-form/use-job-form.ts";
 
-export function JobCreate({ clerkKey, currentPathname }: MainLayoutProperties) {
+export function JobCreate({ currentPathname }: MainLayoutProperties) {
   return (
     <MainLayout
-      clerkKey={clerkKey}
       currentPathname={currentPathname}
     >
       <JobCreateWithProviders />

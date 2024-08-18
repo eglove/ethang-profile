@@ -21,10 +21,9 @@ import { JobActions } from "./job-actions.tsx";
 import { columns, jobStore } from "./jobs-store.ts";
 
 
-export function Jobs({ clerkKey, currentPathname }: MainLayoutProperties) {
+export function Jobs({ currentPathname }: MainLayoutProperties) {
   return (
     <MainLayout
-      clerkKey={clerkKey}
       currentPathname={currentPathname}
     >
       <JobsWithProviders />

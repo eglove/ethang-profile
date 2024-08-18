@@ -9,14 +9,12 @@ type SkillsProperties = {
 };
 
 export function Skills({
-  clerkKey,
   currentPathname,
   experiences,
   max,
 }: MainLayoutProperties & SkillsProperties) {
   return (
     <MainLayout
-      clerkKey={clerkKey}
       currentPathname={currentPathname}
     >
       <SkillsWithProviders
