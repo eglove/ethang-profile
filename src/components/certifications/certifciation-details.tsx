@@ -9,6 +9,7 @@ type CertificationDetailsProperties = {
   readonly certification: GetCertificationsJson[0];
 };
 
+// eslint-disable-next-line stylistic/max-len
 export function CertificationDetails({ certification }: CertificationDetailsProperties) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 

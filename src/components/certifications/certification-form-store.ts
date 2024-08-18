@@ -1,4 +1,5 @@
 import { Store } from "@tanstack/react-store";
+import isNil from "lodash/isNil";
 import { DateTime } from "luxon";
 
 import type { GetCertificationsJson } from "../../pages/api/certification.ts";
@@ -55,7 +56,9 @@ export function serializeCertificationDataForForm(
   certificationFormStore.setState(() => {
     return {
       description: data.description,
-      expires: DateTime.fromISO(data.expires).toFormat(dateInputFormat),
+      expires: isNil(data.expires)
+        ? ""
+        : DateTime.fromISO(data.expires).toFormat(dateInputFormat),
       id: data.id,
       issuedBy: data.issuedBy,
       issuedOn: DateTime.fromISO(data.issuedOn).toFormat(dateInputFormat),
