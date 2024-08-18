@@ -10,7 +10,22 @@ export default {
   ],
   darkMode: "class",
   plugins: [nextui(), prose],
+  safelist: [
+    {
+      pattern: /^text-cyan-\d{3}$/u,
+    },
+    {
+      pattern: /^text-teal-\d{3}$/u,
+    },
+    {
+      pattern: /^text-green-\d{3}$/u,
+    },
+  ],
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        135: "135deg",
+      },
+    },
   },
 };

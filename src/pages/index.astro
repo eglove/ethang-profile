@@ -1,7 +1,21 @@
 ---
 import HtmlLayout from "../layouts/HtmlLayout.astro";
+import {Skills} from "../components/skills/skills";
+import {getJobs} from "./api/job";
+import {getExperienceBreakdown} from "../util/job/get-experience-breakdown";
+
+const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
+
+const jobs = await getJobs();
+
+const {sorted, max} = getExperienceBreakdown(jobs);
 ---
 
 <HtmlLayout>
-	Home
+	<Skills
+		client:load
+		clerkKey={clerkKey}
+		experiences={sorted}
+		max={max}
+	/>
 </HtmlLayout>

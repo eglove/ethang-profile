@@ -1,5 +1,8 @@
+import type { SortDescriptor } from "@nextui-org/react";
+
 import { Button } from "@nextui-org/button";
-import { Link, type SortDescriptor, Spinner } from "@nextui-org/react";
+import { Link } from "@nextui-org/link";
+import { Spinner } from "@nextui-org/spinner";
 import { getKeyValue, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
 import { useQuery } from "@tanstack/react-query";
 import endsWith from "lodash/endsWith";
@@ -9,23 +12,26 @@ import isString from "lodash/isString";
 import orderBy from "lodash/orderBy";
 import { useState } from "react";
 
-import { queryClient, ReactProviders } from "../../layouts/react-providers.tsx";
+import { MainLayout } from "../../layouts/main-layout.tsx";
+import { queryClient, type ReactProvidersProperties } from "../../layouts/react-providers.tsx";
 import { queryFunctions } from "../../query/query-functions.ts";
+import { useIsMe } from "../../util/user.ts";
 import { JobActions } from "./job-actions.tsx";
 import { JobDetails } from "./job-details.tsx";
 import { columns, jobStore } from "./jobs-store.ts";
 
 
-export function Jobs() {
+export function Jobs({ clerkKey }: ReactProvidersProperties) {
   return (
-    <ReactProviders>
+    <MainLayout clerkKey={clerkKey}>
       <JobsWithProviders />
-    </ReactProviders>
+    </MainLayout>
   );
 }
 
 // eslint-disable-next-line max-lines-per-function
 function JobsWithProviders() {
+  const isMe = useIsMe();
   const { data } = useQuery(queryFunctions.jobs());
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
     column: "endDate",
@@ -151,14 +157,16 @@ function JobsWithProviders() {
           }}
         </TableBody>
       </Table>
-      <Button
-        as={Link}
-        className="m-4"
-        color="primary"
-        href="/job/create"
-      >
-        Create New
-      </Button>
+      {isMe && (
+        <Button
+          as={Link}
+          className="m-4"
+          color="primary"
+          href="/job/create"
+        >
+          Create New
+        </Button>
+      )}
     </div>
   );
 }

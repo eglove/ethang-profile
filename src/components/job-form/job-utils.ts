@@ -8,7 +8,7 @@ import { DateTime } from "luxon";
 import type { GetJobsJson } from "../../pages/api/job.ts";
 import type { JobUpsertForm } from "./use-job-form.ts";
 
-import { americaChicago, dateInputFormat } from "../../consntants/constants.ts";
+import { americaChicago, dateInputFormat } from "../../constants/constants.ts";
 
 
 export function jobUpsertSerialize(job: JobUpsertForm) {

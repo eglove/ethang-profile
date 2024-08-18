@@ -6,6 +6,7 @@ import { useCallback, useMemo } from "react";
 
 import type { GetJobsJson } from "../../pages/api/job.ts";
 
+import { useIsMe } from "../../util/user.ts";
 import { JobDelete } from "../job-delete/job-delete.tsx";
 import { JobUpdate } from "../job-update/job-update.tsx";
 import { jobStore, jobStoreAddOrRemove } from "./jobs-store.ts";
@@ -15,6 +16,7 @@ type JobActionsProperties = {
 };
 
 export function JobActions({ job }: JobActionsProperties) {
+  const isMe = useIsMe();
   const expandedItems = useStore(jobStore, (state) => {
     return state.expandedItems;
   });
@@ -38,12 +40,15 @@ export function JobActions({ job }: JobActionsProperties) {
           ? <EyeIcon className="size-6" />
           : <EyeSlashIcon className="size-6" />}
       </Button>
-      <JobUpdate job={job} />
-      <JobDelete
-        company={job.company}
-        id={job.id}
-        title={job.title}
-      />
+      {isMe &&
+        <JobUpdate job={job} />}
+      {isMe && (
+        <JobDelete
+          company={job.company}
+          id={job.id}
+          title={job.title}
+        />
+      )}
     </div>
   );
 }

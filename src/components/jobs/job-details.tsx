@@ -12,7 +12,9 @@ type JobDetailsProperties = {
   readonly label: string;
 };
 
-const listFormatter = new Intl.ListFormat();
+const listFormatter = new Intl.ListFormat(undefined, {
+  type: "unit",
+});
 
 export function JobDetails({ job, label }: JobDetailsProperties) {
   const expandedItems = useStore(jobStore, (state) => {
@@ -34,7 +36,7 @@ export function JobDetails({ job, label }: JobDetailsProperties) {
         key={job.id}
       >
         <h2 className="my-2 text-foreground">
-          Short Description
+          Description
         </h2>
         <p>
           {job.shortDescription}

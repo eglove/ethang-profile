@@ -1,4 +1,5 @@
-import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
+import { Input, Textarea } from "@nextui-org/input";
+import { Select, SelectItem } from "@nextui-org/select";
 import map from "lodash/map";
 
 import { setInputs, type useJobForm } from "./use-job-form.ts";
@@ -50,7 +51,7 @@ export function JobInputs({
       })}
       <Textarea
         isRequired
-        label="Short Desription"
+        label="Description"
         name="shortDescription"
         onValueChange={handleChange("shortDescription")}
         value={formState.shortDescription}

@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/clerk-react";
 import {
   QueryClient,
   QueryClientProvider,
@@ -6,13 +7,21 @@ import { type PropsWithChildren, StrictMode, Suspense } from "react";
 
 export const queryClient = new QueryClient();
 
-export function ReactProviders({ children }: Readonly<PropsWithChildren>) {
+export type ReactProvidersProperties = {
+  readonly clerkKey: string;
+};
+
+export function ReactProviders({
+  children, clerkKey,
+}: ReactProvidersProperties & Readonly<PropsWithChildren>) {
   return (
     <StrictMode>
       <Suspense>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <ClerkProvider publishableKey={clerkKey}>
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+        </ClerkProvider>
       </Suspense>
     </StrictMode>
   );

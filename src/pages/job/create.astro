@@ -1,7 +1,9 @@
 ---
 import HtmlLayout from "../../layouts/HtmlLayout.astro";
 import {JobCreate} from "../../components/job-create/job-create";
+
+const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
 ---
 <HtmlLayout>
-    <JobCreate client:load />
+    <JobCreate client:load clerkKey={clerkKey} />
 </HtmlLayout>

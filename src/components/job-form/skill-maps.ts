@@ -67,7 +67,7 @@ export const techMap = {
   typeGraphQl: "TypeGraphQL",
   typeOrm: "TypeORM",
   typeScript: "TypeScript",
-  uswds: "United States Web Design System (USWDS)",
+  uswds: "USWDS",
   vitest: "Vitest",
   vue: "Vue",
   webAssembly: "WebAssembly",
