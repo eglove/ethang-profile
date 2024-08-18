@@ -16,6 +16,10 @@ const links = [
     href: "/certifications",
     label: "Certifications",
   },
+  {
+    href: "/projects",
+    label: "Projects",
+  },
 ];
 
 type NavigationItemsProperties = {

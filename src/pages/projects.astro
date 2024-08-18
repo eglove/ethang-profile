@@ -1,0 +1,11 @@
+---
+import HtmlLayout from "../layouts/HtmlLayout.astro";
+import {ProjectLayout} from "../components/projects/project-layout";
+
+const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
+const pathname = Astro.url.pathname;
+---
+
+<HtmlLayout>
+    <ProjectLayout client:load clerkKey={clerkKey} currentPathname={pathname} />
+</HtmlLayout>

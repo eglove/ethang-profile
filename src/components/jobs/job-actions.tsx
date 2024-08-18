@@ -13,7 +13,7 @@ export function JobActions({ job }: JobActionsProperties) {
   const isMe = useIsMe();
 
   return (
-    <>
+    <div className="flex gap-2">
       <JobDetails job={job} />
       {isMe &&
         <JobUpdate job={job} />}
@@ -24,6 +24,6 @@ export function JobActions({ job }: JobActionsProperties) {
           title={job.title}
         />
       )}
-    </>
+    </div>
   );
 }
