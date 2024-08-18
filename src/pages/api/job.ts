@@ -2,29 +2,17 @@ import type { APIRoute } from "astro";
 import type { Jsonify } from "type-fest";
 
 import { jsonHeaders } from "@ethang/toolbelt/constants/http";
-import map from "lodash/map";
 
 import prisma from "../../clients/prisma.ts";
 
 export type GetJobsJson = Jsonify<Awaited<ReturnType<typeof getJobs>>>;
 
 export async function getJobs() {
-  const jobs = await prisma.job.findMany({
+  return prisma.job.findMany({
     orderBy: {
       endDate: "desc",
     },
   });
-
-  return map(jobs, (item) => {
-    return [{
-      ...item,
-
-      isDetail: false,
-    }, {
-      ...item,
-      isDetail: true,
-    }];
-  }).flat();
 }
 
 export async function GET() {

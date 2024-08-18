@@ -1,15 +1,9 @@
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
-import { Button } from "@nextui-org/button";
-import { useStore } from "@tanstack/react-store";
-import includes from "lodash/includes";
-import { useCallback, useMemo } from "react";
-
 import type { GetJobsJson } from "../../pages/api/job.ts";
 
 import { useIsMe } from "../../util/user.ts";
 import { JobDelete } from "../job-delete/job-delete.tsx";
 import { JobUpdate } from "../job-update/job-update.tsx";
-import { jobStore, jobStoreAddOrRemove } from "./jobs-store.ts";
+import { JobDetails } from "./job-details.tsx";
 
 type JobActionsProperties = {
   readonly job: GetJobsJson[0];
@@ -17,29 +11,10 @@ type JobActionsProperties = {
 
 export function JobActions({ job }: JobActionsProperties) {
   const isMe = useIsMe();
-  const expandedItems = useStore(jobStore, (state) => {
-    return state.expandedItems;
-  });
-
-  const isOpen = useMemo(() => {
-    return includes(expandedItems, job.id);
-  }, [job.id, expandedItems]);
-
-
-  const handleAddOrRemove = useCallback(() => {
-    jobStoreAddOrRemove(job.id);
-  }, [job.id]);
 
   return (
-    <div className="flex gap-2">
-      <Button
-        isIconOnly
-        onPress={handleAddOrRemove}
-      >
-        {isOpen
-          ? <EyeIcon className="size-6" />
-          : <EyeSlashIcon className="size-6" />}
-      </Button>
+    <>
+      <JobDetails job={job} />
       {isMe &&
         <JobUpdate job={job} />}
       {isMe && (
@@ -49,6 +24,6 @@ export function JobActions({ job }: JobActionsProperties) {
           title={job.title}
         />
       )}
-    </div>
+    </>
   );
 }

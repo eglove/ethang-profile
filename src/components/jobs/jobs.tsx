@@ -18,7 +18,6 @@ import { queryFunctions } from "../../query/query-functions.ts";
 import { useIsMe } from "../../util/user.ts";
 import { ResumeDownloadButtons } from "../resume/resume-download-buttons.tsx";
 import { JobActions } from "./job-actions.tsx";
-import { JobDetails } from "./job-details.tsx";
 import { columns, jobStore } from "./jobs-store.ts";
 
 
@@ -94,36 +93,8 @@ function JobsWithProviders() {
             ? data
             : []}
         >
-          {/* eslint-disable-next-line max-lines-per-function */}
+          { }
           {(item) => {
-            if (item.isDetail) {
-              return (
-                <TableRow key={`${item.id}detail`}>
-                  <TableCell
-                    className="p-0"
-                    colSpan={5}
-                  >
-                    <JobDetails
-                      job={item}
-                      label={`${item.title}, ${item.company}`}
-                    />
-                  </TableCell>
-                  <TableCell className="hidden">
-                    {null}
-                  </TableCell>
-                  <TableCell className="hidden">
-                    {null}
-                  </TableCell>
-                  <TableCell className="hidden">
-                    {null}
-                  </TableCell>
-                  <TableCell className="hidden">
-                    {null}
-                  </TableCell>
-                </TableRow>
-              );
-            }
-
             return (
               <TableRow key={item.id}>
                 {(columnKey) => {

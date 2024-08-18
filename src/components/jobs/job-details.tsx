@@ -1,59 +1,54 @@
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { useStore } from "@tanstack/react-store";
-import includes from "lodash/includes";
-import { twMerge } from "tailwind-merge";
+import { EyeIcon } from "@heroicons/react/24/solid";
+import { Button } from "@nextui-org/button";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@nextui-org/modal";
 
 import type { GetJobsJson } from "../../pages/api/job.ts";
 
-import { jobStore } from "./jobs-store.ts";
+import { JobDetailsBody } from "./job-details-body.tsx";
+
 
 type JobDetailsProperties = {
   readonly job: GetJobsJson[0];
-  readonly label: string;
 };
 
-const listFormatter = new Intl.ListFormat(undefined, {
-  type: "unit",
-});
-
-export function JobDetails({ job, label }: JobDetailsProperties) {
-  const expandedItems = useStore(jobStore, (state) => {
-    return state.expandedItems;
-  });
+export function JobDetails({ job }: JobDetailsProperties) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <Accordion
-      itemClasses={{
-        content: "p-0",
-        heading: "hidden",
-      }}
-      className={twMerge(includes(expandedItems, job.id) && "px-3 py-0")}
-      selectedKeys={new Set(expandedItems)}
-    >
-      <AccordionItem
-        aria-label={label}
-        className="prose max-w-full text-foreground"
-        key={job.id}
+    <>
+      <Button
+        isIconOnly
+        onPress={onOpen}
       >
-        <h2 className="my-2 text-foreground">
-          Description
-        </h2>
-        <p>
-          {job.shortDescription}
-        </p>
-        <h3 className="my-0 text-foreground">
-          Tech Used
-        </h3>
-        <p>
-          {listFormatter.format(job.techUsed)}
-        </p>
-        <h3 className="my-0 text-foreground">
-          Methodologies Used
-        </h3>
-        <p>
-          {listFormatter.format(job.methodologiesUsed)}
-        </p>
-      </AccordionItem>
-    </Accordion>
+        <EyeIcon className="size-6" />
+      </Button>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
+        <ModalContent>
+          {(onClose) => {
+            return (
+              <>
+                <ModalHeader>
+                  {job.title}
+                </ModalHeader>
+                <ModalBody>
+                  <JobDetailsBody job={job} />
+                </ModalBody>
+                <ModalFooter>
+                  <Button
+                    color="danger"
+                    onPress={onClose}
+                  >
+                    Close
+                  </Button>
+                </ModalFooter>
+              </>
+            );
+          }}
+        </ModalContent>
+      </Modal>
+    </>
   );
 }
