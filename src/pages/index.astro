@@ -3,8 +3,10 @@ import HtmlLayout from "../layouts/HtmlLayout.astro";
 import {Skills} from "../components/skills/skills";
 import {getJobs} from "./api/job";
 import {getExperienceBreakdown} from "../util/job/get-experience-breakdown";
+import {Astro} from "astro/env";
 
 const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
+const pathname = Astro.url.pathname;
 
 const jobs = await getJobs();
 
@@ -17,5 +19,6 @@ const {sorted, max} = getExperienceBreakdown(jobs);
 		clerkKey={clerkKey}
 		experiences={sorted}
 		max={max}
+		currentPathname={pathname}
 	/>
 </HtmlLayout>

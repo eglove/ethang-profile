@@ -1,15 +1,16 @@
 import { preventDefault } from "@ethang/toolbelt/js/prevent-default";
 import { Button } from "@nextui-org/button";
 
-import type { ReactProvidersProperties } from "../../layouts/react-providers.tsx";
-
-import { MainLayout } from "../../layouts/main-layout.tsx";
+import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
 import { JobInputs } from "../job-form/job-inputs.tsx";
 import { useJobForm } from "../job-form/use-job-form.ts";
 
-export function JobCreate({ clerkKey }: ReactProvidersProperties) {
+export function JobCreate({ clerkKey, currentPathname }: MainLayoutProperties) {
   return (
-    <MainLayout clerkKey={clerkKey}>
+    <MainLayout
+      clerkKey={clerkKey}
+      currentPathname={currentPathname}
+    >
       <JobCreateWithProviders />
     </MainLayout>
   );

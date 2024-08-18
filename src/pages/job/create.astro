@@ -1,9 +1,11 @@
 ---
+import {Astro} from "astro/env";
 import HtmlLayout from "../../layouts/HtmlLayout.astro";
 import {JobCreate} from "../../components/job-create/job-create";
 
+const pathname = Astro.url.pathname;
 const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
 ---
 <HtmlLayout>
-    <JobCreate client:load clerkKey={clerkKey} />
+    <JobCreate client:load clerkKey={clerkKey} currentPathname={pathname} />
 </HtmlLayout>

@@ -12,8 +12,8 @@ import isString from "lodash/isString";
 import orderBy from "lodash/orderBy";
 import { useState } from "react";
 
-import { MainLayout } from "../../layouts/main-layout.tsx";
-import { queryClient, type ReactProvidersProperties } from "../../layouts/react-providers.tsx";
+import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
+import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryFunctions } from "../../query/query-functions.ts";
 import { useIsMe } from "../../util/user.ts";
 import { ResumeDownloadButtons } from "../resume/resume-download-buttons.tsx";
@@ -22,9 +22,12 @@ import { JobDetails } from "./job-details.tsx";
 import { columns, jobStore } from "./jobs-store.ts";
 
 
-export function Jobs({ clerkKey }: ReactProvidersProperties) {
+export function Jobs({ clerkKey, currentPathname }: MainLayoutProperties) {
   return (
-    <MainLayout clerkKey={clerkKey}>
+    <MainLayout
+      clerkKey={clerkKey}
+      currentPathname={currentPathname}
+    >
       <JobsWithProviders />
     </MainLayout>
   );

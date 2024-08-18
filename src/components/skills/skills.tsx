@@ -1,8 +1,6 @@
 import map from "lodash/map";
 
-import type { ReactProvidersProperties } from "../../layouts/react-providers.tsx";
-
-import { MainLayout } from "../../layouts/main-layout.tsx";
+import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
 import { SkillGauge } from "../common/skill-gauge.tsx";
 
 type SkillsProperties = {
@@ -12,11 +10,15 @@ type SkillsProperties = {
 
 export function Skills({
   clerkKey,
+  currentPathname,
   experiences,
   max,
-}: ReactProvidersProperties & SkillsProperties) {
+}: MainLayoutProperties & SkillsProperties) {
   return (
-    <MainLayout clerkKey={clerkKey}>
+    <MainLayout
+      clerkKey={clerkKey}
+      currentPathname={currentPathname}
+    >
       <SkillsWithProviders
         experiences={experiences}
         max={max}
