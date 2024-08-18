@@ -12,4 +12,11 @@ export default defineConfig({
   }),
   integrations: [tailwind(), react()],
   output: "server",
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ["@prisma/client"],
+      },
+    },
+  },
 });
