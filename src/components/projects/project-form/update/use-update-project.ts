@@ -1,3 +1,4 @@
+import { jsonHeaders } from "@ethang/toolbelt/constants/http";
 import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@tanstack/react-store";
 
@@ -16,6 +17,7 @@ export function useUpdateProject({ onSuccess }: UseUpdateProjectProperties) {
     async mutationFn() {
       const response = await fetch("/api/project", {
         body: JSON.stringify(state),
+        headers: jsonHeaders,
         method: "PUT",
       });
 
