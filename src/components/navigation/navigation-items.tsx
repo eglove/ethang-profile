@@ -9,15 +9,15 @@ const links = [
     label: "Skills",
   },
   {
-    href: "/resume",
+    href: "/resume/",
     label: "Resume",
   },
   {
-    href: "/certifications",
+    href: "/certifications/",
     label: "Certifications",
   },
   {
-    href: "/projects",
+    href: "/projects/",
     label: "Projects",
   },
 ];
