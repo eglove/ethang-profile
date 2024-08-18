@@ -1,11 +1,11 @@
 import { Link } from "@nextui-org/link";
+import { Spinner } from "@nextui-org/spinner";
 import { getKeyValue, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
 import { useQuery } from "@tanstack/react-query";
 import isArray from "lodash/isArray";
 
 import { queryFunctions } from "../../../query/query-functions.ts";
 import { ProjectActions } from "./project-actions.tsx";
-import {Spinner} from "@nextui-org/spinner";
 
 const columns = [
   {
@@ -38,9 +38,11 @@ export function ProjectTable() {
           );
         }}
       </TableHeader>
-      <TableBody emptyContent={<Spinner />} items={isArray(data)
-        ? data
-        : []}
+      <TableBody
+        items={isArray(data)
+          ? data
+          : []}
+        emptyContent={<Spinner />}
       >
         {(item) => {
           return (
