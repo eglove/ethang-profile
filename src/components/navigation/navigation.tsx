@@ -17,7 +17,7 @@ export function Navigation() {
         <NavbarItem>
           <Link
             className="text-foreground underline underline-offset-2"
-            href="/job"
+            href="/resume"
           >
             Resume
           </Link>

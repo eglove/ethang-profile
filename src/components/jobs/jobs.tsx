@@ -16,6 +16,7 @@ import { MainLayout } from "../../layouts/main-layout.tsx";
 import { queryClient, type ReactProvidersProperties } from "../../layouts/react-providers.tsx";
 import { queryFunctions } from "../../query/query-functions.ts";
 import { useIsMe } from "../../util/user.ts";
+import { ResumeDownloadButtons } from "../resume/resume-download-buttons.tsx";
 import { JobActions } from "./job-actions.tsx";
 import { JobDetails } from "./job-details.tsx";
 import { columns, jobStore } from "./jobs-store.ts";
@@ -41,6 +42,7 @@ function JobsWithProviders() {
 
   return (
     <div>
+      <ResumeDownloadButtons />
       <Table
         onSelectionChange={(keys) => {
           const [first] = keys;
