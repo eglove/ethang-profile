@@ -1,6 +1,4 @@
 import { neon } from "@neondatabase/serverless";
 
-import { getEnvironmentVariable } from "../util/environment.ts";
-
-export const neonSql = neon(getEnvironmentVariable("DATABASE_URL"));
+export const neonSql = neon(import.meta.env.DATABASE_URL as string);
 
