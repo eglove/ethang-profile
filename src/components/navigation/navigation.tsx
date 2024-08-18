@@ -1,47 +1,36 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
-import map from "lodash/map";
-import { twMerge } from "tailwind-merge";
+import { NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
+import { useState } from "react";
 
-const links = [
-  {
-    href: "/",
-    label: "Skills",
-  },
-  {
-    href: "/resume",
-    label: "Resume",
-  },
-  {
-    href: "/certifications",
-    label: "Certifications",
-  },
-];
+import { NavigationItems } from "./navigation-items.tsx";
+
 
 type NavigationProperties = {
   readonly currentPathname: string;
 };
 
 export function Navigation({ currentPathname }: NavigationProperties) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <Navbar className="mx-auto my-4 max-w-screen-xl rounded border-2">
-      <NavbarContent justify="center">
-        {map(links, (link) => {
-          return (
-            <NavbarItem>
-              <Link
-                className={twMerge(
-                  "text-foreground underline-offset-2",
-                  currentPathname === link.href && "underline",
-                )}
-                href={link.href}
-              >
-                {link.label}
-              </Link>
-            </NavbarItem>
-          );
-        })}
+    <Navbar
+      className="mx-auto max-w-screen-xl"
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen
+            ? "Close menu"
+            : "Open menu"}
+          className="sm:hidden"
+        />
+      </NavbarContent>
+      <NavbarContent
+        className="hidden sm:flex"
+        justify="center"
+      >
+        <NavigationItems currentPathname={currentPathname} />
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
@@ -53,6 +42,9 @@ export function Navigation({ currentPathname }: NavigationProperties) {
           </SignedIn>
         </NavbarItem>
       </NavbarContent>
+      <NavbarMenu className="z-40">
+        <NavigationItems currentPathname={currentPathname} />
+      </NavbarMenu>
     </Navbar>
   );
 }

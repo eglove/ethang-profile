@@ -1,0 +1,12 @@
+---
+import {Astro} from "astro/env";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
+import {CertificationsLayout} from "../components/certifications/certifications";
+
+const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
+const pathname = Astro.url.pathname;
+---
+
+<HtmlLayout>
+    <CertificationsLayout client:load clerkKey={clerkKey} currentPathname={pathname} />
+</HtmlLayout>
