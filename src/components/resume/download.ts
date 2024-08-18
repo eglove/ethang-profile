@@ -16,7 +16,7 @@ function downloadBlob(blob: Blob) {
 export function useDownloadResume() {
   const { mutate } = useMutation({
     async mutationFn() {
-      const response = await fetch("/resume");
+      const response = await fetch("/ethan-glover-resume");
       const blob = await response.blob();
       downloadBlob(blob);
     },
