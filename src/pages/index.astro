@@ -4,8 +4,9 @@ import HtmlLayout from "../layouts/HtmlLayout.astro";
 import {Skills} from "../components/skills/skills";
 import {getExperienceBreakdown} from "../util/job/get-experience-breakdown";
 import type {GetJobsJson} from "./api/job";
+import {getEnvironmentVariable} from "../util/environment";
 
-const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
+const clerkKey = getEnvironmentVariable('CLERK_PUBLISHABLE_KEY');
 const pathname = Astro.url.pathname;
 
 const jobs = await neonSql`select * from "Job"` as GetJobsJson;

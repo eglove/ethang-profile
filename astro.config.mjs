@@ -12,4 +12,9 @@ export default defineConfig({
   }),
   integrations: [tailwind(), react()],
   output: "server",
+  vite: {
+    define: {
+      "process:env": process.env,
+    },
+  },
 });

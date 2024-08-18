@@ -8,7 +8,7 @@ import { type PropsWithChildren, StrictMode, Suspense } from "react";
 export const queryClient = new QueryClient();
 
 export type ReactProvidersProperties = {
-  readonly clerkKey: string;
+  readonly clerkKey?: string;
 };
 
 export function ReactProviders({
@@ -17,7 +17,7 @@ export function ReactProviders({
   return (
     <StrictMode>
       <Suspense>
-        <ClerkProvider publishableKey={clerkKey}>
+        <ClerkProvider publishableKey={clerkKey ?? ""}>
           <QueryClientProvider client={queryClient}>
             {children}
           </QueryClientProvider>
