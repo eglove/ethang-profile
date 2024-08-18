@@ -23,7 +23,7 @@ function JobCreateWithProviders() {
   } = useJobForm({
     onSuccess() {
       // eslint-disable-next-line lodash/prefer-lodash-method
-      location.replace("/job");
+      location.replace("/resume");
     },
   });
 

@@ -1,13 +1,14 @@
 ---
+import {neonSql} from "../clients/neon";
 import HtmlLayout from "../layouts/HtmlLayout.astro";
 import {Skills} from "../components/skills/skills";
-import {getJobs} from "./api/job";
 import {getExperienceBreakdown} from "../util/job/get-experience-breakdown";
+import type {GetJobsJson} from "./api/job";
 
 const clerkKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
 const pathname = Astro.url.pathname;
 
-const jobs = await getJobs();
+const jobs = await neonSql`select * from "Job"` as GetJobsJson;
 
 const {sorted, max} = getExperienceBreakdown(jobs);
 ---

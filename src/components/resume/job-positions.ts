@@ -3,18 +3,15 @@ import isNil from "lodash/isNil";
 import map from "lodash/map";
 import { DateTime } from "luxon";
 
-import prisma from "../../clients/prisma.ts";
+import { neonSql } from "../../clients/neon.ts";
 
 const listFormatter = new Intl.ListFormat(undefined, {
   type: "unit",
 });
 
 export async function getJobPositions() {
-  const jobs = await prisma.job.findMany({
-    orderBy: {
-      endDate: "desc",
-    },
-  });
+  const jobs = await neonSql`select * from "Job"
+    order by "endDate" DESC`;
 
 
   return map(jobs, (job) => {

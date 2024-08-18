@@ -9,15 +9,15 @@ import toPairs from "lodash/toPairs";
 import values from "lodash/values";
 import { DateTime } from "luxon";
 
-import type { getJobs } from "../../pages/api/job.ts";
+import type { GetJobsJson } from "../../pages/api/job.ts";
 
 import { americaChicago } from "../../constants/constants.ts";
 
-function getDiff(startDate: Date, endDate?: Date | null) {
-  const start = DateTime.fromJSDate(startDate);
+function getDiff(startDate: string, endDate?: null | string) {
+  const start = DateTime.fromJSDate(new Date(startDate));
   const end = isNil(endDate)
     ? DateTime.now().setZone(americaChicago)
-    : DateTime.fromJSDate(endDate);
+    : DateTime.fromJSDate(new Date(endDate));
   return end.diff(start, "years");
 }
 
@@ -31,15 +31,11 @@ function incrementSkill(
 }
 
 export function getExperienceBreakdown(
-  jobs: Awaited<ReturnType<typeof getJobs>>,
+  jobs: GetJobsJson,
 ) {
   const experiences: Record<string, number> = {};
 
   forEach(jobs, (job) => {
-    if (job.isDetail) {
-      return;
-    }
-
     const diff = getDiff(job.startDate, job.endDate);
 
     incrementSkill(experiences, job.techUsed, diff.years);
