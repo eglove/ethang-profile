@@ -8,15 +8,15 @@ datasource db {
 }
 
 model Certification {
-  id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String   @db.VarChar(255)
-  issuedBy    String   @db.VarChar(255)
+  id          String    @id @default(uuid())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  name        String    @db.VarChar(255)
+  issuedBy    String    @db.VarChar(255)
   description String
-  url         String   @db.VarChar(255)
+  url         String    @db.VarChar(255)
   issuedOn    DateTime
-  expires     DateTime
+  expires     DateTime?
 }
 
 model Job {

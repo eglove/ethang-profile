@@ -1,8 +1,8 @@
-import { TrashIcon } from "@heroicons/react/24/solid";
-import { Button } from "@nextui-org/button";
-
 import type { GetCertificationsJson } from "../../pages/api/certification.ts";
 
+import { useIsMe } from "../../util/user.ts";
+import { CertificationDetails } from "./certifciation-details.tsx";
+import { CertificationDelete } from "./certification-delete.tsx";
 import { CertificationUpdate } from "./certification-update.tsx";
 
 type CertificationActionsProperties = {
@@ -13,14 +13,13 @@ type CertificationActionsProperties = {
 export function CertificationActions({
   certification,
 }: CertificationActionsProperties) {
+  const isMe = useIsMe();
+
   return (
     <div className="flex items-center gap-2">
-      <CertificationUpdate certification={certification} />
-      <Button
-        isIconOnly
-      >
-        <TrashIcon className="size-6 text-red-500" />
-      </Button>
+      <CertificationDetails certification={certification} />
+      {isMe && <CertificationUpdate certification={certification} />}
+      {isMe && <CertificationDelete certification={certification} />}
     </div>
   );
 }

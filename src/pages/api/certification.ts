@@ -9,7 +9,11 @@ export type GetCertificationsJson =
     Jsonify<Awaited<ReturnType<typeof getCertifications>>>;
 
 export async function getCertifications() {
-  return prisma.certification.findMany();
+  return prisma.certification.findMany({
+    orderBy: {
+      issuedOn: "desc",
+    },
+  });
 }
 
 export async function GET() {
