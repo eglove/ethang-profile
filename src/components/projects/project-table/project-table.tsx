@@ -14,7 +14,7 @@ const columns = [
   },
   {
     key: "url",
-    label: "Url",
+    label: "URL",
   },
   {
     key: "actions",
