@@ -20,6 +20,10 @@ const links = [
     href: "/projects/",
     label: "Projects",
   },
+  {
+    href: "/courses/",
+    label: "Courses",
+  },
 ];
 
 type NavigationItemsProperties = {
