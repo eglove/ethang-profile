@@ -23,7 +23,10 @@ function CoursesLayoutWithProviders() {
         Recommended Courses
       </h1>
       <CoursesSummary />
-      <Accordion>
+      <Accordion
+        className="mt-4"
+        variant="splitted"
+      >
         <AccordionItem title="Beginner: Colte Steele">
           <BeginnerCourses />
         </AccordionItem>
