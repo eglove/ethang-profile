@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
-import { NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
+import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
 import { NavigationItems } from "./navigation-items.tsx";
@@ -47,6 +48,32 @@ export function Navigation({ currentPathname }: NavigationProperties) {
         <NavigationItems currentPathname={currentPathname} />
       </NavbarContent>
       <NavbarContent justify="end">
+        <NavbarItem>
+          <Link
+            isExternal
+            href="https://github.com/eglove"
+          >
+            <Avatar
+              isBordered
+              color="primary"
+              name="GitHub"
+              src="/images/github.svg"
+            />
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link
+            isExternal
+            href="https://www.linkedin.com/in/ethan-glover/"
+          >
+            <Avatar
+              isBordered
+              color="secondary"
+              name="LinkedIn"
+              src="/images/linkedin.svg"
+            />
+          </Link>
+        </NavbarItem>
         {isLocal && (
           <NavbarItem>
             <SignedOut>
