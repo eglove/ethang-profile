@@ -1,3 +1,4 @@
+import { Link } from "@nextui-org/link";
 import { Spinner } from "@nextui-org/spinner";
 import { getKeyValue, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
 import { useQuery } from "@tanstack/react-query";
@@ -5,7 +6,6 @@ import isArray from "lodash/isArray";
 import isString from "lodash/isString";
 
 import { queryFunctions } from "../../query/query-functions.ts";
-import { StyledLink } from "../common/styled-link.tsx";
 import { CertificationActions } from "./certification-actions.tsx";
 
 const columns = [
@@ -90,12 +90,13 @@ export function CertificationsTable() {
                 if ("url" === columnKey) {
                   return (
                     <TableCell>
-                      <StyledLink
+                      <Link
+                        isExternal
                         showAnchorIcon
                         href={getKeyValue(item, columnKey) as string}
                       >
                         Link
-                      </StyledLink>
+                      </Link>
                     </TableCell>
                   );
                 }

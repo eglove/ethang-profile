@@ -54,9 +54,7 @@ export function ProjectTable() {
                       <Link
                         isExternal
                         showAnchorIcon
-                        color="foreground"
                         href={getKeyValue(item, columnKey) as string}
-                        underline="always"
                       >
                         Link
                       </Link>

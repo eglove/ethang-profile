@@ -32,10 +32,8 @@ export function LearningProfileLinks() {
           return (
             <Link
               isExternal
-              color="foreground"
               href={link.href}
               key={link.href}
-              underline="always"
             >
               {link.label}
             </Link>
