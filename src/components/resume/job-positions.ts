@@ -35,13 +35,13 @@ export async function getJobPositions() {
         new TextRun({
           text: ` ${job.shortDescription}`,
         }),
-        new TextRun("\n"),
+        new TextRun({ text: "\n" }),
         new TextRun({
           bold: true,
           text: "Tech Used:",
         }),
         new TextRun(` ${listFormatter.format(job.techUsed)}`),
-        new TextRun("\n"),
+        new TextRun({ text: "\n" }),
         new TextRun({
           bold: true,
           text: "Methodologies Used:",

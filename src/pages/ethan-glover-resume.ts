@@ -1,11 +1,15 @@
 import { Document, Packer } from "docx";
 
+import { certificationHeader, getCertifications } from "../components/resume/certifications.ts";
 import { getJobPositions } from "../components/resume/job-positions.ts";
+import { getProjects, projectHeader } from "../components/resume/projects.ts";
 import { experienceHeader, resumeBasicInfo, resumeHeader, resumeSummary } from "../components/resume/resume.ts";
 
 
 export async function GET() {
   const jobDescriptions = await getJobPositions();
+  const certifications = await getCertifications();
+  const projects = await getProjects();
 
   const document = new Document({
     sections: [
@@ -16,6 +20,10 @@ export async function GET() {
           resumeSummary(),
           experienceHeader,
           ...jobDescriptions,
+          certificationHeader,
+          ...certifications,
+          projectHeader,
+          ...projects,
         ],
         properties: {},
       },

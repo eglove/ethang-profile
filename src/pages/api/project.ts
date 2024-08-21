@@ -11,7 +11,7 @@ import { neonSql } from "../../clients/neon.ts";
 export type GetProjectJson = Jsonify<Awaited<ReturnType<PrismaClient["project"]["findMany"]>>>;
 
 export async function GET() {
-  const projects = await neonSql`SELECT * FROM "Project"`;
+  const projects = await neonSql`SELECT * FROM "Project" order by "name"`;
 
   return new Response(JSON.stringify(projects), {
     headers: jsonHeaders,
