@@ -59,6 +59,7 @@ export function CertificationsTable() {
           : []}
         emptyContent={<Spinner />}
       >
+        {/* eslint-disable-next-line max-lines-per-function */}
         {(item) => {
           return (
             <TableRow key={item.id}>
