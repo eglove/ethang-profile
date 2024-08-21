@@ -37,7 +37,7 @@ export function Navigation({ currentPathname }: NavigationProperties) {
             : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand className="text-xl font-bold">
+        <NavbarBrand className="hidden text-xl font-bold sm:block">
           Ethan Glover
         </NavbarBrand>
       </NavbarContent>
@@ -57,6 +57,7 @@ export function Navigation({ currentPathname }: NavigationProperties) {
               isBordered
               color="primary"
               name="GitHub"
+              size="sm"
               src="/images/github.svg"
             />
           </Link>
@@ -70,6 +71,7 @@ export function Navigation({ currentPathname }: NavigationProperties) {
               isBordered
               color="secondary"
               name="LinkedIn"
+              size="sm"
               src="/images/linkedin.svg"
             />
           </Link>
@@ -86,6 +88,9 @@ export function Navigation({ currentPathname }: NavigationProperties) {
         )}
       </NavbarContent>
       <NavbarMenu className="z-40">
+        <NavbarItem className="text-xl font-bold">
+          Ethan Glover
+        </NavbarItem>
         <NavigationItems currentPathname={currentPathname} />
       </NavbarMenu>
     </Navbar>

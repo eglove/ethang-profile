@@ -33,6 +33,7 @@ export function JobUpdate({ job }: JobUpdateProperties) {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        scrollBehavior="inside"
       >
         <ModalContent>
           {(onClose) => {

@@ -30,6 +30,7 @@ export function CertificationUpdate({
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        scrollBehavior="inside"
       >
         <UpsertCertificationModalContent
           isPending={isPending}

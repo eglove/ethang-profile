@@ -25,6 +25,7 @@ export function JobDetails({ job }: JobDetailsProperties) {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        scrollBehavior="inside"
       >
         <ModalContent>
           {(onClose) => {

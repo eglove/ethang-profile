@@ -31,6 +31,7 @@ export function ProjectCreate() {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        scrollBehavior="inside"
       >
         <ModalContent>
           {(onClose) => {
