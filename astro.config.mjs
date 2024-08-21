@@ -11,7 +11,5 @@ export default defineConfig({
     },
   }),
   integrations: [tailwind(), react()],
-  output: "development" === import.meta.env.MODE
-    ? "server"
-    : "hybrid",
+  output: "hybrid",
 });
