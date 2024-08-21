@@ -50,6 +50,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240815.0",
     "@ethang/eslint-config": "^18.4.19",
+    "@ethang/project-builder": "^2.3.9",
     "@tailwindcss/typography": "^0.5.14",
     "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
