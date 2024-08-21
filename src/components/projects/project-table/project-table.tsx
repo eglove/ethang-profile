@@ -13,10 +13,6 @@ const columns = [
     label: "Name",
   },
   {
-    key: "url",
-    label: "URL",
-  },
-  {
     key: "actions",
     label: "Details",
   },
@@ -48,15 +44,17 @@ export function ProjectTable() {
           return (
             <TableRow key={item.id}>
               {(columnKey) => {
-                if ("url" === columnKey) {
+                if ("name" === columnKey) {
                   return (
                     <TableCell>
                       <Link
                         isExternal
                         showAnchorIcon
-                        href={getKeyValue(item, columnKey) as string}
+                        color="foreground"
+                        href={item.url}
+                        underline="always"
                       >
-                        Link
+                        {getKeyValue(item, columnKey)}
                       </Link>
                     </TableCell>
                   );

@@ -18,10 +18,6 @@ const columns = [
     label: "Issued By",
   },
   {
-    key: "url",
-    label: "URL",
-  },
-  {
     key: "issuedOn",
     label: "Issued On",
   },
@@ -88,15 +84,17 @@ export function CertificationsTable() {
                   );
                 }
 
-                if ("url" === columnKey) {
+                if ("issuedBy" === columnKey) {
                   return (
                     <TableCell>
                       <Link
                         isExternal
                         showAnchorIcon
-                        href={getKeyValue(item, columnKey) as string}
+                        color="foreground"
+                        href={item.url}
+                        underline="always"
                       >
-                        Link
+                        {getKeyValue(item, columnKey)}
                       </Link>
                     </TableCell>
                   );
