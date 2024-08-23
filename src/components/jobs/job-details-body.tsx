@@ -8,7 +8,7 @@ const listFormatter = new Intl.ListFormat(undefined, {
   type: "unit",
 });
 
-export function JobDetailsBody({ job }: JobDetailsBodyProperties) {
+export const JobDetailsBody = ({ job }: JobDetailsBodyProperties) => {
   return (
     <div className="prose text-foreground">
       <p>
@@ -28,4 +28,4 @@ export function JobDetailsBody({ job }: JobDetailsBodyProperties) {
       </p>
     </div>
   );
-}
+};

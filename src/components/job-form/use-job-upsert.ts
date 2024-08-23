@@ -11,13 +11,13 @@ import { jobUpsertSerialize } from "./job-utils.ts";
 
 type UseJobUpsertProperties = {
   formState: JobUpsertForm;
-  job?: JobUpsertForm | undefined;
+  job: JobUpsertForm | undefined;
   onSuccess: () => void;
 };
 
-export function useJobUpsert({
+export const useJobUpsert = ({
   formState, job, onSuccess,
-}: UseJobUpsertProperties) {
+}: UseJobUpsertProperties) => {
   const { isPending, mutate } = useMutation({
     mutationFn: async () => {
       const response = await attemptAsync(async () => {
@@ -41,4 +41,4 @@ export function useJobUpsert({
     isPending,
     mutate,
   };
-}
+};

@@ -9,7 +9,7 @@ type ProjectActionsProperties = {
   readonly project: GetProjectJson[0];
 };
 
-export function ProjectActions({ project }: ProjectActionsProperties) {
+export const ProjectActions = ({ project }: ProjectActionsProperties) => {
   const isMe = useIsMe();
 
   return (
@@ -23,4 +23,4 @@ export function ProjectActions({ project }: ProjectActionsProperties) {
         />}
     </div>
   );
-}
+};

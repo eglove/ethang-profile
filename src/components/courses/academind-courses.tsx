@@ -140,7 +140,7 @@ const links = [
   },
 ];
 
-export function AcademindCourses() {
+export const AcademindCourses = () => {
   return (
     <div className="prose max-w-max text-foreground">
       <p>
@@ -178,4 +178,4 @@ export function AcademindCourses() {
       </ul>
     </div>
   );
-}
+};

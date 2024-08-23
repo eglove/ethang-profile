@@ -9,7 +9,7 @@ import {
   projectFormStoreLabels,
 } from "./project-store.ts";
 
-export function ProjectFormInputs() {
+export const ProjectFormInputs = () => {
   const state = useStore(projectFormStore);
 
   return (
@@ -26,4 +26,4 @@ export function ProjectFormInputs() {
       })}
     </>
   );
-}
+};

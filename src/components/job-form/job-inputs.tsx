@@ -11,9 +11,9 @@ type JobInputsProperties = {
   readonly handleSetChange: ReturnType<typeof useJobForm>["handleSetChange"];
 };
 
-export function JobInputs({
+export const JobInputs = ({
   formState, handleChange, handleSetChange,
-}: JobInputsProperties) {
+}: JobInputsProperties) => {
   return (
     <>
       {map(jobCreateStringInputs, (input) => {
@@ -58,4 +58,4 @@ export function JobInputs({
       />
     </>
   );
-}
+};

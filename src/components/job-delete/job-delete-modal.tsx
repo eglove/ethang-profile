@@ -10,9 +10,9 @@ type JobDeleteModalProperties = {
   readonly title: string;
 };
 
-export function JobDeleteModal({
+export const JobDeleteModal = ({
   company, isOpen, isPending, mutate, onOpenChange, title,
-}: JobDeleteModalProperties) {
+}: JobDeleteModalProperties) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -55,4 +55,4 @@ export function JobDeleteModal({
       </ModalContent>
     </Modal>
   );
-}
+};

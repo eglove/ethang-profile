@@ -6,8 +6,8 @@ import { ProjectFormInputs } from "../project-form-inputs.tsx";
 import { resetProjectFormStore } from "../project-store.ts";
 import { useCreateProject } from "./use-create-project.ts";
 
-// eslint-disable-next-line max-lines-per-function
-export function ProjectCreate() {
+
+export const ProjectCreate = () => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useCreateProject({
     onSuccess: closeModal,
@@ -68,4 +68,4 @@ export function ProjectCreate() {
       </Modal>
     </>
   );
-}
+};

@@ -6,7 +6,7 @@ import { getProjects, projectHeader } from "../components/resume/projects.ts";
 import { experienceHeader, resumeBasicInfo, resumeHeader, resumeSummary } from "../components/resume/resume.ts";
 
 
-export async function GET() {
+export const GET = async () => {
   const jobDescriptions = await getJobPositions();
   const certifications = await getCertifications();
   const projects = await getProjects();
@@ -32,4 +32,4 @@ export async function GET() {
 
   const blog = await Packer.toBlob(document);
   return new Response(blog);
-}
+};

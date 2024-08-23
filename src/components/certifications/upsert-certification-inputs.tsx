@@ -6,8 +6,7 @@ import startCase from "lodash/startCase";
 import { certificationFormStore } from "./certification-form-store.ts";
 import { handleSetCertificationStoreValue } from "./certification-form-store.ts";
 
-
-export function UpsertCertificationInputs() {
+export const UpsertCertificationInputs = () => {
   const formState = useStore(certificationFormStore);
 
   return (
@@ -35,4 +34,4 @@ export function UpsertCertificationInputs() {
       })}
     </>
   );
-}
+};

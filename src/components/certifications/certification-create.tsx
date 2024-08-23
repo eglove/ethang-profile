@@ -6,7 +6,7 @@ import { resetCertificationStore } from "./certification-form-store.ts";
 import { UpsertCertificationModalContent } from "./upsert-certification-modal-content.tsx";
 import { useUpsertCertification } from "./use-upsert-certification.ts";
 
-export function CertificationCreate() {
+export const CertificationCreate = () => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useUpsertCertification({
     onSuccess: closeModal,
@@ -40,4 +40,4 @@ export function CertificationCreate() {
       </Modal>
     </>
   );
-}
+};

@@ -9,7 +9,7 @@ type JobActionsProperties = {
   readonly job: GetJobsJson[0];
 };
 
-export function JobActions({ job }: JobActionsProperties) {
+export const JobActions = ({ job }: JobActionsProperties) => {
   const isMe = useIsMe();
 
   return (
@@ -26,4 +26,4 @@ export function JobActions({ job }: JobActionsProperties) {
       )}
     </div>
   );
-}
+};

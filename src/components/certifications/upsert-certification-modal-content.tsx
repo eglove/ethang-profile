@@ -9,9 +9,9 @@ type UpsertCertificationModalContentProperties = {
   readonly mutate: () => void;
 };
 
-export function UpsertCertificationModalContent({
+export const UpsertCertificationModalContent = ({
   isPending, mutate,
-}: UpsertCertificationModalContentProperties) {
+}: UpsertCertificationModalContentProperties) => {
   return (
     <ModalContent>
       {(onClose) => {
@@ -46,4 +46,4 @@ export function UpsertCertificationModalContent({
       }}
     </ModalContent>
   );
-}
+};

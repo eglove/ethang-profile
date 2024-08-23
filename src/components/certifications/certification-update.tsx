@@ -11,9 +11,9 @@ type CertificationUpdateProperties = {
   readonly certification: GetCertificationsJson[0];
 };
 
-export function CertificationUpdate({
+export const CertificationUpdate = ({
   certification,
-}: CertificationUpdateProperties) {
+}: CertificationUpdateProperties) => {
   const {
     isOpen, isPending, mutate, onOpen, onOpenChange,
   } = useCertificationUpdate({ certification });
@@ -39,4 +39,4 @@ export function CertificationUpdate({
       </Modal>
     </>
   );
-}
+};

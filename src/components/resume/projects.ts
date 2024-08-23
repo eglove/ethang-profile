@@ -16,7 +16,7 @@ export const projectHeader = new Paragraph({
   heading: "Heading2",
 });
 
-export async function getProjects() {
+export const getProjects = async () => {
   const projects = await neonSql`SELECT * FROM "Project" order by "name"` as GetProjectJson;
 
   return map(projects, (project) => {
@@ -59,4 +59,4 @@ export async function getProjects() {
       }),
     ];
   }).flat();
-}
+};

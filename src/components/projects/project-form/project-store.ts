@@ -18,11 +18,11 @@ const initialState = {
 
 export const projectFormStore = new Store(initialState);
 
-export function resetProjectFormStore() {
+export const resetProjectFormStore = () => {
   projectFormStore.setState(() => {
     return initialState;
   });
-}
+};
 
 export const handleProjectFormStoreValue = (
   key: keyof typeof projectFormStore.state,

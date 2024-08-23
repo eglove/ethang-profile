@@ -89,7 +89,7 @@ new Paragraph({
   },
 })];
 
-export function resumeSummary() {
+export const resumeSummary = () => {
   const start = DateTime.fromObject({
     month: 11,
     year: 2018,
@@ -100,4 +100,4 @@ export function resumeSummary() {
   return new Paragraph({
     text: `Software engineer with ${totalExperience.years.toFixed(2)} yrs experience across many different technologies. I have been writing code and working with the web for most of my life. I built my first website at around 9 years old, it was a green neon background with 10 pictures of monkeys written in HTML/CSS. I've continued to learn through my life by getting into the advantages/disadvantages of different perspectives like OOP, functional programming, hybrid paradigms, test-driven development and behavior-driven development. I am constantly working on side projects and love jumping in and learning new things.`,
   });
-}
+};

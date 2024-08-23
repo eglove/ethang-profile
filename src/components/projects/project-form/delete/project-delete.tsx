@@ -10,10 +10,10 @@ type DeleteProjectProperties = {
   readonly name: string;
 };
 
-// eslint-disable-next-line max-lines-per-function
-export function ProjectDelete({
+
+export const ProjectDelete = ({
   id, name,
-}: DeleteProjectProperties) {
+}: DeleteProjectProperties) => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useProjectDelete({
     id,
@@ -70,4 +70,4 @@ export function ProjectDelete({
       </Modal>
     </>
   );
-}
+};

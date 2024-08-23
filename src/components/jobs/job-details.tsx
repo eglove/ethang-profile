@@ -11,7 +11,7 @@ type JobDetailsProperties = {
   readonly job: GetJobsJson[0];
 };
 
-export function JobDetails({ job }: JobDetailsProperties) {
+export const JobDetails = ({ job }: JobDetailsProperties) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -52,4 +52,4 @@ export function JobDetails({ job }: JobDetailsProperties) {
       </Modal>
     </>
   );
-}
+};

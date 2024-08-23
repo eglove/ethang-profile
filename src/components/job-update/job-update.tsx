@@ -13,7 +13,7 @@ type JobUpdateProperties = {
   readonly job: GetJobsJson[0];
 };
 
-export function JobUpdate({ job }: JobUpdateProperties) {
+export const JobUpdate = ({ job }: JobUpdateProperties) => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const {
     formState, handleChange, handleSetChange, isPending, mutate,
@@ -59,4 +59,4 @@ export function JobUpdate({ job }: JobUpdateProperties) {
       </Modal>
     </>
   );
-}
+};

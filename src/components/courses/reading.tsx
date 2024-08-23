@@ -12,7 +12,7 @@ const links = [
   },
 ];
 
-export function Reading() {
+export const Reading = () => {
   return (
     <div className="prose max-w-max text-foreground">
       <p>
@@ -35,4 +35,4 @@ export function Reading() {
       </ul>
     </div>
   );
-}
+};

@@ -28,7 +28,7 @@ const links = [
   },
 ];
 
-export function BeginnerCourses() {
+export const BeginnerCourses = () => {
   return (
     <div className="prose max-w-max text-foreground">
       <p>
@@ -66,4 +66,4 @@ export function BeginnerCourses() {
       </ul>
     </div>
   );
-}
+};

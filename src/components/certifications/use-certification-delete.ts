@@ -10,9 +10,9 @@ type UseCertificationDeleteProperties = {
   readonly certification: GetCertificationsJson[0];
 };
 
-export function useCertificationDelete({
+export const useCertificationDelete = ({
   certification,
-}: UseCertificationDeleteProperties) {
+}: UseCertificationDeleteProperties) => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
 
   const { isPending, mutate } = useMutation({
@@ -38,4 +38,4 @@ export function useCertificationDelete({
     onOpen,
     onOpenChange,
   };
-}
+};

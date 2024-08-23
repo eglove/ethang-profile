@@ -9,7 +9,7 @@ const formatter = Intl.NumberFormat("en-US", {
 }).format;
 const timezone = "America/Chicago";
 
-export function CoursesSummary() {
+export const CoursesSummary = () => {
   const start = DateTime.fromObject({
     month: 11,
     year: 2018,
@@ -41,4 +41,4 @@ export function CoursesSummary() {
       </p>
     </div>
   );
-}
+};

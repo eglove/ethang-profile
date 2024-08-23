@@ -31,8 +31,7 @@ const columns = [
   },
 ];
 
-// eslint-disable-next-line max-lines-per-function
-export function CertificationsTable() {
+export const CertificationsTable = () => {
   const { data } = useQuery(queryFunctions.certifications());
 
   return (
@@ -55,7 +54,7 @@ export function CertificationsTable() {
           : []}
         emptyContent={<Spinner />}
       >
-        {/* eslint-disable-next-line max-lines-per-function */}
+        { }
         {(item) => {
           return (
             <TableRow key={item.id}>
@@ -112,4 +111,4 @@ export function CertificationsTable() {
       </TableBody>
     </Table>
   );
-}
+};

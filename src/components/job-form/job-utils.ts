@@ -11,7 +11,7 @@ import type { JobUpsertForm } from "./use-job-form.ts";
 import { americaChicago, dateInputFormat } from "../../constants/constants.ts";
 
 
-export function jobUpsertSerialize(job: JobUpsertForm) {
+export const jobUpsertSerialize = (job: JobUpsertForm) => {
   const structured = mapValues(omitBy(job, isEmpty), (value) => {
     if (isSet(value)) {
       return [...value];
@@ -31,9 +31,9 @@ export function jobUpsertSerialize(job: JobUpsertForm) {
       .fromFormat(job.startDate, dateInputFormat, { zone: americaChicago })
       .toISO(),
   });
-}
+};
 
-export function jobUpdateSerialize(job: GetJobsJson[0]) {
+export const jobUpdateSerialize = (job: GetJobsJson[0]) => {
   return {
     company: job.company,
     endDate: isNil(job.endDate)
@@ -50,4 +50,4 @@ export function jobUpdateSerialize(job: GetJobsJson[0]) {
     techUsed: new Set(job.techUsed),
     title: job.title,
   } satisfies { id: string } & JobUpsertForm;
-}
+};

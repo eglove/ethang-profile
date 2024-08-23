@@ -4,7 +4,7 @@ type SkillGaugeProperties = {
   readonly years: number;
 };
 
-function getColor(years: number, maxYears: number) {
+const getColor = (years: number, maxYears: number) => {
   let color: string;
 
   if (maxYears * 0.33 > years) {
@@ -16,11 +16,11 @@ function getColor(years: number, maxYears: number) {
   }
 
   return color;
-}
+};
 
-export function SkillGauge({
+export const SkillGauge = ({
   label, maxYears, years,
-}: SkillGaugeProperties) {
+}: SkillGaugeProperties) => {
   const color = getColor(years, maxYears);
 
   return (
@@ -61,4 +61,4 @@ export function SkillGauge({
       </div>
     </div>
   );
-}
+};

@@ -17,11 +17,11 @@ const initialState = {
 
 export const certificationFormStore = new Store(initialState);
 
-export function resetCertificationStore() {
+export const resetCertificationStore = () => {
   certificationFormStore.setState(() => {
     return initialState;
   });
-}
+};
 
 export const handleSetCertificationStoreValue = (
   key: keyof typeof certificationFormStore.state,
@@ -36,9 +36,9 @@ export const handleSetCertificationStoreValue = (
   };
 };
 
-export function serializeCertificationsForPost(
+export const serializeCertificationsForPost = (
   state: typeof certificationFormStore.state,
-) {
+) => {
   return {
     ...state,
     expires: DateTime
@@ -48,11 +48,11 @@ export function serializeCertificationsForPost(
       .fromFormat(state.issuedOn, dateInputFormat, { zone: americaChicago })
       .toISO(),
   };
-}
+};
 
-export function serializeCertificationDataForForm(
+export const serializeCertificationDataForForm = (
   data: GetCertificationsJson[0],
-) {
+) => {
   certificationFormStore.setState(() => {
     return {
       description: data.description,
@@ -66,4 +66,4 @@ export function serializeCertificationDataForForm(
       url: data.url,
     };
   });
-}
+};

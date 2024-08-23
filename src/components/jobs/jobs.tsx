@@ -21,7 +21,7 @@ import { JobActions } from "./job-actions.tsx";
 import { columns, jobStore } from "./jobs-store.ts";
 
 
-export function Jobs({ currentPathname }: MainLayoutProperties) {
+export const Jobs = ({ currentPathname }: MainLayoutProperties) => {
   return (
     <MainLayout
       currentPathname={currentPathname}
@@ -29,10 +29,10 @@ export function Jobs({ currentPathname }: MainLayoutProperties) {
       <JobsWithProviders />
     </MainLayout>
   );
-}
+};
 
-// eslint-disable-next-line max-lines-per-function
-function JobsWithProviders() {
+
+const JobsWithProviders = () => {
   const isMe = useIsMe();
   const { data } = useQuery(queryFunctions.jobs());
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
@@ -144,4 +144,4 @@ function JobsWithProviders() {
       )}
     </div>
   );
-}
+};

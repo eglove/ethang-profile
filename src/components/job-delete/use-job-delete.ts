@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
 
-export function useJobDelete(id: string) {
+export const useJobDelete = (id: string) => {
   const { isOpen, onClose: close, onOpen, onOpenChange } = useDisclosure();
 
   const { isPending, mutate } = useMutation({
@@ -29,4 +29,4 @@ export function useJobDelete(id: string) {
     onOpen,
     onOpenChange,
   };
-}
+};

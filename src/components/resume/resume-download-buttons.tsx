@@ -2,7 +2,7 @@ import { Button } from "@nextui-org/button";
 
 import { useDownloadResume } from "./download.ts";
 
-export function ResumeDownloadButtons() {
+export const ResumeDownloadButtons = () => {
   const { mutate } = useDownloadResume();
 
   return (
@@ -23,4 +23,4 @@ export function ResumeDownloadButtons() {
       </Button>
     </div>
   );
-}
+};

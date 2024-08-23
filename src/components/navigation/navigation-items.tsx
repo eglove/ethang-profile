@@ -31,9 +31,9 @@ type NavigationItemsProperties = {
 };
 
 
-export function NavigationItems({
+export const NavigationItems = ({
   currentPathname,
-}: NavigationItemsProperties) {
+}: NavigationItemsProperties) => {
   return (
     <>
       {map(links, (link) => {
@@ -53,4 +53,4 @@ export function NavigationItems({
       })}
     </>
   );
-}
+};

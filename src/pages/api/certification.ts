@@ -12,7 +12,7 @@ export type GetCertificationsJson =
     Jsonify<Awaited<ReturnType<PrismaClient["certification"]["findMany"]>>>;
 
 
-export async function GET() {
+export const GET = async () => {
   const certifications = await neonSql`
     select * from "Certification"
     order by "issuedOn" DESC
@@ -21,9 +21,9 @@ export async function GET() {
   return new Response(JSON.stringify(certifications), {
     headers: jsonHeaders,
   });
-}
+};
 
-export async function POST({ request }: Parameters<APIRoute>[0]) {
+export const POST = async ({ request }: Parameters<APIRoute>[0]) => {
   const data: Parameters<PrismaClient["certification"]["create"]>[0]["data"] = await request.json();
 
   const cert = await neonSql`insert into "Certification" (
@@ -49,9 +49,9 @@ export async function POST({ request }: Parameters<APIRoute>[0]) {
   return new Response(JSON.stringify(cert), {
     headers: jsonHeaders,
   });
-}
+};
 
-export async function PUT({ request }: Parameters<APIRoute>[0]) {
+export const PUT = async ({ request }: Parameters<APIRoute>[0]) => {
   const data: { id: string } & Parameters<PrismaClient["certification"]["update"]>[0]["data"] = await request.json();
 
   const cert = await neonSql`update "Certification" set
@@ -67,9 +67,9 @@ export async function PUT({ request }: Parameters<APIRoute>[0]) {
   return new Response(JSON.stringify(cert), {
     headers: jsonHeaders,
   });
-}
+};
 
-export async function DELETE({ request }: Parameters<APIRoute>[0]) {
+export const DELETE = async ({ request }: Parameters<APIRoute>[0]) => {
   const data: { id: string } = await request.json();
 
   const cert = await neonSql`delete from "Certification" where "id" = "${data.id}"`;
@@ -77,4 +77,4 @@ export async function DELETE({ request }: Parameters<APIRoute>[0]) {
   return new Response(JSON.stringify(cert), {
     headers: jsonHeaders,
   });
-}
+};

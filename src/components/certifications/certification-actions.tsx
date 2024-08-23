@@ -10,9 +10,9 @@ type CertificationActionsProperties = {
 };
 
 
-export function CertificationActions({
+export const CertificationActions = ({
   certification,
-}: CertificationActionsProperties) {
+}: CertificationActionsProperties) => {
   const isMe = useIsMe();
 
   return (
@@ -22,4 +22,4 @@ export function CertificationActions({
       {isMe && <CertificationDelete certification={certification} />}
     </div>
   );
-}
+};

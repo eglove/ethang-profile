@@ -18,8 +18,7 @@ const columns = [
   },
 ];
 
-// eslint-disable-next-line max-lines-per-function
-export function ProjectTable() {
+export const ProjectTable = () => {
   const { data } = useQuery(queryFunctions.projects());
 
 
@@ -80,4 +79,4 @@ export function ProjectTable() {
       </TableBody>
     </Table>
   );
-}
+};

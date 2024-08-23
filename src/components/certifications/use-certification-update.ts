@@ -17,9 +17,9 @@ type UseCertificationUpdateProperties = {
   readonly certification: GetCertificationsJson[0];
 };
 
-export function useCertificationUpdate({
+export const useCertificationUpdate = ({
   certification,
-}: UseCertificationUpdateProperties) {
+}: UseCertificationUpdateProperties) => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
 
   const store = useStore(certificationFormStore);
@@ -55,4 +55,4 @@ export function useCertificationUpdate({
     onOpen,
     onOpenChange,
   };
-}
+};

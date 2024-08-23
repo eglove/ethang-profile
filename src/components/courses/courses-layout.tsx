@@ -8,15 +8,15 @@ import { CoursesSummary } from "./courses-summary.tsx";
 import { FrontendMastersCourses } from "./frontend-masters-courses.tsx";
 import { Reading } from "./reading.tsx";
 
-export function CoursesLayout({ currentPathname }: MainLayoutProperties) {
+export const CoursesLayout = ({ currentPathname }: MainLayoutProperties) => {
   return (
     <MainLayout currentPathname={currentPathname}>
       <CoursesLayoutWithProviders />
     </MainLayout>
   );
-}
+};
 
-function CoursesLayoutWithProviders() {
+const CoursesLayoutWithProviders = () => {
   return (
     <div>
       <h1 className="my-4 text-3xl font-bold">
@@ -45,4 +45,4 @@ function CoursesLayoutWithProviders() {
       </Accordion>
     </div>
   );
-}
+};

@@ -9,9 +9,9 @@ import { CLERK_PUBLISHABLE_KEY } from "../util/constants.ts";
 
 export const queryClient = new QueryClient();
 
-export function ReactProviders({
+export const ReactProviders = ({
   children,
-}: Readonly<PropsWithChildren>) {
+}: Readonly<PropsWithChildren>) => {
   return (
     <StrictMode>
       <Suspense>
@@ -23,4 +23,4 @@ export function ReactProviders({
       </Suspense>
     </StrictMode>
   );
-}
+};

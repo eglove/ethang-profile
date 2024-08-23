@@ -13,26 +13,26 @@ import type { GetJobsJson } from "../../pages/api/job.ts";
 
 import { americaChicago } from "../../constants/constants.ts";
 
-function getDiff(startDate: string, endDate?: null | string) {
+const getDiff = (startDate: string, endDate?: null | string) => {
   const start = DateTime.fromJSDate(new Date(startDate));
   const end = isNil(endDate)
     ? DateTime.now().setZone(americaChicago)
     : DateTime.fromJSDate(new Date(endDate));
   return end.diff(start, "years");
-}
+};
 
-function incrementSkill(
+const incrementSkill = (
   experiences: Record<string, number>, skills: string[], years: number,
-) {
+) => {
   forEach(skills, (skill) => {
     const current = get(experiences, [skill], 0);
     set(experiences, [skill], current + years);
   });
-}
+};
 
-export function getExperienceBreakdown(
+export const getExperienceBreakdown = (
   jobs: GetJobsJson,
-) {
+) => {
   const experiences: Record<string, number> = {};
 
   forEach(jobs, (job) => {
@@ -49,4 +49,4 @@ export function getExperienceBreakdown(
     max,
     sorted,
   };
-}
+};

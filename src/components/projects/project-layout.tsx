@@ -2,9 +2,9 @@ import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout
 import { ProjectCreate } from "./project-form/create/project-create.tsx";
 import { ProjectTable } from "./project-table/project-table.tsx";
 
-export function ProjectLayout({
+export const ProjectLayout = ({
   currentPathname,
-}: MainLayoutProperties) {
+}: MainLayoutProperties) => {
   return (
     <MainLayout
       currentPathname={currentPathname}
@@ -12,13 +12,13 @@ export function ProjectLayout({
       <ProjectLayoutWithProviders />
     </MainLayout>
   );
-}
+};
 
-function ProjectLayoutWithProviders() {
+const ProjectLayoutWithProviders = () => {
   return (
     <div className="grid gap-4">
       <ProjectTable />
       <ProjectCreate />
     </div>
   );
-}
+};

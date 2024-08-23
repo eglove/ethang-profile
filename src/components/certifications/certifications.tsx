@@ -5,9 +5,9 @@ import { CertificationsTable } from "./certifications-table.tsx";
 import { LearningProfileLinks } from "./learning-profile-links.tsx";
 
 
-export function CertificationsLayout({
+export const CertificationsLayout = ({
   currentPathname,
-}: MainLayoutProperties) {
+}: MainLayoutProperties) => {
   return (
     <MainLayout
       currentPathname={currentPathname}
@@ -15,9 +15,9 @@ export function CertificationsLayout({
       <CertificationCreateWithProviders />
     </MainLayout>
   );
-}
+};
 
-function CertificationCreateWithProviders() {
+const CertificationCreateWithProviders = () => {
   const isMe = useIsMe();
 
   return (
@@ -27,4 +27,4 @@ function CertificationCreateWithProviders() {
       {isMe && <CertificationCreate />}
     </>
   );
-}
+};

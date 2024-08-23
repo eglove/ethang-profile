@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 
-function downloadBlob(blob: Blob) {
+const downloadBlob = (blob: Blob) => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -11,9 +11,9 @@ function downloadBlob(blob: Blob) {
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
-}
+};
 
-export function useDownloadResume() {
+export const useDownloadResume = () => {
   const { mutate } = useMutation({
     async mutationFn() {
       const response = await fetch("/ethan-glover-resume");
@@ -23,5 +23,5 @@ export function useDownloadResume() {
   });
 
   return { mutate };
-}
+};
 

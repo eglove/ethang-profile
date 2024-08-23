@@ -10,16 +10,16 @@ import { neonSql } from "../../clients/neon.ts";
 
 export type GetJobsJson = Jsonify<Awaited<ReturnType<PrismaClient["job"]["findMany"]>>>;
 
-export async function GET() {
+export const GET = async () => {
   const jobs = await neonSql`select * from "Job"
     order by "endDate" DESC`;
 
   return new Response(JSON.stringify(jobs), {
     headers: jsonHeaders,
   });
-}
+};
 
-export async function POST({ request }: Parameters<APIRoute>[0]) {
+export const POST = async ({ request }: Parameters<APIRoute>[0]) => {
   const data: Parameters<PrismaClient["job"]["create"]>[0]["data"] = await request.json();
 
   const job = await neonSql`insert into "Job" (
@@ -47,9 +47,9 @@ export async function POST({ request }: Parameters<APIRoute>[0]) {
   return new Response(JSON.stringify(job), {
     headers: jsonHeaders,
   });
-}
+};
 
-export async function PUT({ request }: Parameters<APIRoute>[0]) {
+export const PUT = async ({ request }: Parameters<APIRoute>[0]) => {
   const data: { id: string } & Parameters<PrismaClient["job"]["update"]>[0]["data"] = await request.json();
 
   const job = await neonSql`update "Job" set
@@ -66,9 +66,9 @@ export async function PUT({ request }: Parameters<APIRoute>[0]) {
   return new Response(JSON.stringify(job), {
     headers: jsonHeaders,
   });
-}
+};
 
-export async function DELETE({ request }: Parameters<APIRoute>[0]) {
+export const DELETE = async ({ request }: Parameters<APIRoute>[0]) => {
   const data: { id: string } = await request.json();
 
   const job = await neonSql`delete from "Job" where "id" = ${data.id}`;
@@ -76,4 +76,4 @@ export async function DELETE({ request }: Parameters<APIRoute>[0]) {
   return new Response(JSON.stringify(job), {
     headers: jsonHeaders,
   });
-}
+};

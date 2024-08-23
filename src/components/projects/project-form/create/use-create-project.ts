@@ -9,7 +9,7 @@ type UseCreateProjectProperties = {
   onSuccess: () => void;
 };
 
-export function useCreateProject({ onSuccess }: UseCreateProjectProperties) {
+export const useCreateProject = ({ onSuccess }: UseCreateProjectProperties) => {
   const state = useStore(projectFormStore);
 
   const { isPending, mutate } = useMutation({
@@ -31,4 +31,4 @@ export function useCreateProject({ onSuccess }: UseCreateProjectProperties) {
     isPending,
     mutate,
   };
-}
+};

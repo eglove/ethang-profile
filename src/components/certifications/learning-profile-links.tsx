@@ -20,8 +20,7 @@ const profileLinks = [
   },
 ];
 
-
-export function LearningProfileLinks() {
+export const LearningProfileLinks = () => {
   return (
     <div className="prose text-foreground">
       <h2 className="my-1 text-xl text-foreground">
@@ -42,4 +41,4 @@ export function LearningProfileLinks() {
       </div>
     </div>
   );
-}
+};

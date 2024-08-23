@@ -16,9 +16,9 @@ type JobUpdateModalFormProperties = {
   readonly onClose: () => void;
 };
 
-export function JobUpdateModalForm({
+export const JobUpdateModalForm = ({
   formState, handleChange, handleSetChange, isPending, mutate, onClose,
-}: JobUpdateModalFormProperties) {
+}: JobUpdateModalFormProperties) => {
   return (
     <form onSubmit={preventDefault(mutate)}>
       <ModalBody>
@@ -48,4 +48,4 @@ export function JobUpdateModalForm({
       </ModalFooter>
     </form>
   );
-}
+};

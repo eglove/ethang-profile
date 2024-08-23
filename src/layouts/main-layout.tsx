@@ -7,9 +7,9 @@ export type MainLayoutProperties = {
   readonly currentPathname: string;
 } & Readonly<PropsWithChildren>;
 
-export function MainLayout({
+export const MainLayout = ({
   children, currentPathname,
-}: MainLayoutProperties) {
+}: MainLayoutProperties) => {
   return (
     <ReactProviders>
       <Navigation currentPathname={currentPathname} />
@@ -18,4 +18,4 @@ export function MainLayout({
       </main>
     </ReactProviders>
   );
-}
+};

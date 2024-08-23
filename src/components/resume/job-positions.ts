@@ -11,7 +11,7 @@ const listFormatter = new Intl.ListFormat(undefined, {
   type: "unit",
 });
 
-export async function getJobPositions() {
+export const getJobPositions = async () => {
   const jobs = await neonSql`select * from "Job"
     order by "endDate" DESC` as GetJobsJson;
 
@@ -50,4 +50,4 @@ export async function getJobPositions() {
       ],
     });
   });
-}
+};

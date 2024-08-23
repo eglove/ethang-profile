@@ -8,11 +8,11 @@ type SkillsProperties = {
   readonly max: number;
 };
 
-export function Skills({
+export const Skills = ({
   currentPathname,
   experiences,
   max,
-}: MainLayoutProperties & SkillsProperties) {
+}: MainLayoutProperties & SkillsProperties) => {
   return (
     <MainLayout
       currentPathname={currentPathname}
@@ -23,9 +23,9 @@ export function Skills({
       />
     </MainLayout>
   );
-}
+};
 
-function SkillsWithProviders({ experiences, max }: SkillsProperties) {
+const SkillsWithProviders = ({ experiences, max }: SkillsProperties) => {
   return (
     <div>
       <h1 className="my-4 text-center text-3xl font-bold">
@@ -45,4 +45,4 @@ function SkillsWithProviders({ experiences, max }: SkillsProperties) {
       </div>
     </div>
   );
-}
+};

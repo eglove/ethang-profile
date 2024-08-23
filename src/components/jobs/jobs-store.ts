@@ -6,7 +6,7 @@ export const jobStore = new Store({
   expandedItems: [] as string[],
 });
 
-export function jobStoreAddOrRemove(id: string) {
+export const jobStoreAddOrRemove = (id: string) => {
   jobStore.setState((previous) => {
     if (includes(previous.expandedItems, id)) {
       return {
@@ -19,7 +19,7 @@ export function jobStoreAddOrRemove(id: string) {
       expandedItems: [...previous.expandedItems, id],
     };
   });
-}
+};
 
 export const columns = [
   {

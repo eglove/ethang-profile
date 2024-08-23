@@ -5,7 +5,7 @@ import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout
 import { JobInputs } from "../job-form/job-inputs.tsx";
 import { useJobForm } from "../job-form/use-job-form.ts";
 
-export function JobCreate({ currentPathname }: MainLayoutProperties) {
+export const JobCreate = ({ currentPathname }: MainLayoutProperties) => {
   return (
     <MainLayout
       currentPathname={currentPathname}
@@ -13,10 +13,10 @@ export function JobCreate({ currentPathname }: MainLayoutProperties) {
       <JobCreateWithProviders />
     </MainLayout>
   );
-}
+};
 
 
-function JobCreateWithProviders() {
+const JobCreateWithProviders = () => {
   const {
     formState, handleChange, handleSetChange, isPending, mutate,
   } = useJobForm({
@@ -53,4 +53,4 @@ function JobCreateWithProviders() {
       </form>
     </div>
   );
-}
+};

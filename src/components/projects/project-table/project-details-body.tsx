@@ -6,9 +6,9 @@ type ProjectDetailsBodyProperties = {
   readonly project: GetProjectJson[0];
 };
 
-export function ProjectDetailsBody({
+export const ProjectDetailsBody = ({
   project,
-}: ProjectDetailsBodyProperties) {
+}: ProjectDetailsBodyProperties) => {
   return (
     <>
       <p>
@@ -26,4 +26,4 @@ export function ProjectDetailsBody({
       </p>
     </>
   );
-}
+};

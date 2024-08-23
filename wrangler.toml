@@ -1,6 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "ethang-profile"
-compatibility_date = "2024-08-15"
+compatibility_date = "2024-08-21"
 pages_build_output_dir = "./dist"
 
 # Automatically place your workloads in an optimal location to minimize latency.

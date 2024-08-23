@@ -20,7 +20,7 @@ const links = [
   },
 ];
 
-export function AlgoExpertCourses() {
+export const AlgoExpertCourses = () => {
   return (
     <div className="prose max-w-max text-foreground">
       <p>
@@ -57,4 +57,4 @@ export function AlgoExpertCourses() {
       </ul>
     </div>
   );
-}
+};

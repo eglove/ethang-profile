@@ -11,8 +11,8 @@ type NavigationProperties = {
   readonly currentPathname: string;
 };
 
-// eslint-disable-next-line max-lines-per-function
-export function Navigation({ currentPathname }: NavigationProperties) {
+
+export const Navigation = ({ currentPathname }: NavigationProperties) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLocal, setIsLocal] = useState(false);
 
@@ -95,4 +95,4 @@ export function Navigation({ currentPathname }: NavigationProperties) {
       </NavbarMenu>
     </Navbar>
   );
-}
+};

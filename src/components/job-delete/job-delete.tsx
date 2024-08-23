@@ -10,7 +10,7 @@ type JobDeleteProperties = {
   readonly title: string;
 };
 
-export function JobDelete({ company, id, title }: JobDeleteProperties) {
+export const JobDelete = ({ company, id, title }: JobDeleteProperties) => {
   const { isOpen, isPending, mutate, onOpen, onOpenChange } = useJobDelete(id);
 
   return (
@@ -31,4 +31,4 @@ export function JobDelete({ company, id, title }: JobDeleteProperties) {
       />
     </>
   );
-}
+};

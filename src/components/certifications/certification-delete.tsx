@@ -10,10 +10,9 @@ type CertificationDeleteProperties = {
   readonly certification: GetCertificationsJson[0];
 };
 
-// eslint-disable-next-line max-lines-per-function
-export function CertificationDelete({
+export const CertificationDelete = ({
   certification,
-}: CertificationDeleteProperties) {
+}: CertificationDeleteProperties) => {
   const {
     isOpen, isPending, mutate, onOpen, onOpenChange,
   } = useCertificationDelete({ certification });
@@ -69,4 +68,4 @@ export function CertificationDelete({
       </Modal>
     </>
   );
-}
+};

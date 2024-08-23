@@ -10,7 +10,7 @@ type UseUpdateProjectProperties = {
   onSuccess: () => void;
 };
 
-export function useUpdateProject({ onSuccess }: UseUpdateProjectProperties) {
+export const useUpdateProject = ({ onSuccess }: UseUpdateProjectProperties) => {
   const state = useStore(projectFormStore);
 
   const { isPending, mutate } = useMutation({
@@ -33,4 +33,4 @@ export function useUpdateProject({ onSuccess }: UseUpdateProjectProperties) {
     isPending,
     mutate,
   };
-}
+};

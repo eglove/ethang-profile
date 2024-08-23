@@ -63,7 +63,7 @@ type UseJobFormProperties = {
   onSuccess: () => void;
 };
 
-export function useJobForm({ job, onSuccess }: UseJobFormProperties) {
+export const useJobForm = ({ job, onSuccess }: UseJobFormProperties) => {
   const [formState, setFormState] = useState<JobUpsertForm>(isNil(job)
     ? {
       company: "",
@@ -112,4 +112,4 @@ export function useJobForm({ job, onSuccess }: UseJobFormProperties) {
     isPending,
     mutate,
   };
-}
+};

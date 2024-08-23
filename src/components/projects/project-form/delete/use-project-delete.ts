@@ -8,9 +8,9 @@ type UseProjectDeleteProperties = {
   onSuccess: () => void;
 };
 
-export function useProjectDelete({
+export const useProjectDelete = ({
   id, onSuccess,
-}: UseProjectDeleteProperties) {
+}: UseProjectDeleteProperties) => {
   const { isPending, mutate } = useMutation({
     async mutationFn() {
       const response = await fetch("/api/project", {
@@ -30,4 +30,4 @@ export function useProjectDelete({
     isPending,
     mutate,
   };
-}
+};

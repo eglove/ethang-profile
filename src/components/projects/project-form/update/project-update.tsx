@@ -13,10 +13,10 @@ type ProjectUpdateProperties = {
   readonly project: GetProjectJson[0];
 };
 
-// eslint-disable-next-line max-lines-per-function
-export function ProjectUpdate({
+
+export const ProjectUpdate = ({
   project,
-}: ProjectUpdateProperties) {
+}: ProjectUpdateProperties) => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useUpdateProject({ onSuccess: closeModal });
 
@@ -81,4 +81,4 @@ export function ProjectUpdate({
       </Modal>
     </>
   );
-}
+};

@@ -10,9 +10,9 @@ type ProjectDetailsProperties = {
   readonly project: GetProjectJson[0];
 };
 
-export function ProjectDetails({
+export const ProjectDetails = ({
   project,
-}: ProjectDetailsProperties) {
+}: ProjectDetailsProperties) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -53,4 +53,4 @@ export function ProjectDetails({
       </Modal>
     </>
   );
-}
+};

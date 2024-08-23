@@ -5,9 +5,9 @@ type JobUpdateModalHeaderProperties = {
   readonly title: string;
 };
 
-export function JobUpdateModalHeader({
+export const JobUpdateModalHeader = ({
   company, title,
-}: JobUpdateModalHeaderProperties) {
+}: JobUpdateModalHeaderProperties) => {
   return (
     <ModalHeader>
       {title}
@@ -16,4 +16,4 @@ export function JobUpdateModalHeader({
       {company}
     </ModalHeader>
   );
-}
+};

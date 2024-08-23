@@ -9,7 +9,9 @@ type UseUpsertCertification = {
   onSuccess?: () => void;
 };
 
-export function useUpsertCertification({ onSuccess }: UseUpsertCertification) {
+export const useUpsertCertification = ({
+  onSuccess,
+}: UseUpsertCertification) => {
   const store = useStore(certificationFormStore);
 
   const { isPending, mutate } = useMutation({
@@ -33,4 +35,4 @@ export function useUpsertCertification({ onSuccess }: UseUpsertCertification) {
     isPending,
     mutate,
   };
-}
+};

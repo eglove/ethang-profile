@@ -20,8 +20,7 @@ export const certificationHeader = new Paragraph({
 });
 
 
-// eslint-disable-next-line max-lines-per-function
-export async function getCertifications() {
+export const getCertifications = async () => {
   const certifications = await neonSql`
     select * from "Certification"
     order by "issuedOn" DESC
@@ -71,4 +70,4 @@ export async function getCertifications() {
       ],
     })];
   }).flat();
-}
+};
