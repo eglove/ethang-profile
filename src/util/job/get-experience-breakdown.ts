@@ -1,3 +1,4 @@
+import { adder } from "@ethang/toolbelt/number/adder";
 import forEach from "lodash/forEach";
 import fromPairs from "lodash/fromPairs";
 import get from "lodash/get";
@@ -26,7 +27,7 @@ const incrementSkill = (
 ) => {
   forEach(skills, (skill) => {
     const current = get(experiences, [skill], 0);
-    set(experiences, [skill], current + years);
+    set(experiences, [skill], Number(adder([String(current), String(years)])));
   });
 };
 
