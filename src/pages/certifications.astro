@@ -5,6 +5,6 @@ import {CertificationsLayout} from "../components/certifications/certifications"
 const pathname = Astro.url.pathname;
 ---
 
-<HtmlLayout>
+<HtmlLayout title="Ethan Glover Certifications" description="Ethan Glover Certifications">
     <CertificationsLayout client:load currentPathname={pathname} />
 </HtmlLayout>

@@ -12,7 +12,7 @@ const jobs = await neonSql`select * from "Job"` as GetJobsJson;
 const {sorted, max} = getExperienceBreakdown(jobs);
 ---
 
-<HtmlLayout>
+<HtmlLayout title="Ethan Glover" description="Ethan Glover">
 	<Skills
 		client:load
 		experiences={sorted}

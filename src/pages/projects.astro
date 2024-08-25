@@ -5,6 +5,6 @@ import {ProjectLayout} from "../components/projects/project-layout";
 const pathname = Astro.url.pathname;
 ---
 
-<HtmlLayout>
+<HtmlLayout title="Ethan Glover Projects" description="Ethan Glover Projects">
     <ProjectLayout client:load currentPathname={pathname} />
 </HtmlLayout>

@@ -4,6 +4,6 @@ import {Jobs} from "../components/jobs/jobs";
 
 const pathname = Astro.url.pathname;
 ---
-<HtmlLayout>
+<HtmlLayout title="Ethan Glover Resume" description="Ethan Glover Resume">
     <Jobs client:load currentPathname={pathname} />
 </HtmlLayout>
