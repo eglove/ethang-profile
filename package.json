@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "lint": "eslint src --fix",
     "preview": "astro build && wrangler pages dev",
-    "start": "astro dev"
+    "start": "astro dev",
+    "prismaGenerate": "pnpx prisma generate"
   },
   "browserslist": [
     "defaults and fully supports es6-module",
@@ -21,25 +22,25 @@
     "@astrojs/cloudflare": "^11.0.4",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.0",
-    "@clerk/clerk-react": "^5.4.3",
+    "@clerk/clerk-react": "^5.4.5",
     "@ethang/toolbelt": "^3.9.3",
     "@heroicons/react": "^2.1.5",
     "@neondatabase/serverless": "^0.9.4",
     "@nextui-org/react": "^2.4.6",
-    "@prisma/client": "5.18.0",
+    "@prisma/client": "5.19.0",
     "@react-pdf/renderer": "^3.4.4",
     "@tanstack/react-query": "^5.52.2",
     "@tanstack/react-query-devtools": "^5.52.2",
     "@tanstack/react-store": "^0.5.5",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.14.5",
+    "astro": "^4.14.6",
     "docx": "^8.5.0",
     "framer-motion": "^11.3.30",
     "lodash": "^4.17.21",
     "luxon": "^3.5.0",
     "postgres": "^3.4.4",
-    "prisma": "^5.18.0",
+    "prisma": "^5.19.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.2",
@@ -49,9 +50,9 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240821.1",
-    "@ethang/eslint-config": "^19.2.0",
+    "@ethang/eslint-config": "^19.2.1",
     "@ethang/project-builder": "^2.5.0",
-    "@tailwindcss/typography": "^0.5.14",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
     "@types/uuid": "^10.0.0",
@@ -59,6 +60,6 @@
     "type-fest": "^4.25.0",
     "typescript-eslint": "^8.3.0",
     "vitest": "^2.0.5",
-    "wrangler": "^3.72.2"
+    "wrangler": "^3.72.3"
   }
 }
