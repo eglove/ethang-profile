@@ -10,8 +10,8 @@
     "dev": "astro dev",
     "lint": "eslint src --fix",
     "preview": "astro build && wrangler pages dev",
-    "start": "astro dev",
-    "prismaGenerate": "pnpx prisma generate"
+    "prismaGenerate": "pnpx prisma generate",
+    "start": "astro dev"
   },
   "browserslist": [
     "defaults and fully supports es6-module",
@@ -57,7 +57,7 @@
     "@types/luxon": "^3.4.2",
     "@types/uuid": "^10.0.0",
     "eslint": "^9.9.1",
-    "type-fest": "^4.25.0",
+    "type-fest": "^4.26.0",
     "typescript-eslint": "^8.3.0",
     "vitest": "^2.0.5",
     "wrangler": "^3.72.3"
