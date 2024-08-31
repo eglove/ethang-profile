@@ -2,7 +2,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { NavigationItems } from "./navigation-items.tsx";
 
@@ -14,16 +14,9 @@ type NavigationProperties = {
 
 export const Navigation = ({ currentPathname }: NavigationProperties) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLocal, setIsLocal] = useState(false);
-
-  useEffect(() => {
-    if ("undefined" === typeof window) {
-      return;
-    }
-
-    // eslint-disable-next-line react/hooks-extra/no-direct-set-state-in-use-effect
-    setIsLocal("localhost" === location.hostname);
-  }, []);
+  const isLocal = "undefined" === typeof window
+    ? false
+    : "localhost" === location.hostname;
 
   return (
     <Navbar
@@ -48,6 +41,16 @@ export const Navigation = ({ currentPathname }: NavigationProperties) => {
         <NavigationItems currentPathname={currentPathname} />
       </NavbarContent>
       <NavbarContent justify="end">
+        {isLocal && (
+          <NavbarItem>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </NavbarItem>
+        )}
         <NavbarItem>
           <Link
             isExternal
@@ -76,16 +79,6 @@ export const Navigation = ({ currentPathname }: NavigationProperties) => {
             />
           </Link>
         </NavbarItem>
-        {isLocal && (
-          <NavbarItem>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </NavbarItem>
-        )}
       </NavbarContent>
       <NavbarMenu className="z-40">
         <NavbarItem className="text-xl font-bold">
