@@ -1,5 +1,6 @@
 import { preventDefault } from "@ethang/toolbelt/js/prevent-default";
 import { Button } from "@nextui-org/button";
+import attempt from "lodash/attempt.js";
 
 import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
 import { JobInputs } from "../job-form/job-inputs.tsx";
@@ -21,8 +22,7 @@ const JobCreateWithProviders = () => {
     formState, handleChange, handleSetChange, isPending, mutate,
   } = useJobForm({
     onSuccess() {
-      // eslint-disable-next-line lodash/prefer-lodash-method
-      location.replace("/resume");
+      attempt(location.replace.bind(location), "/resume");
     },
   });
 

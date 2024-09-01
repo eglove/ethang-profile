@@ -1,4 +1,6 @@
+import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { useMutation } from "@tanstack/react-query";
+import isError from "lodash/isError";
 
 const downloadBlob = (blob: Blob) => {
   const url = URL.createObjectURL(blob);
@@ -16,7 +18,12 @@ const downloadBlob = (blob: Blob) => {
 export const useDownloadResume = () => {
   const { mutate } = useMutation({
     async mutationFn() {
-      const response = await fetch("/ethan-glover-resume");
+      const response = await attemptAsync(fetch, "/ethan-glover-resume");
+
+      if (isError(response)) {
+        return;
+      }
+
       const blob = await response.blob();
       downloadBlob(blob);
     },

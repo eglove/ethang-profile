@@ -1,5 +1,7 @@
+import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { useDisclosure } from "@nextui-org/modal";
 import { useMutation } from "@tanstack/react-query";
+import isError from "lodash/isError";
 
 import type { GetCertificationsJson } from "../../pages/api/certification.ts";
 
@@ -17,10 +19,15 @@ export const useCertificationDelete = ({
 
   const { isPending, mutate } = useMutation({
     async mutationFn() {
-      const response = await fetch("/api/certification", {
+      const response = await attemptAsync(fetch, "/api/certification", {
         body: JSON.stringify({ id: certification.id }),
         method: "DELETE",
       });
+
+      if (isError(response)) {
+        return;
+      }
+
       await queryClient.invalidateQueries({
         queryKey: queryKeys.certifications,
       });

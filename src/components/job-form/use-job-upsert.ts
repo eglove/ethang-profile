@@ -21,7 +21,7 @@ export const useJobUpsert = ({
   const { isPending, mutate } = useMutation({
     mutationFn: async () => {
       const response = await attemptAsync(async () => {
-        return fetch("/api/job", {
+        return attemptAsync(fetch, "/api/job", {
           body: jobUpsertSerialize(formState),
           method: isNil(job)
             ? "POST"

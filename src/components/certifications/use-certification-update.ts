@@ -1,6 +1,8 @@
+import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { useDisclosure } from "@nextui-org/modal";
 import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@tanstack/react-store";
+import isError from "lodash/isError";
 import { useEffect } from "react";
 
 import type { GetCertificationsJson } from "../../pages/api/certification.ts";
@@ -33,10 +35,14 @@ export const useCertificationUpdate = ({
 
   const { isPending, mutate } = useMutation({
     async mutationFn() {
-      const response = await fetch("/api/certification", {
+      const response = await attemptAsync(fetch, "/api/certification", {
         body: JSON.stringify(serializeCertificationsForPost(store)),
         method: "PUT",
       });
+
+      if (isError(response)) {
+        return;
+      }
 
       await queryClient.invalidateQueries({
         queryKey: queryKeys.certifications,

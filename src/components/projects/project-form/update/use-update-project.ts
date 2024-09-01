@@ -1,6 +1,8 @@
 import { jsonHeaders } from "@ethang/toolbelt/constants/http";
+import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@tanstack/react-store";
+import isError from "lodash/isError";
 
 import { queryClient } from "../../../../layouts/react-providers.tsx";
 import { queryKeys } from "../../../../query/query-keys.ts";
@@ -15,11 +17,15 @@ export const useUpdateProject = ({ onSuccess }: UseUpdateProjectProperties) => {
 
   const { isPending, mutate } = useMutation({
     async mutationFn() {
-      const response = await fetch("/api/project", {
+      const response = await attemptAsync(fetch, "/api/project", {
         body: JSON.stringify(state),
         headers: jsonHeaders,
         method: "PUT",
       });
+
+      if (isError(response)) {
+        return;
+      }
 
       await queryClient.invalidateQueries({ queryKey: queryKeys.projects });
 
