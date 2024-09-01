@@ -3,8 +3,7 @@ import { useStore } from "@tanstack/react-store";
 import map from "lodash/map";
 import startCase from "lodash/startCase";
 
-import { certificationFormStore } from "./certification-form-store.ts";
-import { handleSetCertificationStoreValue } from "./certification-form-store.ts";
+import { certificationFormStore, handleSetCertificationStoreValue } from "./certification-form-store.ts";
 
 export const UpsertCertificationInputs = () => {
   const formState = useStore(certificationFormStore);

@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240821.1",
-    "@ethang/eslint-config": "^19.2.8",
+    "@ethang/eslint-config": "^19.2.10",
     "@ethang/project-builder": "^2.5.8",
     "@tailwindcss/typography": "^0.5.15",
     "@types/lodash": "^4.17.7",

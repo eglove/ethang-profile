@@ -2,8 +2,7 @@ import { Input, Textarea } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import map from "lodash/map";
 
-import { setInputs, type useJobForm } from "./use-job-form.ts";
-import { jobCreateStringInputs } from "./use-job-form.ts";
+import { jobCreateStringInputs, setInputs, type useJobForm } from "./use-job-form.ts";
 
 type JobInputsProperties = {
   readonly formState: ReturnType<typeof useJobForm>["formState"];
