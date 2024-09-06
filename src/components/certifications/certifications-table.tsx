@@ -54,56 +54,60 @@ export const CertificationsTable = () => {
           : []}
         emptyContent={<Spinner />}
       >
-        { }
         {(item) => {
           return (
             <TableRow key={item.id}>
               {(columnKey) => {
-                if ("issuedOn" === columnKey || "expires" === columnKey) {
-                  const value = getKeyValue(item, columnKey) as string;
+                const value = getKeyValue(item, columnKey) as string;
 
-                  return (
-                    <TableCell>
-                      {isString(value)
-                        ? new Date(value)
-                          .toLocaleString(undefined, {
-                            month: "long",
-                            year: "numeric",
-                          })
-                        : null}
-                    </TableCell>
-                  );
+                switch (columnKey) {
+                  case "expires":
+                  case "issuedOn": {
+                    return (
+                      <TableCell>
+                        {isString(value)
+                          ? new Date(value)
+                            .toLocaleString(undefined, {
+                              month: "long",
+                              year: "numeric",
+                            })
+                          : null}
+                      </TableCell>
+                    );
+                  }
+
+                  case "actions": {
+                    return (
+                      <TableCell>
+                        <CertificationActions certification={item} />
+                      </TableCell>
+                    );
+                  }
+
+                  case "issuedBy": {
+                    return (
+                      <TableCell>
+                        <Link
+                          isExternal
+                          showAnchorIcon
+                          color="foreground"
+                          href={item.url}
+                          underline="always"
+                        >
+                          {value}
+                        </Link>
+                      </TableCell>
+                    );
+                  }
+
+                  default: {
+                    return (
+                      <TableCell>
+                        {value}
+                      </TableCell>
+                    );
+                  }
                 }
-
-                if ("actions" === columnKey) {
-                  return (
-                    <TableCell>
-                      <CertificationActions certification={item} />
-                    </TableCell>
-                  );
-                }
-
-                if ("issuedBy" === columnKey) {
-                  return (
-                    <TableCell>
-                      <Link
-                        isExternal
-                        showAnchorIcon
-                        color="foreground"
-                        href={item.url}
-                        underline="always"
-                      >
-                        {getKeyValue(item, columnKey)}
-                      </Link>
-                    </TableCell>
-                  );
-                }
-
-                return (
-                  <TableCell>
-                    {getKeyValue(item, columnKey)}
-                  </TableCell>
-                );
               }}
             </TableRow>
           );
