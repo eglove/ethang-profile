@@ -22,7 +22,7 @@
     "@astrojs/cloudflare": "^11.0.4",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.0",
-    "@clerk/clerk-react": "^5.8.1",
+    "@clerk/clerk-react": "^5.8.2",
     "@ethang/toolbelt": "^4.1.1",
     "@heroicons/react": "^2.1.5",
     "@neondatabase/serverless": "^0.9.5",
@@ -30,12 +30,12 @@
     "@preact/signals-react": "^2.2.0",
     "@prisma/client": "5.19.1",
     "@react-pdf/renderer": "^3.4.4",
-    "@tanstack/react-query": "^5.55.4",
-    "@tanstack/react-query-devtools": "^5.55.4",
+    "@tanstack/react-query": "^5.56.2",
+    "@tanstack/react-query-devtools": "^5.56.2",
     "@tanstack/react-store": "^0.5.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.15.4",
+    "astro": "^4.15.5",
     "docx": "^8.5.0",
     "framer-motion": "^11.5.4",
     "lodash": "^4.17.21",
@@ -45,13 +45,13 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss": "^3.4.10",
+    "tailwindcss": "^3.4.11",
     "typescript": "^5.6.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240909.0",
-    "@ethang/eslint-config": "^19.5.3",
+    "@ethang/eslint-config": "^19.5.5",
     "@ethang/project-builder": "^2.5.10",
     "@tailwindcss/typography": "^0.5.15",
     "@types/lodash": "^4.17.7",
@@ -60,7 +60,7 @@
     "eslint": "^9.10.0",
     "type-fest": "^4.26.1",
     "typescript-eslint": "^8.5.0",
-    "vitest": "^2.0.5",
-    "wrangler": "^3.76.0"
+    "vitest": "^2.1.0",
+    "wrangler": "^3.77.0"
   }
 }
