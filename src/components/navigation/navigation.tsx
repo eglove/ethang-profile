@@ -2,30 +2,31 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
-import { useState } from "react";
+import { signal } from "@preact/signals-react";
 
 import { NavigationItems } from "./navigation-items.tsx";
-
 
 type NavigationProperties = {
   readonly currentPathname: string;
 };
 
+const isMenuOpen = signal(false);
 
 export const Navigation = ({ currentPathname }: NavigationProperties) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isLocal = "undefined" === typeof window
     ? false
     : "localhost" === location.hostname;
 
   return (
     <Navbar
+      onMenuOpenChange={(value) => {
+        isMenuOpen.value = value;
+      }}
       className="mx-auto max-w-screen-xl"
-      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={isMenuOpen
+          aria-label={isMenuOpen.value
             ? "Close menu"
             : "Open menu"}
           className="sm:hidden"
