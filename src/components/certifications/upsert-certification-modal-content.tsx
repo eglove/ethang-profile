@@ -13,7 +13,7 @@ export const UpsertCertificationModalContent = ({
   isPending, mutate,
 }: UpsertCertificationModalContentProperties) => {
   return (
-    <ModalContent>
+    <ModalContent className="overflow-auto">
       {(onClose) => {
         return (
           <>

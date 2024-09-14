@@ -27,7 +27,7 @@ export const CertificationDetails = ({
         onOpenChange={onOpenChange}
         scrollBehavior="inside"
       >
-        <ModalContent>
+        <ModalContent className="overflow-auto">
           {(onClose) => {
             return (
               <>

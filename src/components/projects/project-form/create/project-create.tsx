@@ -33,7 +33,7 @@ export const ProjectCreate = () => {
         onOpenChange={onOpenChange}
         scrollBehavior="inside"
       >
-        <ModalContent>
+        <ModalContent className="overflow-auto">
           {(onClose) => {
             return (
               <>

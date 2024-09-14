@@ -28,7 +28,7 @@ export const ProjectDetails = ({
         onOpenChange={onOpenChange}
         scrollBehavior="inside"
       >
-        <ModalContent>
+        <ModalContent className="overflow-auto">
           {(onClose) => {
             return (
               <>

@@ -35,7 +35,7 @@ export const JobUpdate = ({ job }: JobUpdateProperties) => {
         onOpenChange={onOpenChange}
         scrollBehavior="inside"
       >
-        <ModalContent>
+        <ModalContent className="overflow-auto">
           {(onClose) => {
             return (
               <>
