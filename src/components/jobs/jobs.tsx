@@ -37,7 +37,7 @@ class JobsStore {
     this.direction = "descending";
   }
 
-  update(column: string, direction: "ascending" | "descending") {
+  public update(column: string, direction: "ascending" | "descending") {
     this.column = column;
     this.direction = direction;
   }

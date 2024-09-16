@@ -16,7 +16,7 @@ class NavigationStore {
     makeAutoObservable(this);
   }
 
-  toggleMenu(value: boolean) {
+  public toggleMenu(value: boolean) {
     this.isMenuOpen = value;
   }
 }
