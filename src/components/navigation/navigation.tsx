@@ -2,7 +2,8 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
-import { signal } from "@preact/signals-react";
+import { makeAutoObservable } from "mobx";
+import { observer } from "mobx-react-lite";
 
 import { NavigationItems } from "./navigation-items.tsx";
 
@@ -10,9 +11,21 @@ type NavigationProperties = {
   readonly currentPathname: string;
 };
 
-const isMenuOpen = signal(false);
+class NavigationStore {
+  public constructor(public isMenuOpen = false) {
+    makeAutoObservable(this);
+  }
 
-export const Navigation = ({ currentPathname }: NavigationProperties) => {
+  toggleMenu(value: boolean) {
+    this.isMenuOpen = value;
+  }
+}
+
+const navigationStore = new NavigationStore();
+
+export const Navigation = observer((
+  { currentPathname }: NavigationProperties,
+) => {
   const isLocal = "undefined" === typeof window
     ? false
     : "localhost" === location.hostname;
@@ -20,13 +33,13 @@ export const Navigation = ({ currentPathname }: NavigationProperties) => {
   return (
     <Navbar
       onMenuOpenChange={(value) => {
-        isMenuOpen.value = value;
+        navigationStore.toggleMenu(value);
       }}
       className="mx-auto max-w-screen-xl"
     >
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={isMenuOpen.value
+          aria-label={navigationStore.isMenuOpen
             ? "Close menu"
             : "Open menu"}
           className="sm:hidden"
@@ -52,33 +65,31 @@ export const Navigation = ({ currentPathname }: NavigationProperties) => {
             </SignedIn>
           </NavbarItem>
         )}
-        <NavbarItem>
-          <Link
-            isExternal
-            href="https://github.com/eglove"
-          >
-            <Avatar
-              isBordered
-              color="primary"
-              name="GitHub"
-              size="sm"
-              src="/images/github.svg"
-            />
-          </Link>
+        <NavbarItem
+          isExternal
+          as={Link}
+          href="https://github.com/eglove"
+        >
+          <Avatar
+            isBordered
+            color="primary"
+            name="GitHub"
+            size="sm"
+            src="/images/github.svg"
+          />
         </NavbarItem>
-        <NavbarItem>
-          <Link
-            isExternal
-            href="https://www.linkedin.com/in/ethan-glover/"
-          >
-            <Avatar
-              isBordered
-              color="secondary"
-              name="LinkedIn"
-              size="sm"
-              src="/images/linkedin.svg"
-            />
-          </Link>
+        <NavbarItem
+          isExternal
+          as={Link}
+          href="https://www.linkedin.com/in/ethan-glover/"
+        >
+          <Avatar
+            isBordered
+            color="secondary"
+            name="LinkedIn"
+            size="sm"
+            src="/images/linkedin.svg"
+          />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu className="z-40">
@@ -89,4 +100,4 @@ export const Navigation = ({ currentPathname }: NavigationProperties) => {
       </NavbarMenu>
     </Navbar>
   );
-};
+});

@@ -1,16 +1,15 @@
-import type { SortDescriptor } from "@nextui-org/react";
-
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Spinner } from "@nextui-org/spinner";
 import { getKeyValue, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
-import { signal } from "@preact/signals-react";
 import { useQuery } from "@tanstack/react-query";
 import endsWith from "lodash/endsWith";
 import isArray from "lodash/isArray";
 import isNil from "lodash/isNil";
 import isString from "lodash/isString";
 import orderBy from "lodash/orderBy";
+import { makeAutoObservable } from "mobx";
+import { observer } from "mobx-react-lite";
 
 import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
 import { queryClient } from "../../layouts/react-providers.tsx";
@@ -31,12 +30,22 @@ export const Jobs = ({ currentPathname }: MainLayoutProperties) => {
   );
 };
 
-const sortDescriptor = signal<SortDescriptor>({
-  column: "endDate",
-  direction: "descending",
-});
+class JobsStore {
+  public constructor(public column: string, public direction: "ascending" | "descending") {
+    makeAutoObservable(this);
+    this.column = "endDate";
+    this.direction = "descending";
+  }
 
-const JobsWithProviders = () => {
+  update(column: string, direction: "ascending" | "descending") {
+    this.column = column;
+    this.direction = direction;
+  }
+}
+
+const jobsStore = new JobsStore("endDate", "descending");
+
+const JobsWithProviders = observer(() => {
   const isMe = useIsMe();
   const { data } = useQuery(queryFunctions.jobs());
 
@@ -63,13 +72,13 @@ const JobsWithProviders = () => {
             ? "asc"
             : "desc");
           queryClient.setQueryData(queryFunctions.jobs().queryKey, sorted);
-          sortDescriptor.value = {
-            column: String(column),
-            direction: direction ?? "ascending",
-          } as SortDescriptor;
+          jobsStore.update(String(column), direction ?? "ascending");
+        }}
+        sortDescriptor={{
+          column: jobsStore.column,
+          direction: jobsStore.direction,
         }}
         aria-label="Jobs"
-        sortDescriptor={sortDescriptor.value}
       >
         <TableHeader columns={columns}>
           {(column) => {
@@ -143,4 +152,4 @@ const JobsWithProviders = () => {
       )}
     </div>
   );
-};
+});
