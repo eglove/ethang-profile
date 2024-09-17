@@ -1,12 +1,13 @@
 import { Button } from "@nextui-org/button";
 import { Modal, useDisclosure } from "@nextui-org/modal";
+import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { resetCertificationStore } from "./certification-form-store.ts";
+import { certificationStore } from "./certification-form-store.ts";
 import { UpsertCertificationModalContent } from "./upsert-certification-modal-content.tsx";
 import { useUpsertCertification } from "./use-upsert-certification.ts";
 
-export const CertificationCreate = () => {
+export const CertificationCreate = observer(() => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useUpsertCertification({
     onSuccess: closeModal,
@@ -14,7 +15,7 @@ export const CertificationCreate = () => {
 
   useEffect(() => {
     if (isOpen) {
-      resetCertificationStore();
+      certificationStore.reset();
     }
   }, [isOpen]);
 
@@ -40,4 +41,4 @@ export const CertificationCreate = () => {
       </Modal>
     </>
   );
-};
+});

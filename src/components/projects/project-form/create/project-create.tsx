@@ -1,23 +1,23 @@
 import { preventDefault } from "@ethang/toolbelt/js/prevent-default";
 import { Button } from "@nextui-org/button";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@nextui-org/modal";
+import { observer } from "mobx-react-lite";
 
 import { ProjectFormInputs } from "../project-form-inputs.tsx";
-import { resetProjectFormStore } from "../project-store.ts";
+import { projectFormStore } from "../project-store.ts";
 import { useCreateProject } from "./use-create-project.ts";
 
 
-export const ProjectCreate = () => {
+export const ProjectCreate = observer(() => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useCreateProject({
     onSuccess: closeModal,
   });
 
   const handleOpen = () => {
-    resetProjectFormStore();
+    projectFormStore.reset();
     onOpen();
   };
-
 
   return (
     <>
@@ -68,4 +68,4 @@ export const ProjectCreate = () => {
       </Modal>
     </>
   );
-};
+});

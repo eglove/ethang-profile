@@ -1,4 +1,4 @@
-import { Store } from "@tanstack/react-store";
+import { FormStore } from "../../../util/form-store.ts";
 
 export const projectFormStoreLabels = {
   description: "Description",
@@ -12,27 +12,9 @@ export const projectFormStoreInputOrder = [
 
 const initialState = {
   description: "",
+  id: undefined as string | undefined,
   name: "",
   url: "",
 };
 
-export const projectFormStore = new Store(initialState);
-
-export const resetProjectFormStore = () => {
-  projectFormStore.setState(() => {
-    return initialState;
-  });
-};
-
-export const handleProjectFormStoreValue = (
-  key: keyof typeof projectFormStore.state,
-) => {
-  return (value: string) => {
-    projectFormStore.setState((previous) => {
-      return {
-        ...previous,
-        [key]: value,
-      };
-    });
-  };
-};
+export const projectFormStore = new FormStore({ initialState });

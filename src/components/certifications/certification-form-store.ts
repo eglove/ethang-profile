@@ -1,43 +1,25 @@
-import { Store } from "@tanstack/react-store";
 import isNil from "lodash/isNil";
 import { DateTime } from "luxon";
 
 import type { GetCertificationsJson } from "../../pages/api/certification.ts";
 
 import { americaChicago, dateInputFormat } from "../../constants/constants.ts";
+import { FormStore } from "../../util/form-store.ts";
 
 const initialState = {
   description: "",
   expires: "",
+  id: undefined as string | undefined,
   issuedBy: "",
   issuedOn: "",
   name: "",
   url: "",
 };
 
-export const certificationFormStore = new Store(initialState);
-
-export const resetCertificationStore = () => {
-  certificationFormStore.setState(() => {
-    return initialState;
-  });
-};
-
-export const handleSetCertificationStoreValue = (
-  key: keyof typeof certificationFormStore.state,
-) => {
-  return (value: string) => {
-    certificationFormStore.setState((previous) => {
-      return {
-        ...previous,
-        [key]: value,
-      };
-    });
-  };
-};
+export const certificationStore = new FormStore({ initialState });
 
 export const serializeCertificationsForPost = (
-  state: typeof certificationFormStore.state,
+  state: typeof certificationStore.formState,
 ) => {
   return {
     ...state,
@@ -53,17 +35,15 @@ export const serializeCertificationsForPost = (
 export const serializeCertificationDataForForm = (
   data: GetCertificationsJson[0],
 ) => {
-  certificationFormStore.setState(() => {
-    return {
-      description: data.description,
-      expires: isNil(data.expires)
-        ? ""
-        : DateTime.fromISO(data.expires).toFormat(dateInputFormat),
-      id: data.id,
-      issuedBy: data.issuedBy,
-      issuedOn: DateTime.fromISO(data.issuedOn).toFormat(dateInputFormat),
-      name: data.name,
-      url: data.url,
-    };
-  });
+  certificationStore.formState = {
+    description: data.description,
+    expires: isNil(data.expires)
+      ? ""
+      : DateTime.fromISO(data.expires).toFormat(dateInputFormat),
+    id: data.id,
+    issuedBy: data.issuedBy,
+    issuedOn: DateTime.fromISO(data.issuedOn).toFormat(dateInputFormat),
+    name: data.name,
+    url: data.url,
+  };
 };

@@ -2,6 +2,7 @@ import { preventDefault } from "@ethang/toolbelt/js/prevent-default";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { Button } from "@nextui-org/button";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@nextui-org/modal";
+import { observer } from "mobx-react-lite";
 
 import type { GetProjectJson } from "../../../../pages/api/project.ts";
 
@@ -13,22 +14,19 @@ type ProjectUpdateProperties = {
   readonly project: GetProjectJson[0];
 };
 
-
-export const ProjectUpdate = ({
+export const ProjectUpdate = observer(({
   project,
 }: ProjectUpdateProperties) => {
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useUpdateProject({ onSuccess: closeModal });
 
   const handleOpen = () => {
-    projectFormStore.setState(() => {
-      return {
-        description: project.description,
-        id: project.id,
-        name: project.name,
-        url: project.url,
-      };
-    });
+    projectFormStore.formState = {
+      description: project.description,
+      id: project.id,
+      name: project.name,
+      url: project.url,
+    };
     onOpen();
   };
 
@@ -81,4 +79,4 @@ export const ProjectUpdate = ({
       </Modal>
     </>
   );
-};
+});

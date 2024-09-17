@@ -1,11 +1,13 @@
 import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { useMutation } from "@tanstack/react-query";
-import { useStore } from "@tanstack/react-store";
 import isError from "lodash/isError";
 
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
-import { certificationFormStore, serializeCertificationsForPost } from "./certification-form-store.ts";
+import {
+  certificationStore,
+  serializeCertificationsForPost,
+} from "./certification-form-store.ts";
 
 type UseUpsertCertification = {
   onSuccess?: () => void;
@@ -14,12 +16,12 @@ type UseUpsertCertification = {
 export const useUpsertCertification = ({
   onSuccess,
 }: UseUpsertCertification) => {
-  const store = useStore(certificationFormStore);
-
   const { isPending, mutate } = useMutation({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/certification", {
-        body: JSON.stringify(serializeCertificationsForPost(store)),
+        body: JSON.stringify(
+          serializeCertificationsForPost(certificationStore.formState),
+        ),
         method: "POST",
       });
 

@@ -1,6 +1,5 @@
 import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { useMutation } from "@tanstack/react-query";
-import { useStore } from "@tanstack/react-store";
 import isError from "lodash/isError";
 
 import { queryClient } from "../../../../layouts/react-providers.tsx";
@@ -12,12 +11,10 @@ type UseCreateProjectProperties = {
 };
 
 export const useCreateProject = ({ onSuccess }: UseCreateProjectProperties) => {
-  const state = useStore(projectFormStore);
-
   const { isPending, mutate } = useMutation({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/project", {
-        body: JSON.stringify(state),
+        body: JSON.stringify(projectFormStore.formState),
         method: "POST",
       });
 

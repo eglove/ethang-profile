@@ -1,16 +1,16 @@
 import { Input } from "@nextui-org/input";
-import { useStore } from "@tanstack/react-store";
 import map from "lodash/map";
 import startCase from "lodash/startCase";
+import { observer } from "mobx-react-lite";
 
-import { certificationFormStore, handleSetCertificationStoreValue } from "./certification-form-store.ts";
+import {
+  certificationStore,
+} from "./certification-form-store.ts";
 
-export const UpsertCertificationInputs = () => {
-  const formState = useStore(certificationFormStore);
-
+export const UpsertCertificationInputs = observer(() => {
   return (
     <>
-      {map(formState, (value, key) => {
+      {map(certificationStore.formState, (value, key) => {
         if ("id" === key) {
           return null;
         }
@@ -18,9 +18,11 @@ export const UpsertCertificationInputs = () => {
         return (
           <Input
             onValueChange={
-              handleSetCertificationStoreValue(
-                key as keyof typeof certificationFormStore.state,
-              )
+              (_value) => {
+                certificationStore.setValue(
+                  key as keyof typeof certificationStore.formState, _value,
+                );
+              }
             }
             type={"expires" === key || "issuedOn" === key
               ? "date"
@@ -33,4 +35,4 @@ export const UpsertCertificationInputs = () => {
       })}
     </>
   );
-};
+});

@@ -3,9 +3,7 @@ import { Link } from "@nextui-org/link";
 import { Spinner } from "@nextui-org/spinner";
 import { getKeyValue, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
 import { useQuery } from "@tanstack/react-query";
-import endsWith from "lodash/endsWith";
 import isArray from "lodash/isArray";
-import isNil from "lodash/isNil";
 import isString from "lodash/isString";
 import orderBy from "lodash/orderBy";
 import { makeAutoObservable } from "mobx";
@@ -17,7 +15,7 @@ import { queryFunctions } from "../../query/query-functions.ts";
 import { useIsMe } from "../../util/user.ts";
 import { ResumeDownloadButtons } from "../resume/resume-download-buttons.tsx";
 import { JobActions } from "./job-actions.tsx";
-import { columns, jobStore } from "./jobs-store.ts";
+import { columns } from "./jobs-store.ts";
 
 
 export const Jobs = ({ currentPathname }: MainLayoutProperties) => {
@@ -53,20 +51,6 @@ const JobsWithProviders = observer(() => {
     <div>
       <ResumeDownloadButtons />
       <Table
-        onSelectionChange={(keys) => {
-          const [first] = keys;
-
-          if (isNil(keys) || endsWith(String(first), "detail")) {
-            return;
-          }
-
-          jobStore.setState((state) => {
-            return {
-              ...state,
-              expandedItems: [String(first)],
-            };
-          });
-        }}
         onSortChange={({ column, direction }) => {
           const sorted = orderBy(data, String(column), "ascending" === direction
             ? "asc"
