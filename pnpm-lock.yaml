@@ -103,8 +103,8 @@ importers:
         specifier: ^4.20240909.0
         version: 4.20240909.0
       '@ethang/eslint-config':
-        specifier: ^19.5.8
-        version: 19.5.8(se2253z5dqbjgrbt2cvi3ho35u)
+        specifier: ^19.6.0
+        version: 19.6.0(dkcimb5lajxb6o6ngaoew6syzu)
       '@ethang/project-builder':
         specifier: ^2.5.11
         version: 2.5.11(chalk@5.3.0)(fs-extra@11.2.0)(inquirer@11.0.2)(lodash@4.17.21)(simple-git@3.26.0)(tsup@8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.2)(yaml@2.5.1))(typescript@5.6.2)
@@ -133,8 +133,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1(@types/node@22.5.5)
       wrangler:
-        specifier: ^3.78.4
-        version: 3.78.4(@cloudflare/workers-types@4.20240909.0)
+        specifier: ^3.78.5
+        version: 3.78.5(@cloudflare/workers-types@4.20240909.0)
 
 packages:
 
@@ -1657,19 +1657,20 @@ packages:
     resolution: {integrity: sha512-autAXT203ixhqei9xt+qkYOvY8l6LAFIdT2UXc/RPNeUVfqRF1BV94GTJyVPFKT8nFM6MyVJhjLj9E8JWvf5zQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@ethang/eslint-config@19.5.8':
-    resolution: {integrity: sha512-bxNxw2c+fqoIxBRRtWS4LhpGCulZOVx9Vjq4WCOxuiXQuUHIsmlPpKvXybC6WkNlF/UMSJIAhGSf/vBsrv041g==}
+  '@ethang/eslint-config@19.6.0':
+    resolution: {integrity: sha512-iSEuHbhmRBk9tvHlSnfvm5qfvXl1DcA6lGN6nidMt2f0K3qW+vGCYUo5o4PjCi+0zR5a20nj8SsOjBktGCed+A==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@cspell/eslint-plugin': ^8.14.3
+      '@cspell/eslint-plugin': ^8.14.4
       '@eslint-react/eslint-plugin': ^1.14.1
       '@eslint/compat': ^1.1.1
       '@eslint/js': ^9.10.0
       '@eslint/json': ^0.4.0
       '@eslint/markdown': ^6.1.0
-      '@ethang/eslint-plugin': ^0.0.9
+      '@ethang/eslint-plugin': ^0.0.10
       '@stylistic/eslint-plugin': ^2.8.0
       '@tanstack/eslint-plugin-query': ^5.56.1
+      '@tanstack/eslint-plugin-router': ^1.58.0
       '@typescript-eslint/parser': ^8.6.0
       eslint: ^9.10.0
       eslint-plugin-astro: ^1.2.4
@@ -1678,7 +1679,7 @@ packages:
       eslint-plugin-depend: ^0.11.0
       eslint-plugin-jsx-a11y: ^6.10.0
       eslint-plugin-lodash: ^8.0.0
-      eslint-plugin-n: ^17.10.2
+      eslint-plugin-n: ^17.10.3
       eslint-plugin-perfectionist: ^3.6.0
       eslint-plugin-react-hooks: ^4.6.2
       eslint-plugin-solid: ^0.14.3
@@ -3314,6 +3315,11 @@ packages:
 
   '@tanstack/eslint-plugin-query@5.56.1':
     resolution: {integrity: sha512-IUm2Zy5BXOqMbaa7QwNg3cPa5NP5Rm3pIFCFpe7Y3pLC7Ftp8Q0Y8GU2uNpCbMFW79jHJXdQ4Oxnu1eTQr8GXQ==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+
+  '@tanstack/eslint-plugin-router@1.58.0':
+    resolution: {integrity: sha512-m966LPd2SA9wOvq5VQhphA7u24kce3uVoRKx4ueNZWcDn90Jxl+wxsvcBdbxVYBXqgNQ32ych77TsxJi/FtXeg==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
@@ -5640,8 +5646,8 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
 
-  miniflare@3.20240909.2:
-    resolution: {integrity: sha512-rZe7d0GkP02DnsgLD6qT+0K3O1azWCbDQIeHyH7WHJeyfkGPONS8U5FeNJEmus05z+2F6jcMI/Gc/Irc+UFTAA==}
+  miniflare@3.20240909.3:
+    resolution: {integrity: sha512-HsWMexA4m0Ti8wTjqRdg50otufgoQ/I/rL3AHxf3dI/TN8zJC/5aMApqspW6I88Lzm24C+SRKnW0nm465PStIw==}
     engines: {node: '>=16.13'}
     hasBin: true
 
@@ -6861,8 +6867,8 @@ packages:
     resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
     engines: {node: '>=14.0'}
 
-  unenv-nightly@2.0.0-1724863496.70db6f1:
-    resolution: {integrity: sha512-r+VIl1gnsI4WQxluruSQhy8alpAf1AsLRLm4sEKp3otCyTIVD6I6wHEYzeQnwsyWgaD4+3BD4A/eqrgOpdTzhw==}
+  unenv-nightly@2.0.0-1726478054.1e87097:
+    resolution: {integrity: sha512-uZso8dCkGlJzWQqkyjOA5L4aUqNJl9E9oKRm03V/d+URrg6rFMJwBonlX9AAq538NxwJpPnCX0gAz0IfTxsbFQ==}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
@@ -7248,8 +7254,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.78.4:
-    resolution: {integrity: sha512-tIzfqg9yLk1mCxD2jwczN24vVK1W5CQ+xDCBZPxI24qWyGH5nE0n5xMnS6eknXNw0bhKaHCN7bzfxpE3DP4lPg==}
+  wrangler@3.78.5:
+    resolution: {integrity: sha512-EqCQOuuxHCBHLSjWw7kWT/1PDSw38XUhSxPC3VnDcL7F6TukVBfHHyLFO4NYGTDDoH+G8KVK1bL1q8LXY2Rcbg==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -7393,9 +7399,9 @@ snapshots:
       esbuild: 0.21.5
       estree-walker: 3.0.3
       magic-string: 0.30.11
-      miniflare: 3.20240909.2
+      miniflare: 3.20240909.3
       tiny-glob: 0.2.9
-      wrangler: 3.78.4(@cloudflare/workers-types@4.20240909.0)
+      wrangler: 3.78.5(@cloudflare/workers-types@4.20240909.0)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -9044,7 +9050,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@ethang/eslint-config@19.5.8(se2253z5dqbjgrbt2cvi3ho35u)':
+  '@ethang/eslint-config@19.6.0(dkcimb5lajxb6o6ngaoew6syzu)':
     dependencies:
       '@cspell/eslint-plugin': 8.14.4(eslint@9.10.0(jiti@1.21.6))
       '@eslint-react/eslint-plugin': 1.14.1(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
@@ -9055,6 +9061,7 @@ snapshots:
       '@ethang/eslint-plugin': 0.0.10(@typescript-eslint/utils@8.6.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2))(lodash@4.17.21)
       '@stylistic/eslint-plugin': 2.8.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
       '@tanstack/eslint-plugin-query': 5.56.1(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
+      '@tanstack/eslint-plugin-router': 1.58.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
       '@typescript-eslint/parser': 8.6.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
       eslint: 9.10.0(jiti@1.21.6)
       eslint-plugin-astro: 1.2.4(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
@@ -11670,6 +11677,14 @@ snapshots:
       tailwindcss: 3.4.12
 
   '@tanstack/eslint-plugin-query@5.56.1(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)':
+    dependencies:
+      '@typescript-eslint/utils': 8.6.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
+      eslint: 9.10.0(jiti@1.21.6)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  '@tanstack/eslint-plugin-router@1.58.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)':
     dependencies:
       '@typescript-eslint/utils': 8.6.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
       eslint: 9.10.0(jiti@1.21.6)
@@ -14693,7 +14708,7 @@ snapshots:
 
   min-indent@1.0.1: {}
 
-  miniflare@3.20240909.2:
+  miniflare@3.20240909.3:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.12.1
@@ -16020,7 +16035,7 @@ snapshots:
     dependencies:
       '@fastify/busboy': 2.1.1
 
-  unenv-nightly@2.0.0-1724863496.70db6f1:
+  unenv-nightly@2.0.0-1726478054.1e87097:
     dependencies:
       defu: 6.1.4
       ohash: 1.1.4
@@ -16453,7 +16468,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240909.0
       '@cloudflare/workerd-windows-64': 1.20240909.0
 
-  wrangler@3.78.4(@cloudflare/workers-types@4.20240909.0):
+  wrangler@3.78.5(@cloudflare/workers-types@4.20240909.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@cloudflare/workers-shared': 0.5.3
@@ -16463,14 +16478,14 @@ snapshots:
       chokidar: 3.6.0
       date-fns: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240909.2
+      miniflare: 3.20240909.3
       nanoid: 3.3.7
       path-to-regexp: 6.3.0
       resolve: 1.22.8
       resolve.exports: 2.0.2
       selfsigned: 2.4.1
       source-map: 0.6.1
-      unenv: unenv-nightly@2.0.0-1724863496.70db6f1
+      unenv: unenv-nightly@2.0.0-1726478054.1e87097
       workerd: 1.20240909.0
       xxhash-wasm: 1.0.2
     optionalDependencies:
