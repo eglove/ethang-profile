@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@astrojs/check": "^0.9.3",
-    "@astrojs/cloudflare": "^11.0.4",
+    "@astrojs/cloudflare": "^11.0.5",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
     "@clerk/clerk-react": "^5.9.1",
