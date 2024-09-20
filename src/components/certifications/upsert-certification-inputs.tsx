@@ -6,12 +6,12 @@ import {
   certificationFormStore,
 } from "./certification-form-store.ts";
 
-type StoreKey = keyof ReturnType<typeof certificationFormStore.getSnapshot>;
+type StoreKey = keyof typeof certificationFormStore.state;
 
 export const UpsertCertificationInputs = () => {
   return (
     <>
-      {map(certificationFormStore.getSnapshot(), (_, key) => {
+      {map(certificationFormStore.state, (_, key) => {
         if ("id" === key) {
           return null;
         }

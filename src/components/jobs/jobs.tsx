@@ -51,13 +51,9 @@ const JobsWithProviders = () => {
           });
         }}
         sortDescriptor={{
-          column: jobStore.getState((state) => {
-            return state.column;
-          }),
+          column: jobStore.state.column,
           // @ts-expect-error shut up
-          direction: jobStore.getState((state) => {
-            return state.direction;
-          }),
+          direction: jobStore.state.direction,
         }}
         aria-label="Jobs"
       >

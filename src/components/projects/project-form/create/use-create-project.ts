@@ -14,13 +14,11 @@ export const useCreateProject = ({ onSuccess }: UseCreateProjectProperties) => {
   const { isPending, mutate } = useMutation({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/project", {
-        body: JSON.stringify(projectStore.getState((state) => {
-          return {
-            description: state.description,
-            name: state.name,
-            url: state.url,
-          };
-        })),
+        body: JSON.stringify({
+          description: projectStore.state.description,
+          name: projectStore.state.name,
+          url: projectStore.state.url,
+        }),
         method: "POST",
       });
 
