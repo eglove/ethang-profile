@@ -35,7 +35,7 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.8",
     "docx": "^8.5.0",
-    "framer-motion": "^11.5.5",
+    "framer-motion": "^11.5.6",
     "lodash": "^4.17.21",
     "luxon": "^3.5.0",
     "mobx": "^6.13.2",
@@ -51,16 +51,16 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240919.0",
-    "@ethang/eslint-config": "^19.6.2",
+    "@ethang/eslint-config": "^19.6.5",
     "@ethang/project-builder": "^2.6.1",
     "@tailwindcss/typography": "^0.5.15",
     "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
     "@types/uuid": "^10.0.0",
-    "eslint": "^9.10.0",
+    "eslint": "^9.11.0",
     "type-fest": "^4.26.1",
     "typescript-eslint": "^8.6.0",
     "vitest": "^2.1.1",
-    "wrangler": "^3.78.6"
+    "wrangler": "^3.78.7"
   }
 }
