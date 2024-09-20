@@ -1,4 +1,4 @@
-import { FormStore } from "../../../util/form-store.ts";
+import { Store } from "@ethang/toolbelt/state/store";
 
 export const projectFormStoreLabels = {
   description: "Description",
@@ -17,4 +17,4 @@ const initialState = {
   url: "",
 };
 
-export const projectFormStore = new FormStore({ initialState });
+export const projectStore = new Store(initialState);

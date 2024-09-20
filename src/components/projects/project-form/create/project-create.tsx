@@ -1,33 +1,35 @@
 import { preventDefault } from "@ethang/toolbelt/js/prevent-default";
 import { Button } from "@nextui-org/button";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@nextui-org/modal";
-import { observer } from "mobx-react-lite";
 
+import { useIsMe } from "../../../../util/user.ts";
 import { ProjectFormInputs } from "../project-form-inputs.tsx";
-import { projectFormStore } from "../project-store.ts";
+import { projectStore } from "../project-store.ts";
 import { useCreateProject } from "./use-create-project.ts";
 
 
-export const ProjectCreate = observer(() => {
+export const ProjectCreate = () => {
+  const isMe = useIsMe();
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();
   const { isPending, mutate } = useCreateProject({
     onSuccess: closeModal,
   });
 
   const handleOpen = () => {
-    projectFormStore.reset();
+    projectStore.resetState();
     onOpen();
   };
 
   return (
     <>
-      <Button
-        className="w-max"
-        color="primary"
-        onPress={handleOpen}
-      >
-        Add Project
-      </Button>
+      {isMe &&
+        <Button
+          className="w-max"
+          color="primary"
+          onPress={handleOpen}
+        >
+          Add Project
+        </Button>}
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
@@ -68,4 +70,4 @@ export const ProjectCreate = observer(() => {
       </Modal>
     </>
   );
-});
+};

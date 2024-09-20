@@ -1,3 +1,4 @@
+import { Store } from "@ethang/toolbelt/state/store";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Spinner } from "@nextui-org/spinner";
@@ -6,8 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import isArray from "lodash/isArray";
 import isString from "lodash/isString";
 import orderBy from "lodash/orderBy";
-import { makeAutoObservable } from "mobx";
-import { observer } from "mobx-react-lite";
 
 import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
 import { queryClient } from "../../layouts/react-providers.tsx";
@@ -28,22 +27,12 @@ export const Jobs = ({ currentPathname }: MainLayoutProperties) => {
   );
 };
 
-class JobsStore {
-  public constructor(public column: string, public direction: "ascending" | "descending") {
-    makeAutoObservable(this);
-    this.column = "endDate";
-    this.direction = "descending";
-  }
+const jobStore = new Store({
+  column: "endDate",
+  direction: "descending",
+});
 
-  public update(column: string, direction: "ascending" | "descending") {
-    this.column = column;
-    this.direction = direction;
-  }
-}
-
-const jobsStore = new JobsStore("endDate", "descending");
-
-const JobsWithProviders = observer(() => {
+const JobsWithProviders = () => {
   const isMe = useIsMe();
   const { data } = useQuery(queryFunctions.jobs());
 
@@ -56,11 +45,19 @@ const JobsWithProviders = observer(() => {
             ? "asc"
             : "desc");
           queryClient.setQueryData(queryFunctions.jobs().queryKey, sorted);
-          jobsStore.update(String(column), direction ?? "ascending");
+          jobStore.setState((state) => {
+            state.column = String(column);
+            state.direction = direction ?? "ascending";
+          });
         }}
         sortDescriptor={{
-          column: jobsStore.column,
-          direction: jobsStore.direction,
+          column: jobStore.getState((state) => {
+            return state.column;
+          }),
+          // @ts-expect-error shut up
+          direction: jobStore.getState((state) => {
+            return state.direction;
+          }),
         }}
         aria-label="Jobs"
       >
@@ -136,4 +133,4 @@ const JobsWithProviders = observer(() => {
       )}
     </div>
   );
-});
+};

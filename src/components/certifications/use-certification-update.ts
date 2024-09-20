@@ -9,7 +9,7 @@ import type { GetCertificationsJson } from "../../pages/api/certification.ts";
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
 import {
-  certificationStore,
+  certificationFormStore,
   serializeCertificationDataForForm,
   serializeCertificationsForPost,
 } from "./certification-form-store.ts";
@@ -34,7 +34,7 @@ export const useCertificationUpdate = ({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/certification", {
         body: JSON.stringify(
-          serializeCertificationsForPost(certificationStore.formState),
+          serializeCertificationsForPost(certificationFormStore.getSnapshot()),
         ),
         method: "PUT",
       });

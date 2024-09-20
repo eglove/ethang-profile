@@ -1,47 +1,56 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { Store } from "@ethang/toolbelt/state/store";
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
-import { makeAutoObservable } from "mobx";
-import { observer } from "mobx-react-lite";
+import { useSyncExternalStore } from "react";
 
 import { NavigationItems } from "./navigation-items.tsx";
+
+const store = new Store({
+  isMenuOpen: true,
+});
+
+const setIsMenuOpen = (value: boolean) => {
+  store.setState((state) => {
+    state.isMenuOpen = value;
+  });
+};
+
+
+const subscribe = (listener: () => void) => {
+  return store.subscribe(listener);
+};
+
+const getSnapshot = () => {
+  return store.getSnapshot();
+};
 
 type NavigationProperties = {
   readonly currentPathname: string;
 };
 
-class NavigationStore {
-  public constructor(public isMenuOpen = false) {
-    makeAutoObservable(this);
-  }
-
-  public toggleMenu(value: boolean) {
-    this.isMenuOpen = value;
-  }
-}
-
-const navigationStore = new NavigationStore();
-
-export const Navigation = observer((
+export const Navigation = (
   { currentPathname }: NavigationProperties,
 ) => {
+  const { isMenuOpen } = useSyncExternalStore(
+    subscribe, getSnapshot, getSnapshot,
+  );
+
   const isLocal = "undefined" === typeof window
     ? false
     : "localhost" === location.hostname;
 
   return (
     <Navbar
-      onMenuOpenChange={(value) => {
-        navigationStore.toggleMenu(value);
-      }}
       className="mx-auto max-w-screen-xl"
+      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={navigationStore.isMenuOpen
-            ? "Close menu"
-            : "Open menu"}
+          aria-label={isMenuOpen
+            ? "Close Menu"
+            : "Open Menu"}
           className="sm:hidden"
         />
         <NavbarBrand className="hidden text-xl font-bold sm:block">
@@ -100,4 +109,4 @@ export const Navigation = observer((
       </NavbarMenu>
     </Navbar>
   );
-});
+};

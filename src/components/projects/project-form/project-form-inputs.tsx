@@ -1,28 +1,33 @@
 import { Input } from "@nextui-org/input";
 import map from "lodash/map";
-import { observer } from "mobx-react-lite";
 
 import {
-  projectFormStore,
   projectFormStoreInputOrder,
-  projectFormStoreLabels,
+  projectFormStoreLabels, projectStore,
 } from "./project-store.ts";
 
-export const ProjectFormInputs = observer(() => {
+export const ProjectFormInputs = () => {
   return (
     <>
       {map(projectFormStoreInputOrder, (key) => {
         return (
           <Input
             onValueChange={(text) => {
-              projectFormStore.setValue(key, text);
+              projectStore.setState((state) => {
+                state[key] = text;
+              });
             }}
+            ref={projectStore.bindRef([{
+              options: { accessor: "value" },
+              selector: (state) => {
+                return state[key];
+              },
+            }])}
             key={key}
             label={projectFormStoreLabels[key]}
-            value={projectFormStore.formState[key]}
           />
         );
       })}
     </>
   );
-});
+};

@@ -23,7 +23,7 @@
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
     "@clerk/clerk-react": "^5.9.1",
-    "@ethang/toolbelt": "^4.1.1",
+    "@ethang/toolbelt": "^4.2.2",
     "@heroicons/react": "^2.1.5",
     "@neondatabase/serverless": "^0.9.5",
     "@nextui-org/react": "^2.4.8",

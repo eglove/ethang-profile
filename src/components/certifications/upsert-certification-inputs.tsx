@@ -1,16 +1,17 @@
 import { Input } from "@nextui-org/input";
 import map from "lodash/map";
 import startCase from "lodash/startCase";
-import { observer } from "mobx-react-lite";
 
 import {
-  certificationStore,
+  certificationFormStore,
 } from "./certification-form-store.ts";
 
-export const UpsertCertificationInputs = observer(() => {
+type StoreKey = keyof ReturnType<typeof certificationFormStore.getSnapshot>;
+
+export const UpsertCertificationInputs = () => {
   return (
     <>
-      {map(certificationStore.formState, (value, key) => {
+      {map(certificationFormStore.getSnapshot(), (_, key) => {
         if ("id" === key) {
           return null;
         }
@@ -19,20 +20,27 @@ export const UpsertCertificationInputs = observer(() => {
           <Input
             onValueChange={
               (_value) => {
-                certificationStore.setValue(
-                  key as keyof typeof certificationStore.formState, _value,
-                );
+                certificationFormStore.setState((state) => {
+                  state[key as StoreKey] = _value;
+                });
               }
             }
+            ref={certificationFormStore.bindRef([{
+              options: {
+                accessor: "value",
+              },
+              selector: (state) => {
+                return state[key as StoreKey];
+              },
+            }])}
             type={"expires" === key || "issuedOn" === key
               ? "date"
               : "text"}
             key={key}
             label={startCase(key)}
-            value={value}
           />
         );
       })}
     </>
   );
-});
+};
