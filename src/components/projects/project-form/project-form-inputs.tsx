@@ -13,7 +13,7 @@ export const ProjectFormInputs = () => {
         return (
           <Input
             onValueChange={(text) => {
-              projectStore.setState((state) => {
+              projectStore.set((state) => {
                 state[key] = text;
               });
             }}

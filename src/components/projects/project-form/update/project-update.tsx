@@ -20,7 +20,7 @@ export const ProjectUpdate = ({
   const { isPending, mutate } = useUpdateProject({ onSuccess: closeModal });
 
   const handleOpen = () => {
-    projectStore.setState((state) => {
+    projectStore.set((state) => {
       state.description = project.description;
       state.id = project.id;
       state.name = project.name;

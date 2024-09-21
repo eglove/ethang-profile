@@ -1,4 +1,4 @@
-import { Store } from "@ethang/toolbelt/state/store";
+import { Store } from "@ethang/store/store";
 
 export const projectFormStoreLabels = {
   description: "Description",

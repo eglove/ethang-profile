@@ -23,9 +23,12 @@ importers:
       '@clerk/clerk-react':
         specifier: ^5.9.1
         version: 5.9.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@ethang/store':
+        specifier: ^1.0.3
+        version: 1.0.3(immer@10.1.1)(uuid@10.0.0)
       '@ethang/toolbelt':
-        specifier: ^4.2.4
-        version: 4.2.4(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(zod@3.23.8)
+        specifier: ^4.2.7
+        version: 4.2.7(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8)
       '@heroicons/react':
         specifier: ^2.1.5
         version: 2.1.5(react@18.3.1)
@@ -103,8 +106,8 @@ importers:
         specifier: ^4.20240919.0
         version: 4.20240919.0
       '@ethang/eslint-config':
-        specifier: ^19.6.5
-        version: 19.6.5(5icdcncw7ebh5k37s3s2tw6voq)
+        specifier: ^19.6.7
+        version: 19.6.7(p3xua4s6esw44cnpsfprb5zhpi)
       '@ethang/project-builder':
         specifier: ^2.6.1
         version: 2.6.1(chalk@5.3.0)(fs-extra@11.2.0)(inquirer@11.0.2)(lodash@4.17.21)(simple-git@3.27.0)(sort-package-json@2.10.1)(tsup@8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.2)(yaml@2.5.1))(typescript@5.6.2)
@@ -1657,8 +1660,8 @@ packages:
     resolution: {integrity: sha512-vH9PiIMMwvhCx31Af3HiGzsVNULDbyVkHXwlemn/B0TFj/00ho3y55efXrUZTfQipxoHC5u4xq6zblww1zm1Ig==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@ethang/eslint-config@19.6.5':
-    resolution: {integrity: sha512-cKJJO8WrbgcoEntWownPne9M2Iu5HC6G0Odx800SfjqaBsGe0tGYfs/GWuH+3IZeyvHh8jiri5E1iqQvcTJDNQ==}
+  '@ethang/eslint-config@19.6.7':
+    resolution: {integrity: sha512-t9T9wtmlt53VLc9kCay1kFtBw7IwQuw69lVV3cBBKj09oVXXcM/hd+e/jg/30e717vT3IsOCRaT/SUMNueyFeg==}
     engines: {node: '>=20'}
     peerDependencies:
       '@cspell/eslint-plugin': ^8.14.4
@@ -1667,10 +1670,9 @@ packages:
       '@eslint/js': ^9.11.0
       '@eslint/json': ^0.4.0
       '@eslint/markdown': ^6.1.0
-      '@ethang/eslint-plugin': ^0.0.11
       '@stylistic/eslint-plugin': ^2.8.0
       '@tanstack/eslint-plugin-query': ^5.57.0
-      '@tanstack/eslint-plugin-router': ^1.58.0
+      '@tanstack/eslint-plugin-router': ^1.58.6
       '@typescript-eslint/parser': ^8.6.0
       eslint: ^9.11.0
       eslint-plugin-astro: ^1.2.4
@@ -1689,12 +1691,6 @@ packages:
       typescript: ^5.6.2
       typescript-eslint: ^8.6.0
 
-  '@ethang/eslint-plugin@0.0.11':
-    resolution: {integrity: sha512-x+e2+Uj725c+gtnX96DTdwOSWTEcydrW2NDZI1JAG0uoCnal3zMsIwkRKrQSNHqR8HePY5u0UkWa3XTLIav4Ag==}
-    peerDependencies:
-      '@typescript-eslint/utils': ^8.6.0
-      lodash: ^4.17.21
-
   '@ethang/project-builder@2.6.1':
     resolution: {integrity: sha512-uO6fYbFsOEIILBWM9GqqCi+YHjw9jrDYEe0QR5y8CjQF1uHzCYC3oYFY1yWJUq0xR0t2RMEbDE8otFV5LRWtQg==}
     peerDependencies:
@@ -1707,8 +1703,14 @@ packages:
       tsup: ^8.3.0
       typescript: ^5.6.2
 
-  '@ethang/toolbelt@4.2.4':
-    resolution: {integrity: sha512-ALPxpoU78jqNvOFjXRR7ucPVUTbxbrFFqpPtLvAa3UxanhCjECuaXxwVagyPnmqKdScc59TSuhWBraOzyUkTng==}
+  '@ethang/store@1.0.3':
+    resolution: {integrity: sha512-jgAZ4jFxkTiapQ19wugcvirmXbUwQFfY7vHsPF8ab1q7j8sbc9t/WfrTXXPsbtA2I5za3GAkg4klBbvhu99JGA==}
+    peerDependencies:
+      immer: ^10.1.1
+      uuid: ^10.0.0
+
+  '@ethang/toolbelt@4.2.7':
+    resolution: {integrity: sha512-6yEln00jni56w1yPSM8dFnwr98q5au0J8hCT1jT7evYxcpRaDpX2eNPOJJwPf0Wstbjt+MGArul0O4ZTVrDjKA==}
     peerDependencies:
       '@phensley/cldr': ^1.9.0
       '@phensley/unit-converter': ^1.9.0
@@ -1717,6 +1719,7 @@ packages:
       idb: ^8.0.0
       immer: ^10.1.1
       lodash: ^4.17.21
+      uuid: ^10.0.0
       zod: ^3.23.8
 
   '@fastify/busboy@2.1.1':
@@ -9081,7 +9084,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@ethang/eslint-config@19.6.5(5icdcncw7ebh5k37s3s2tw6voq)':
+  '@ethang/eslint-config@19.6.7(p3xua4s6esw44cnpsfprb5zhpi)':
     dependencies:
       '@cspell/eslint-plugin': 8.14.4(eslint@9.11.0(jiti@1.21.6))
       '@eslint-react/eslint-plugin': 1.14.2(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
@@ -9089,7 +9092,6 @@ snapshots:
       '@eslint/js': 9.11.0
       '@eslint/json': 0.4.0(eslint@9.11.0(jiti@1.21.6))
       '@eslint/markdown': 6.1.0(eslint@9.11.0(jiti@1.21.6))
-      '@ethang/eslint-plugin': 0.0.11(@typescript-eslint/utils@8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2))(lodash@4.17.21)
       '@stylistic/eslint-plugin': 2.8.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
       '@tanstack/eslint-plugin-query': 5.57.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
       '@tanstack/eslint-plugin-router': 1.58.6(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
@@ -9111,11 +9113,6 @@ snapshots:
       typescript: 5.6.2
       typescript-eslint: 8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
 
-  '@ethang/eslint-plugin@0.0.11(@typescript-eslint/utils@8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2))(lodash@4.17.21)':
-    dependencies:
-      '@typescript-eslint/utils': 8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
-      lodash: 4.17.21
-
   '@ethang/project-builder@2.6.1(chalk@5.3.0)(fs-extra@11.2.0)(inquirer@11.0.2)(lodash@4.17.21)(simple-git@3.27.0)(sort-package-json@2.10.1)(tsup@8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.2)(yaml@2.5.1))(typescript@5.6.2)':
     dependencies:
       chalk: 5.3.0
@@ -9127,7 +9124,12 @@ snapshots:
       tsup: 8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.2)(yaml@2.5.1)
       typescript: 5.6.2
 
-  '@ethang/toolbelt@4.2.4(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(zod@3.23.8)':
+  '@ethang/store@1.0.3(immer@10.1.1)(uuid@10.0.0)':
+    dependencies:
+      immer: 10.1.1
+      uuid: 10.0.0
+
+  '@ethang/toolbelt@4.2.7(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8)':
     dependencies:
       '@phensley/cldr': 1.9.0
       '@phensley/unit-converter': 1.9.0
@@ -9136,6 +9138,7 @@ snapshots:
       idb: 8.0.0
       immer: 10.1.1
       lodash: 4.17.21
+      uuid: 10.0.0
       zod: 3.23.8
 
   '@fastify/busboy@2.1.1': {}
