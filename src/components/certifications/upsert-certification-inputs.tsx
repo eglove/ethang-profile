@@ -25,14 +25,9 @@ export const UpsertCertificationInputs = () => {
                 });
               }
             }
-            ref={certificationFormStore.bindRef([{
-              options: {
-                accessor: "value",
-              },
-              selector: (state) => {
-                return state[key as StoreKey];
-              },
-            }])}
+            ref={certificationFormStore.bindRef((state, element) => {
+              element.value = String(state[key as StoreKey]);
+            })}
             type={"expires" === key || "issuedOn" === key
               ? "date"
               : "text"}

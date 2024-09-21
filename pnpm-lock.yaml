@@ -24,8 +24,8 @@ importers:
         specifier: ^5.9.1
         version: 5.9.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ethang/toolbelt':
-        specifier: ^4.2.3
-        version: 4.2.3(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(zod@3.23.8)
+        specifier: ^4.2.4
+        version: 4.2.4(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(zod@3.23.8)
       '@heroicons/react':
         specifier: ^2.1.5
         version: 2.1.5(react@18.3.1)
@@ -1707,8 +1707,8 @@ packages:
       tsup: ^8.3.0
       typescript: ^5.6.2
 
-  '@ethang/toolbelt@4.2.3':
-    resolution: {integrity: sha512-P7KKfUwSy84JjBSCfD5+3bCBcWWDVwx7+gYJXFGsZ6/bFTRJkLhOvQsQT+0zc4TNfax9VYky+T+3aOlMhAjnMw==}
+  '@ethang/toolbelt@4.2.4':
+    resolution: {integrity: sha512-ALPxpoU78jqNvOFjXRR7ucPVUTbxbrFFqpPtLvAa3UxanhCjECuaXxwVagyPnmqKdScc59TSuhWBraOzyUkTng==}
     peerDependencies:
       '@phensley/cldr': ^1.9.0
       '@phensley/unit-converter': ^1.9.0
@@ -9127,7 +9127,7 @@ snapshots:
       tsup: 8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.2)(yaml@2.5.1)
       typescript: 5.6.2
 
-  '@ethang/toolbelt@4.2.3(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(zod@3.23.8)':
+  '@ethang/toolbelt@4.2.4(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(zod@3.23.8)':
     dependencies:
       '@phensley/cldr': 1.9.0
       '@phensley/unit-converter': 1.9.0

@@ -17,12 +17,9 @@ export const ProjectFormInputs = () => {
                 state[key] = text;
               });
             }}
-            ref={projectStore.bindRef([{
-              options: { accessor: "value" },
-              selector: (state) => {
-                return state[key];
-              },
-            }])}
+            ref={projectStore.bindRef((state, element) => {
+              element.value = state[key];
+            })}
             key={key}
             label={projectFormStoreLabels[key]}
           />

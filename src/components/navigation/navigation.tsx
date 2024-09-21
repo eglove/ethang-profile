@@ -23,7 +23,7 @@ const subscribe = (listener: () => void) => {
 };
 
 const getSnapshot = () => {
-  return store.getSnapshot();
+  return store.state;
 };
 
 type NavigationProperties = {
