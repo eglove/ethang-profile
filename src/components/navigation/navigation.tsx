@@ -1,29 +1,32 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { useStore } from "@ethang/hooks/use-store";
 import { Store } from "@ethang/store";
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
-import { useSyncExternalStore } from "react";
 
 import { NavigationItems } from "./navigation-items.tsx";
 
-const store = new Store({
-  isMenuOpen: true,
-});
+const initialState = { isMenuOpen: true };
+
+const store = new Store(initialState);
+
+const useNavigationStore = <Selected,>(
+  selector: (state: typeof initialState) => Selected,
+) => {
+  return useStore((listener) => {
+    return store.subscribe(listener);
+  }, () => {
+    return store.get();
+  }, () => {
+    return store.get();
+  }, selector);
+};
 
 const setIsMenuOpen = (value: boolean) => {
   store.set((state) => {
     state.isMenuOpen = value;
   });
-};
-
-
-const subscribe = (listener: () => void) => {
-  return store.subscribe(listener);
-};
-
-const getSnapshot = () => {
-  return store.get();
 };
 
 type NavigationProperties = {
@@ -33,9 +36,9 @@ type NavigationProperties = {
 export const Navigation = (
   { currentPathname }: NavigationProperties,
 ) => {
-  const { isMenuOpen } = useSyncExternalStore(
-    subscribe, getSnapshot, getSnapshot,
-  );
+  const isMenuOpen = useNavigationStore((state) => {
+    return state.isMenuOpen;
+  });
 
   const isLocal = "undefined" === typeof window
     ? false
