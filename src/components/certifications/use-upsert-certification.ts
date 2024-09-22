@@ -20,7 +20,7 @@ export const useUpsertCertification = ({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/certification", {
         body: JSON.stringify(
-          serializeCertificationsForPost(certificationFormStore.state),
+          serializeCertificationsForPost(certificationFormStore.get()),
         ),
         method: "POST",
       });

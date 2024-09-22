@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import { Store } from "@ethang/toolbelt/state/store";
+import { Store } from "@ethang/store";
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
@@ -12,7 +12,7 @@ const store = new Store({
 });
 
 const setIsMenuOpen = (value: boolean) => {
-  store.setState((state) => {
+  store.set((state) => {
     state.isMenuOpen = value;
   });
 };
@@ -23,7 +23,7 @@ const subscribe = (listener: () => void) => {
 };
 
 const getSnapshot = () => {
-  return store.state;
+  return store.get();
 };
 
 type NavigationProperties = {

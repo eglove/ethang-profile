@@ -17,7 +17,7 @@ export const ProjectFormInputs = () => {
                 state[key] = text;
               });
             }}
-            ref={projectStore.bindRef((state, element) => {
+            ref={projectStore.bind((state, element) => {
               element.value = state[key];
             })}
             key={key}

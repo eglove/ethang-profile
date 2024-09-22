@@ -1,4 +1,4 @@
-import { Store } from "@ethang/toolbelt/state/store";
+import { Store } from "@ethang/store";
 import isNil from "lodash/isNil";
 import { DateTime } from "luxon";
 
@@ -36,7 +36,7 @@ export const serializeCertificationsForPost = (
 export const serializeCertificationDataForForm = (
   data: GetCertificationsJson[0],
 ) => {
-  certificationFormStore.setState((state) => {
+  certificationFormStore.set((state) => {
     state.description = data.description;
     state.expires = isNil(data.expires)
       ? ""

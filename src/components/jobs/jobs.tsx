@@ -1,4 +1,4 @@
-import { Store } from "@ethang/toolbelt/state/store";
+import { Store } from "@ethang/store";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Spinner } from "@nextui-org/spinner";
@@ -39,22 +39,24 @@ const JobsWithProviders = () => {
   return (
     <div>
       <ResumeDownloadButtons />
+      {/* @ts-expect-error unhelpful types */}
       <Table
         onSortChange={({ column, direction }) => {
           const sorted = orderBy(data, String(column), "ascending" === direction
             ? "asc"
             : "desc");
           queryClient.setQueryData(queryFunctions.jobs().queryKey, sorted);
-          jobStore.setState((state) => {
+          jobStore.set((state) => {
             state.column = String(column);
             state.direction = direction ?? "ascending";
           });
         }}
-        sortDescriptor={{
-          column: jobStore.state.column,
-          // @ts-expect-error shut up
-          direction: jobStore.state.direction,
-        }}
+        sortDescriptor={jobStore.get((state) => {
+          return {
+            column: state.column,
+            direction: state.direction,
+          };
+        }) as Parameters<typeof Table>[0]["sortDescriptor"]}
         aria-label="Jobs"
       >
         <TableHeader columns={columns}>

@@ -15,7 +15,7 @@ export const useUpdateProject = ({ onSuccess }: UseUpdateProjectProperties) => {
   const { isPending, mutate } = useMutation({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/project", {
-        body: JSON.stringify(projectStore.state),
+        body: JSON.stringify(projectStore.get()),
         headers: jsonHeaders,
         method: "PUT",
       });

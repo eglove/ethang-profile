@@ -1,4 +1,4 @@
-import { Store } from "@ethang/store/store";
+import { Store } from "@ethang/store";
 
 export const projectFormStoreLabels = {
   description: "Description",
