@@ -8,9 +8,7 @@ import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/r
 
 import { NavigationItems } from "./navigation-items.tsx";
 
-const initialState = { isMenuOpen: true };
-
-const store = new Store(initialState);
+const store = new Store({ isMenuOpen: true });
 
 const setIsMenuOpen = (value: boolean) => {
   store.set((state) => {
