@@ -27,10 +27,8 @@ export const Navigation = (
     storeSubscriptionHandler(store),
     storeSnapshotHandler(store),
     storeSnapshotHandler(store),
-    (state) => {
-      return state.isMenuOpen;
-    },
-  );
+    { isMenuOpen: ["isMenuOpen"] },
+  ) as unknown as boolean;
 
   const isLocal = "undefined" === typeof window
     ? false
