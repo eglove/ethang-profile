@@ -1,7 +1,7 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import { useStore } from "@ethang/hooks/use-store";
+import { useStore } from "@ethang/hooks/use-store.js";
 import { Store } from "@ethang/store";
-import { storeSnapshotHandler, storeSubscriptionHandler } from "@ethang/store/util";
+import { storeSnapshotHandler, storeSubscriptionHandler } from "@ethang/store/util.js";
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";

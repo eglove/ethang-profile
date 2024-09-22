@@ -24,8 +24,8 @@ importers:
         specifier: ^5.9.1
         version: 5.9.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ethang/hooks':
-        specifier: ^2.2.1
-        version: 2.2.1(@ethang/toolbelt@4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8))(lodash@4.17.21)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))(zod@3.23.8)
+        specifier: ^2.2.3
+        version: 2.2.3(@ethang/toolbelt@4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8))(lodash@4.17.21)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))(zod@3.23.8)
       '@ethang/store':
         specifier: ^1.0.12
         version: 1.0.12(immer@10.1.1)
@@ -101,6 +101,9 @@ importers:
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
+      use-sync-external-store:
+        specifier: ^1.2.2
+        version: 1.2.2(react@18.3.1)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -117,12 +120,21 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.15(tailwindcss@3.4.12)
+      '@tsconfig/strictest':
+        specifier: ^2.0.5
+        version: 2.0.5
+      '@tsconfig/vite-react':
+        specifier: ^3.0.2
+        version: 3.0.2
       '@types/lodash':
         specifier: ^4.17.7
         version: 4.17.7
       '@types/luxon':
         specifier: ^3.4.2
         version: 3.4.2
+      '@types/use-sync-external-store':
+        specifier: ^0.0.6
+        version: 0.0.6
       '@types/uuid':
         specifier: ^10.0.0
         version: 10.0.0
@@ -1696,8 +1708,8 @@ packages:
       typescript: ^5.6.2
       typescript-eslint: ^8.6.0
 
-  '@ethang/hooks@2.2.1':
-    resolution: {integrity: sha512-4zBPDbBiaQP/RgQTxMSkzoCQWlQNJZw0UQQAuXclfwfHm/KjpAKMH6COQJsRUNH9BT9xlo2DqRJPONb7q0ERkg==}
+  '@ethang/hooks@2.2.3':
+    resolution: {integrity: sha512-zeWHFznj+o9hgFR074VtxnwMpd7ymhDY1gqFHJW2FCLFZ7FnIzU9yH6qtzkSDP2hq1/sobhVzLGg34qjt3Gl7w==}
     engines: {node: '> 20.0'}
     peerDependencies:
       '@ethang/toolbelt': ^4.3.0
@@ -3370,6 +3382,12 @@ packages:
   '@total-typescript/ts-reset@0.6.1':
     resolution: {integrity: sha512-cka47fVSo6lfQDIATYqb/vO1nvFfbPw7uWLayIXIhGETj0wcOOlrlkobOMDNQOFr9QOafegUPq13V2+6vtD7yg==}
 
+  '@tsconfig/strictest@2.0.5':
+    resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
+
+  '@tsconfig/vite-react@3.0.2':
+    resolution: {integrity: sha512-AFynAtE1Un3Rko20Ghe2mVC/QWD4rStJ2PnyIZU2kzC4UyWpf1YhAEY87GojH/XPZCY8Mdt27gsYyy+6l6HV+w==}
+
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
 
@@ -3450,6 +3468,9 @@ packages:
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
+  '@types/use-sync-external-store@0.0.6':
+    resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
 
   '@types/uuid@10.0.0':
     resolution: {integrity: sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==}
@@ -9139,7 +9160,7 @@ snapshots:
       typescript: 5.6.2
       typescript-eslint: 8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
 
-  '@ethang/hooks@2.2.1(@ethang/toolbelt@4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8))(lodash@4.17.21)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))(zod@3.23.8)':
+  '@ethang/hooks@2.2.3(@ethang/toolbelt@4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8))(lodash@4.17.21)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))(zod@3.23.8)':
     dependencies:
       '@ethang/toolbelt': 4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8)
       lodash: 4.17.21
@@ -11789,6 +11810,10 @@ snapshots:
 
   '@total-typescript/ts-reset@0.6.1': {}
 
+  '@tsconfig/strictest@2.0.5': {}
+
+  '@tsconfig/vite-react@3.0.2': {}
+
   '@tybys/wasm-util@0.9.0':
     dependencies:
       tslib: 2.7.0
@@ -11886,13 +11911,15 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
+  '@types/use-sync-external-store@0.0.6': {}
+
   '@types/uuid@10.0.0': {}
 
   '@types/wrap-ansi@3.0.0': {}
 
   '@typescript-eslint/eslint-plugin@7.16.1(@typescript-eslint/parser@8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)':
     dependencies:
-      '@eslint-community/regexpp': 4.10.0
+      '@eslint-community/regexpp': 4.11.1
       '@typescript-eslint/parser': 8.6.0(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
       '@typescript-eslint/scope-manager': 7.16.1
       '@typescript-eslint/type-utils': 7.16.1(eslint@9.11.0(jiti@1.21.6))(typescript@5.6.2)
@@ -11992,7 +12019,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.0
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.6.2)
     optionalDependencies:
       typescript: 5.6.2
@@ -12007,7 +12034,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.0
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.6.2)
     optionalDependencies:
       typescript: 5.6.2
@@ -15337,7 +15364,7 @@ snapshots:
 
   refa@0.12.1:
     dependencies:
-      '@eslint-community/regexpp': 4.10.0
+      '@eslint-community/regexpp': 4.11.1
 
   reflect.getprototypeof@1.0.6:
     dependencies:
@@ -15365,7 +15392,7 @@ snapshots:
 
   regexp-ast-analysis@0.7.1:
     dependencies:
-      '@eslint-community/regexpp': 4.10.0
+      '@eslint-community/regexpp': 4.11.1
       refa: 0.12.1
 
   regexp-tree@0.1.27: {}
@@ -15608,7 +15635,7 @@ snapshots:
 
   scslre@0.3.0:
     dependencies:
-      '@eslint-community/regexpp': 4.10.0
+      '@eslint-community/regexpp': 4.11.1
       refa: 0.12.1
       regexp-ast-analysis: 0.7.1
 
@@ -16493,7 +16520,7 @@ snapshots:
       espree: 9.6.1
       esquery: 1.6.0
       lodash: 4.17.21
-      semver: 7.6.0
+      semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
 

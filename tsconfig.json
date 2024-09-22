@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/strictest",
+  "extends": ["@tsconfig/strictest", "@tsconfig/vite-react"],
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "types": [
