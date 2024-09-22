@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { useStore } from "@ethang/hooks/use-store";
 import { Store } from "@ethang/store";
+import { storeSnapshotHandler, storeSubscriptionHandler } from "@ethang/store/util";
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
@@ -10,18 +11,6 @@ import { NavigationItems } from "./navigation-items.tsx";
 const initialState = { isMenuOpen: true };
 
 const store = new Store(initialState);
-
-const useNavigationStore = <Selected,>(
-  selector: (state: typeof initialState) => Selected,
-) => {
-  return useStore((listener) => {
-    return store.subscribe(listener);
-  }, () => {
-    return store.get();
-  }, () => {
-    return store.get();
-  }, selector);
-};
 
 const setIsMenuOpen = (value: boolean) => {
   store.set((state) => {
@@ -36,9 +25,14 @@ type NavigationProperties = {
 export const Navigation = (
   { currentPathname }: NavigationProperties,
 ) => {
-  const isMenuOpen = useNavigationStore((state) => {
-    return state.isMenuOpen;
-  });
+  const isMenuOpen = useStore(
+    storeSubscriptionHandler(store),
+    storeSnapshotHandler(store),
+    storeSnapshotHandler(store),
+    (state) => {
+      return state.isMenuOpen;
+    },
+  );
 
   const isLocal = "undefined" === typeof window
     ? false
