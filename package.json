@@ -37,10 +37,10 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.9",
     "docx": "^8.5.0",
-    "framer-motion": "^11.7.0",
+    "framer-motion": "^11.8.0",
     "lodash": "^4.17.21",
     "luxon": "^3.5.0",
-    "mobx": "^6.13.2",
+    "mobx": "^6.13.3",
     "mobx-react-lite": "^4.0.7",
     "postgres": "^3.4.4",
     "prisma": "^5.20.0",
@@ -67,6 +67,6 @@
     "type-fest": "^4.26.1",
     "typescript-eslint": "^8.7.0",
     "vitest": "^2.1.1",
-    "wrangler": "^3.78.9"
+    "wrangler": "^3.78.10"
   }
 }
