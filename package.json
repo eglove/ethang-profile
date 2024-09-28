@@ -22,8 +22,8 @@
     "@astrojs/cloudflare": "^11.1.0",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
-    "@clerk/clerk-react": "^5.9.3",
-    "@ethang/hooks": "^2.2.4",
+    "@clerk/clerk-react": "^5.9.4",
+    "@ethang/hooks": "^2.2.5",
     "@ethang/store": "^1.0.14",
     "@ethang/toolbelt": "^4.3.0",
     "@heroicons/react": "^2.1.5",
@@ -33,11 +33,11 @@
     "@react-pdf/renderer": "^4.0.0",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.58.0",
-    "@types/react": "^18.3.9",
+    "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.9",
     "docx": "^8.5.0",
-    "framer-motion": "^11.8.0",
+    "framer-motion": "^11.9.0",
     "lodash": "^4.17.21",
     "luxon": "^3.5.0",
     "mobx": "^6.13.3",
@@ -54,8 +54,8 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240925.0",
-    "@ethang/eslint-config": "^19.8.6",
-    "@ethang/project-builder": "^2.6.1",
+    "@ethang/eslint-config": "^19.8.9",
+    "@ethang/project-builder": "^3.0.0",
     "@tailwindcss/typography": "^0.5.15",
     "@tsconfig/strictest": "^2.0.5",
     "@tsconfig/vite-react": "^3.0.2",
@@ -67,6 +67,6 @@
     "type-fest": "^4.26.1",
     "typescript-eslint": "^8.7.0",
     "vitest": "^2.1.1",
-    "wrangler": "^3.78.10"
+    "wrangler": "^3.78.12"
   }
 }
