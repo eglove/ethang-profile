@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "lint": "eslint src --fix",
     "preview": "astro build && wrangler pages dev",
-    "prismaGenerate": "pnpx prisma generate",
+    "prismaGenerate": "bun x prisma generate",
     "start": "astro dev"
   },
   "browserslist": [
