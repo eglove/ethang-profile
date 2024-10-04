@@ -32,7 +32,7 @@ export const Navigation = (
     return state.isMenuOpen;
   });
 
-  const isLocal = "undefined" === typeof window
+  const isLocal = "undefined" === typeof globalThis
     ? false
     : "localhost" === location.hostname;
 
