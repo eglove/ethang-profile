@@ -1,22 +1,13 @@
 ---
-import {neonSql} from "../clients/neon";
 import HtmlLayout from "../layouts/HtmlLayout.astro";
 import {Skills} from "../components/skills/skills";
-import {getExperienceBreakdown} from "../util/job/get-experience-breakdown";
-import type {GetJobsJson} from "./api/job";
 
 const pathname = Astro.url.pathname;
-
-const jobs = await neonSql`select * from "Job"` as GetJobsJson;
-
-const {sorted, max} = getExperienceBreakdown(jobs);
 ---
 
 <HtmlLayout title="Ethan Glover" description="Ethan Glover">
 	<Skills
 		client:load
-		experiences={sorted}
-		max={max}
 		currentPathname={pathname}
 	/>
 </HtmlLayout>

@@ -32,7 +32,8 @@ export const Navigation = (
     return state.isMenuOpen;
   });
 
-  const isLocal = "undefined" === typeof globalThis
+  // eslint-disable-next-line unicorn/prefer-global-this
+  const isLocal = "undefined" === typeof window
     ? false
     : "localhost" === location.hostname;
 

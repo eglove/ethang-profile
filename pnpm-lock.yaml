@@ -35,6 +35,9 @@ importers:
       '@heroicons/react':
         specifier: ^2.1.5
         version: 2.1.5(react@18.3.1)
+      '@legendapp/state':
+        specifier: ^3.0.0-beta.5
+        version: 3.0.0-beta.5(react@18.3.1)
       '@neondatabase/serverless':
         specifier: ^0.9.5
         version: 0.9.5
@@ -92,6 +95,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      swr:
+        specifier: ^2.2.5
+        version: 2.2.5(react@18.3.1)
       tailwind-merge:
         specifier: ^2.5.3
         version: 2.5.3
@@ -2077,6 +2083,9 @@ packages:
 
   '@kwsites/promise-deferred@1.1.1':
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
+
+  '@legendapp/state@3.0.0-beta.5':
+    resolution: {integrity: sha512-bd1mXgk3nGDPk5eqejPP/VNe5AglYcNEFVDC6Y2vxvkQ4E9BNAjhK3Ih0LhdESSSF/FRojgN6wNvQfzC83cq0g==}
 
   '@mdn/browser-compat-data@5.6.4':
     resolution: {integrity: sha512-bOOF4GGzn0exmvNHpSWmTfOXB9beTpIFCm2KPY2UVoCdn1YVfr8heuHr1C++BYI9Tun8REgi5TNVdKbBs249CA==}
@@ -9648,6 +9657,12 @@ snapshots:
       - supports-color
 
   '@kwsites/promise-deferred@1.1.1': {}
+
+  '@legendapp/state@3.0.0-beta.5(react@18.3.1)':
+    dependencies:
+      use-sync-external-store: 1.2.2(react@18.3.1)
+    transitivePeerDependencies:
+      - react
 
   '@mdn/browser-compat-data@5.6.4': {}
 
