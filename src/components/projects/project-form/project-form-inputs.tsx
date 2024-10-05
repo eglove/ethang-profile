@@ -1,30 +1,30 @@
+import { observer, useObservable } from "@legendapp/state/react";
 import { Input } from "@nextui-org/input";
 import map from "lodash/map";
 
 import {
+  projectFormStore,
   projectFormStoreInputOrder,
-  projectFormStoreLabels, projectStore,
+  projectFormStoreLabels,
 } from "./project-store.ts";
 
-export const ProjectFormInputs = () => {
+export const ProjectFormInputs = observer(() => {
+  const store = useObservable(projectFormStore);
+
   return (
     <>
       {map(projectFormStoreInputOrder, (key) => {
         return (
           <Input
             onValueChange={(text) => {
-              projectStore.set((state) => {
-                state[key] = text;
-              });
+              store[key].set(text);
             }}
-            ref={projectStore.bind((state, element) => {
-              element.value = state[key];
-            })}
             key={key}
             label={projectFormStoreLabels[key]}
+            value={store[key].get()}
           />
         );
       })}
     </>
   );
-};
+});

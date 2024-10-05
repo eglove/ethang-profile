@@ -1,19 +1,10 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import { Store } from "@ethang/store";
+import { useObservable } from "@legendapp/state/react";
 import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Avatar, NavbarBrand, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
-import { useSyncExternalStoreWithSelector } from "use-sync-external-store/with-selector.js";
 
 import { NavigationItems } from "./navigation-items.tsx";
-
-const store = new Store({ isMenuOpen: true });
-
-const setIsMenuOpen = (value: boolean) => {
-  store.set((state) => {
-    state.isMenuOpen = value;
-  });
-};
 
 type NavigationProperties = {
   readonly currentPathname: string;
@@ -22,15 +13,7 @@ type NavigationProperties = {
 export const Navigation = (
   { currentPathname }: NavigationProperties,
 ) => {
-  const isMenuOpen = useSyncExternalStoreWithSelector((listener) => {
-    return store.subscribe(listener);
-  }, () => {
-    return store.get();
-  }, () => {
-    return store.get();
-  }, (state) => {
-    return state.isMenuOpen;
-  });
+  const isMenuOpen = useObservable(false);
 
   // eslint-disable-next-line unicorn/prefer-global-this
   const isLocal = "undefined" === typeof window
@@ -39,12 +22,14 @@ export const Navigation = (
 
   return (
     <Navbar
+      onMenuOpenChange={() => {
+        isMenuOpen.set(!isMenuOpen.get());
+      }}
       className="mx-auto max-w-screen-xl"
-      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={isMenuOpen
+          aria-label={isMenuOpen.get()
             ? "Close Menu"
             : "Open Menu"}
           className="sm:hidden"

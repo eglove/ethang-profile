@@ -5,7 +5,7 @@ import isError from "lodash/isError";
 
 import { queryClient } from "../../../../layouts/react-providers.tsx";
 import { queryKeys } from "../../../../query/query-keys.ts";
-import { projectStore } from "../project-store.ts";
+import { projectFormStore } from "../project-store.ts";
 
 type UseUpdateProjectProperties = {
   onSuccess: () => void;
@@ -15,7 +15,7 @@ export const useUpdateProject = ({ onSuccess }: UseUpdateProjectProperties) => {
   const { isPending, mutate } = useMutation({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/project", {
-        body: JSON.stringify(projectStore.get()),
+        body: JSON.stringify(projectFormStore.get()),
         headers: jsonHeaders,
         method: "PUT",
       });

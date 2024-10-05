@@ -6,7 +6,7 @@ import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure
 import type { GetProjectJson } from "../../../../pages/api/project.ts";
 
 import { ProjectFormInputs } from "../project-form-inputs.tsx";
-import { projectStore } from "../project-store.ts";
+import { projectFormStore } from "../project-store.ts";
 import { useUpdateProject } from "./use-update-project.ts";
 
 type ProjectUpdateProperties = {
@@ -20,11 +20,11 @@ export const ProjectUpdate = ({
   const { isPending, mutate } = useUpdateProject({ onSuccess: closeModal });
 
   const handleOpen = () => {
-    projectStore.set((state) => {
-      state.description = project.description;
-      state.id = project.id;
-      state.name = project.name;
-      state.url = project.url;
+    projectFormStore.set({
+      description: project.description,
+      id: project.id,
+      name: project.name,
+      url: project.url,
     });
     onOpen();
   };

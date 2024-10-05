@@ -4,7 +4,7 @@ import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure
 
 import { useIsMe } from "../../../../util/user.ts";
 import { ProjectFormInputs } from "../project-form-inputs.tsx";
-import { projectStore } from "../project-store.ts";
+import { resetProjectFormStore } from "../project-store.ts";
 import { useCreateProject } from "./use-create-project.ts";
 
 
@@ -16,7 +16,7 @@ export const ProjectCreate = () => {
   });
 
   const handleOpen = () => {
-    projectStore.resetState();
+    resetProjectFormStore();
     onOpen();
   };
 

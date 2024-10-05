@@ -4,7 +4,7 @@ import isError from "lodash/isError";
 
 import { queryClient } from "../../../../layouts/react-providers.tsx";
 import { queryKeys } from "../../../../query/query-keys.ts";
-import { projectStore } from "../project-store.ts";
+import { projectFormStore } from "../project-store.ts";
 
 type UseCreateProjectProperties = {
   onSuccess: () => void;
@@ -13,13 +13,13 @@ type UseCreateProjectProperties = {
 export const useCreateProject = ({ onSuccess }: UseCreateProjectProperties) => {
   const { isPending, mutate } = useMutation({
     async mutationFn() {
-      const body = projectStore.get((state) => {
-        return {
-          description: state.description,
-          name: state.name,
-          url: state.url,
-        };
-      });
+      const state = projectFormStore.get();
+
+      const body = {
+        description: state.description,
+        name: state.name,
+        url: state.url,
+      };
 
       const response = await attemptAsync(fetch, "/api/project", {
         body: JSON.stringify(body),

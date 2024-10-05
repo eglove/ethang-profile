@@ -1,4 +1,4 @@
-import { Store } from "@ethang/store";
+import { observable } from "@legendapp/state";
 
 export const projectFormStoreLabels = {
   description: "Description",
@@ -17,4 +17,8 @@ const initialState = {
   url: "",
 };
 
-export const projectStore = new Store(initialState);
+export const projectFormStore = observable(initialState);
+
+export const resetProjectFormStore = () => {
+  projectFormStore.set(initialState);
+};
