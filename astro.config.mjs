@@ -26,7 +26,7 @@ export default defineConfig({
               },
               cacheName: "http-cache",
               expiration: {
-                maxAgeSeconds: 60,
+                maxAgeSeconds: 60 * 60 * 24,
               },
             },
             urlPattern: ({ url }) => {
