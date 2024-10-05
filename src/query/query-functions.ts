@@ -8,7 +8,7 @@ import toPairs from "lodash/toPairs";
 
 import { queryKeys } from "./query-keys.ts";
 
-const API_BASE_URL = import.meta.env["API_BASE_URL"] as string;
+const API_BASE_URL = "https://prod-ethang-api-izt2.encr.app";
 
 export type Certification = {
   createdAt: string;
