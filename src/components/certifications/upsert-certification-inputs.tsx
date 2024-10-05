@@ -1,39 +1,40 @@
+import { For, observer } from "@legendapp/state/react";
 import { Input } from "@nextui-org/input";
-import map from "lodash/map";
+import isNil from "lodash/isNil";
 import startCase from "lodash/startCase";
 
 import {
-  certificationFormStore,
+  certificationStore,
 } from "./certification-form-store.ts";
 
-export const UpsertCertificationInputs = () => {
+export const UpsertCertificationInputs = observer(() => {
   return (
-    <>
-      {map(certificationFormStore.get(), (_, key) => {
+    <For each={certificationStore}>
+      {(item, key) => {
         if ("id" === key) {
-          return null;
+          return <span />;
         }
 
         return (
           <Input
             onValueChange={
               (_value) => {
-                certificationFormStore.set((state) => {
-                  state[key as keyof typeof state] = _value;
-                });
+                if (!isNil(key)) {
+                  // @ts-expect-error ignore for now
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+                  certificationStore[key].set(_value);
+                }
               }
             }
-            ref={certificationFormStore.bind((state, element) => {
-              element.value = String(state[key as keyof typeof state]);
-            })}
             type={"expires" === key || "issuedOn" === key
               ? "date"
               : "text"}
             key={key}
             label={startCase(key)}
+            value={item.get() ?? ""}
           />
         );
-      })}
-    </>
+      }}
+    </For>
   );
-};
+});

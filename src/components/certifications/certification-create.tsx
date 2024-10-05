@@ -2,7 +2,7 @@ import { Button } from "@nextui-org/button";
 import { Modal, useDisclosure } from "@nextui-org/modal";
 import { useEffect } from "react";
 
-import { certificationFormStore } from "./certification-form-store.ts";
+import { resetCertificationStore } from "./certification-form-store.ts";
 import { UpsertCertificationModalContent } from "./upsert-certification-modal-content.tsx";
 import { useUpsertCertification } from "./use-upsert-certification.ts";
 
@@ -14,7 +14,7 @@ export const CertificationCreate = () => {
 
   useEffect(() => {
     if (isOpen) {
-      certificationFormStore.resetState();
+      resetCertificationStore();
     }
   }, [isOpen]);
 

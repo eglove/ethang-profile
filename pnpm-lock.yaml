@@ -26,9 +26,6 @@ importers:
       '@ethang/hooks':
         specifier: ^2.2.5
         version: 2.2.5(@ethang/toolbelt@4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8))(lodash@4.17.21)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))(zod@3.23.8)
-      '@ethang/store':
-        specifier: ^1.0.14
-        version: 1.0.14(immer@10.1.1)
       '@ethang/toolbelt':
         specifier: ^4.3.0
         version: 4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8)
@@ -77,12 +74,6 @@ importers:
       luxon:
         specifier: ^3.5.0
         version: 3.5.0
-      mobx:
-        specifier: ^6.13.3
-        version: 6.13.3
-      mobx-react-lite:
-        specifier: ^4.0.7
-        version: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
@@ -1817,11 +1808,6 @@ packages:
       sort-package-json: ^2.10.1
       tsup: ^8.3.0
       typescript: ^5.6.2
-
-  '@ethang/store@1.0.14':
-    resolution: {integrity: sha512-h5yPiRLl+1tJMjgRQNZGgIwDvdsS4ANGYVm5usTTv8VMWV0t+r6glKWEdoPPrX6pU6xsh9JiKFqdsw4JDr0ahA==}
-    peerDependencies:
-      immer: ^10.1.1
 
   '@ethang/toolbelt@4.3.0':
     resolution: {integrity: sha512-RqRqB1ZsxPCg2WN5FeZEv0Yo44CIIATtJNj8/7VCWOVzGfqXJQCLNLkSipUOTpV3dNGasyCxImjfskMUMZnkzw==}
@@ -5825,22 +5811,6 @@ packages:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  mobx-react-lite@4.0.7:
-    resolution: {integrity: sha512-RjwdseshK9Mg8On5tyJZHtGD+J78ZnCnRaxeQDSiciKVQDUbfZcXhmld0VMxAwvcTnPEHZySGGewm467Fcpreg==}
-    peerDependencies:
-      mobx: ^6.9.0
-      react: ^16.8.0 || ^17 || ^18
-      react-dom: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-
-  mobx@6.13.3:
-    resolution: {integrity: sha512-YtAS+ZMbdpbHYUU4ESht3na8KiX11KuMT1yOiKtbKlQ0GZkHDYPKyEw/Tdp7h7aHyLrTWj2TBaSNJ6bCr638iQ==}
-
   module-replacements@2.5.0:
     resolution: {integrity: sha512-m00JBwLSr7sur96PeAfAwNcyQk5MEm/GzZtZSRM+UjdzjNcgzPrWsWpsCpaRP+Fq+ROykt1TCr4GSR/ajcB83w==}
 
@@ -9367,10 +9337,6 @@ snapshots:
       sort-package-json: 2.10.1
       tsup: 8.3.0(jiti@2.1.2)(postcss@8.4.47)(typescript@5.6.2)(yaml@2.5.1)
       typescript: 5.6.2
-
-  '@ethang/store@1.0.14(immer@10.1.1)':
-    dependencies:
-      immer: 10.1.1
 
   '@ethang/toolbelt@4.3.0(@phensley/cldr@1.9.0)(@phensley/unit-converter@1.9.0)(@tanstack/store@0.5.5)(@total-typescript/ts-reset@0.6.1)(idb@8.0.0)(immer@10.1.1)(lodash@4.17.21)(uuid@10.0.0)(zod@3.23.8)':
     dependencies:
@@ -15062,16 +15028,6 @@ snapshots:
   minimist@1.2.8: {}
 
   minipass@7.1.2: {}
-
-  mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      mobx: 6.13.3
-      react: 18.3.1
-      use-sync-external-store: 1.2.2(react@18.3.1)
-    optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
-
-  mobx@6.13.3: {}
 
   module-replacements@2.5.0: {}
 

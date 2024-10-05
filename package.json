@@ -24,7 +24,6 @@
     "@astrojs/tailwind": "^5.1.1",
     "@clerk/clerk-react": "^5.11.0",
     "@ethang/hooks": "^2.2.5",
-    "@ethang/store": "^1.0.14",
     "@ethang/toolbelt": "^4.3.0",
     "@heroicons/react": "^2.1.5",
     "@legendapp/state": "^3.0.0-beta.5",

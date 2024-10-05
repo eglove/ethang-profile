@@ -1,4 +1,4 @@
-import { Store } from "@ethang/store";
+import { observable } from "@legendapp/state";
 import isNil from "lodash/isNil";
 import { DateTime } from "luxon";
 
@@ -16,7 +16,11 @@ const initialState = {
   url: "",
 };
 
-export const certificationFormStore = new Store(initialState);
+export const certificationStore = observable(initialState);
+
+export const resetCertificationStore = () => {
+  certificationStore.set(initialState);
+};
 
 export const serializeCertificationsForPost = (
   state: typeof initialState,
@@ -36,15 +40,15 @@ export const serializeCertificationsForPost = (
 export const serializeCertificationDataForForm = (
   data: GetCertificationsJson[0],
 ) => {
-  certificationFormStore.set((state) => {
-    state.description = data.description;
-    state.expires = isNil(data.expires)
+  certificationStore.set({
+    description: data.description,
+    expires: isNil(data.expires)
       ? ""
-      : DateTime.fromISO(data.expires).toFormat(dateInputFormat);
-    state.id = data.id;
-    state.issuedBy = data.issuedBy;
-    state.issuedOn = DateTime.fromISO(data.issuedOn).toFormat(dateInputFormat);
-    state.name = data.name;
-    state.url = data.url;
+      : DateTime.fromISO(data.expires).toFormat(dateInputFormat),
+    id: data.id,
+    issuedBy: data.issuedBy,
+    issuedOn: DateTime.fromISO(data.issuedOn).toFormat(dateInputFormat),
+    name: data.name,
+    url: data.url,
   });
 };

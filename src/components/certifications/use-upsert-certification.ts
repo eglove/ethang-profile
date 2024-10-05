@@ -5,7 +5,7 @@ import isError from "lodash/isError";
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
 import {
-  certificationFormStore,
+  certificationStore,
   serializeCertificationsForPost,
 } from "./certification-form-store.ts";
 
@@ -20,7 +20,7 @@ export const useUpsertCertification = ({
     async mutationFn() {
       const response = await attemptAsync(fetch, "/api/certification", {
         body: JSON.stringify(
-          serializeCertificationsForPost(certificationFormStore.get()),
+          serializeCertificationsForPost(certificationStore.get()),
         ),
         method: "POST",
       });

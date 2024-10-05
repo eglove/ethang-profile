@@ -1,4 +1,4 @@
-import { Store } from "@ethang/store";
+import { observer, useObservable } from "@legendapp/state/react";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Spinner } from "@nextui-org/spinner";
@@ -27,14 +27,13 @@ export const Jobs = ({ currentPathname }: MainLayoutProperties) => {
   );
 };
 
-const jobStore = new Store({
-  column: "endDate",
-  direction: "descending",
-});
-
-const JobsWithProviders = () => {
+const JobsWithProviders = observer(() => {
   const isMe = useIsMe();
   const { data } = useQuery(queryFunctions.jobs());
+  const store = useObservable({
+    column: "endDate",
+    direction: "descending",
+  });
 
   return (
     <div>
@@ -46,18 +45,13 @@ const JobsWithProviders = () => {
             ? "asc"
             : "desc");
           queryClient.setQueryData(queryFunctions.jobs().queryKey, sorted);
-          jobStore.set((state) => {
-            state.column = String(column);
-            state.direction = direction ?? "ascending";
+          store.set({
+            column: String(column),
+            direction: direction ?? "ascending",
           });
         }}
-        sortDescriptor={jobStore.get((state) => {
-          return {
-            column: state.column,
-            direction: state.direction,
-          };
-        }) as Parameters<typeof Table>[0]["sortDescriptor"]}
         aria-label="Jobs"
+        sortDescriptor={store.get() as Parameters<typeof Table>[0]["sortDescriptor"]}
       >
         <TableHeader columns={columns}>
           {(column) => {
@@ -79,7 +73,6 @@ const JobsWithProviders = () => {
             ? data
             : []}
         >
-          { }
           {(item) => {
             return (
               <TableRow key={item.id}>
@@ -131,4 +124,4 @@ const JobsWithProviders = () => {
       )}
     </div>
   );
-};
+});
