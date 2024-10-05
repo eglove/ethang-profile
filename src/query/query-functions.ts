@@ -6,23 +6,59 @@ import reverse from "lodash/reverse";
 import sortBy from "lodash/sortBy";
 import toPairs from "lodash/toPairs";
 
-import type { GetCertificationsJson } from "../pages/api/certification.ts";
-import type { GetJobsJson } from "../pages/api/job.ts";
-import type { GetProjectJson } from "../pages/api/project.ts";
-
 import { queryKeys } from "./query-keys.ts";
+
+type Certification = {
+  createdAt: string;
+  description: string;
+  expires?: string;
+  id: string;
+  issuedBy: string;
+  issuedOn: string;
+  name: string;
+  updatedAt: string;
+  url: string;
+};
+
+type Job = {
+  company: string;
+  createdAt: string;
+  descriptionBullets: string[];
+  endDate: null | string;
+  id: string;
+  methodologiesUsed: string[];
+  shortDescription: string;
+  startDate: string;
+  techUsed: string[];
+  title: string;
+  updatedAt: string;
+};
+
+type Project = {
+  createdAt: string;
+  description: string;
+  id: string;
+  name: string;
+  updatedAt: string;
+  url: string;
+};
 
 export const queryFunctions = {
   certifications: () => {
-    return queryOptions<GetCertificationsJson | undefined>({
+    return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "/api/certification");
+        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/certification");
 
         if (isError(response)) {
           return;
         }
 
-        return response.json();
+        const data: {
+          count: number;
+          data: Certification;
+        } = await response.json();
+
+        return data.data;
       },
       queryKey: [...queryKeys.certifications, fetch],
     });
@@ -50,29 +86,33 @@ export const queryFunctions = {
     });
   },
   jobs: () => {
-    return queryOptions<GetJobsJson | undefined>({
+    return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "/api/job");
+        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/jobs");
 
         if (isError(response)) {
           return;
         }
 
-        return response.json();
+        const data: { data: Job[] } = await response.json();
+
+        return data.data;
       },
       queryKey: [...queryKeys.jobs, fetch],
     });
   },
   projects: () => {
-    return queryOptions<GetProjectJson | undefined>({
+    return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "/api/project");
+        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/project");
 
         if (isError(response)) {
           return;
         }
 
-        return response.json();
+        const data: { data: Project[] } = await response.json();
+
+        return data.data;
       },
       queryKey: [...queryKeys.projects, fetch],
     });
