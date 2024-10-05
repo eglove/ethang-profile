@@ -7,7 +7,13 @@ import { type PropsWithChildren, StrictMode, Suspense } from "react";
 
 import { CLERK_PUBLISHABLE_KEY } from "../util/constants.ts";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 60 * 24,
+    },
+  },
+});
 
 export const ReactProviders = ({
   children,
