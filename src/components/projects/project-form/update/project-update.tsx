@@ -29,7 +29,6 @@ export const ProjectUpdate = ({
     onOpen();
   };
 
-
   return (
     <>
       <Button

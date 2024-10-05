@@ -15,7 +15,6 @@ export const getJobPositions = async () => {
   const jobs = await neonSql`select * from "Job"
     order by "endDate" DESC` as GetJobsJson;
 
-
   return map(jobs, (job) => {
     const startDate = DateTime.fromJSDate(new Date(job.startDate)).toFormat("MM/yy");
     let endDate = "(Current)";

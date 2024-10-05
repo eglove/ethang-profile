@@ -3,13 +3,13 @@ import { useDisclosure } from "@nextui-org/modal";
 import { useMutation } from "@tanstack/react-query";
 import isError from "lodash/isError";
 
-import type { GetCertificationsJson } from "../../pages/api/certification.ts";
+import type { Certification } from "../../query/query-functions.ts";
 
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
 
 type UseCertificationDeleteProperties = {
-  readonly certification: GetCertificationsJson[0];
+  readonly certification: Certification;
 };
 
 export const useCertificationDelete = ({

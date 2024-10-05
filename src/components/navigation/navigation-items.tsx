@@ -30,7 +30,6 @@ type NavigationItemsProperties = {
   readonly currentPathname: string;
 };
 
-
 export const NavigationItems = ({
   currentPathname,
 }: NavigationItemsProperties) => {

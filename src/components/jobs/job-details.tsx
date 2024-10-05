@@ -6,7 +6,6 @@ import type { GetJobsJson } from "../../pages/api/job.ts";
 
 import { JobDetailsBody } from "./job-details-body.tsx";
 
-
 type JobDetailsProperties = {
   readonly job: GetJobsJson[0];
 };

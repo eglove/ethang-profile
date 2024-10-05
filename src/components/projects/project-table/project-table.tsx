@@ -21,7 +21,6 @@ const columns = [
 export const ProjectTable = () => {
   const { data } = useQuery(queryFunctions.projects());
 
-
   return (
     <Table aria-label="Projects">
       <TableHeader columns={columns}>

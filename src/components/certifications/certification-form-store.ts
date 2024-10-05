@@ -2,7 +2,7 @@ import { observable } from "@legendapp/state";
 import isNil from "lodash/isNil";
 import { DateTime } from "luxon";
 
-import type { GetCertificationsJson } from "../../pages/api/certification.ts";
+import type { Certification } from "../../query/query-functions.ts";
 
 import { americaChicago, dateInputFormat } from "../../constants/constants.ts";
 
@@ -38,7 +38,7 @@ export const serializeCertificationsForPost = (
 };
 
 export const serializeCertificationDataForForm = (
-  data: GetCertificationsJson[0],
+  data: Certification,
 ) => {
   certificationStore.set({
     description: data.description,

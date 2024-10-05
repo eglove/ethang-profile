@@ -10,7 +10,6 @@ type DeleteProjectProperties = {
   readonly name: string;
 };
 
-
 export const ProjectDelete = ({
   id, name,
 }: DeleteProjectProperties) => {

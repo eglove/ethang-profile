@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import isError from "lodash/isError";
 import { useEffect } from "react";
 
-import type { GetCertificationsJson } from "../../pages/api/certification.ts";
+import type { Certification } from "../../query/query-functions.ts";
 
 import { queryClient } from "../../layouts/react-providers.tsx";
 import { queryKeys } from "../../query/query-keys.ts";
@@ -15,7 +15,7 @@ import {
 } from "./certification-form-store.ts";
 
 type UseCertificationUpdateProperties = {
-  readonly certification: GetCertificationsJson[0];
+  readonly certification: Certification;
 };
 
 export const useCertificationUpdate = ({
@@ -28,7 +28,6 @@ export const useCertificationUpdate = ({
       serializeCertificationDataForForm(certification);
     }
   }, [isOpen, certification]);
-
 
   const { isPending, mutate } = useMutation({
     async mutationFn() {

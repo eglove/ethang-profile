@@ -78,4 +78,3 @@ export const techMap = {
   zod: "Zod",
 } as const;
 
-

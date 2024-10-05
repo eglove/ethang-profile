@@ -2,13 +2,13 @@ import { PencilIcon } from "@heroicons/react/24/solid";
 import { Button } from "@nextui-org/button";
 import { Modal } from "@nextui-org/modal";
 
-import type { GetCertificationsJson } from "../../pages/api/certification.ts";
+import type { Certification } from "../../query/query-functions.ts";
 
 import { UpsertCertificationModalContent } from "./upsert-certification-modal-content.tsx";
 import { useCertificationUpdate } from "./use-certification-update.ts";
 
 type CertificationUpdateProperties = {
-  readonly certification: GetCertificationsJson[0];
+  readonly certification: Certification;
 };
 
 export const CertificationUpdate = ({

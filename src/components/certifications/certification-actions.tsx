@@ -1,4 +1,4 @@
-import type { GetCertificationsJson } from "../../pages/api/certification.ts";
+import type { Certification } from "../../query/query-functions.ts";
 
 import { useIsMe } from "../../util/user.ts";
 import { CertificationDetails } from "./certifciation-details.tsx";
@@ -6,9 +6,8 @@ import { CertificationDelete } from "./certification-delete.tsx";
 import { CertificationUpdate } from "./certification-update.tsx";
 
 type CertificationActionsProperties = {
-  readonly certification: GetCertificationsJson[0];
+  readonly certification: Certification;
 };
-
 
 export const CertificationActions = ({
   certification,

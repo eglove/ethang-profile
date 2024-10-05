@@ -19,7 +19,6 @@ export const certificationHeader = new Paragraph({
   },
 });
 
-
 export const getCertifications = async () => {
   const certifications = await neonSql`
     select * from "Certification"

@@ -10,7 +10,6 @@ import type { JobUpsertForm } from "./use-job-form.ts";
 
 import { americaChicago, dateInputFormat } from "../../constants/constants.ts";
 
-
 export const jobUpsertSerialize = (job: JobUpsertForm) => {
   const structured = mapValues(omitBy(job, isEmpty), (value) => {
     if (isSet(value)) {

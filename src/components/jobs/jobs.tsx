@@ -16,7 +16,6 @@ import { ResumeDownloadButtons } from "../resume/resume-download-buttons.tsx";
 import { JobActions } from "./job-actions.tsx";
 import { columns } from "./jobs-store.ts";
 
-
 export const Jobs = ({ currentPathname }: MainLayoutProperties) => {
   return (
     <MainLayout

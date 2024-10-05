@@ -29,7 +29,6 @@ export const useJobUpsert = ({
         });
       });
 
-
       await queryClient.invalidateQueries({ queryKey: queryKeys.jobs });
       if (!isError(response)) {
         onSuccess();

@@ -16,7 +16,6 @@ export const JobCreate = ({ currentPathname }: MainLayoutProperties) => {
   );
 };
 
-
 const JobCreateWithProviders = () => {
   const {
     formState, handleChange, handleSetChange, isPending, mutate,

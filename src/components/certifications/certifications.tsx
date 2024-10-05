@@ -4,7 +4,6 @@ import { CertificationCreate } from "./certification-create.tsx";
 import { CertificationsTable } from "./certifications-table.tsx";
 import { LearningProfileLinks } from "./learning-profile-links.tsx";
 
-
 export const CertificationsLayout = ({
   currentPathname,
 }: MainLayoutProperties) => {

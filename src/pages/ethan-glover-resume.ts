@@ -5,7 +5,6 @@ import { getJobPositions } from "../components/resume/job-positions.ts";
 import { getProjects, projectHeader } from "../components/resume/projects.ts";
 import { experienceHeader, resumeBasicInfo, resumeHeader, resumeSummary } from "../components/resume/resume.ts";
 
-
 export const GET = async () => {
   const jobDescriptions = await getJobPositions();
   const certifications = await getCertifications();

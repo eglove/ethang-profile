@@ -7,7 +7,6 @@ import { ProjectFormInputs } from "../project-form-inputs.tsx";
 import { resetProjectFormStore } from "../project-store.ts";
 import { useCreateProject } from "./use-create-project.ts";
 
-
 export const ProjectCreate = () => {
   const isMe = useIsMe();
   const { isOpen, onClose: closeModal, onOpen, onOpenChange } = useDisclosure();

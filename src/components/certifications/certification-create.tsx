@@ -18,7 +18,6 @@ export const CertificationCreate = () => {
     }
   }, [isOpen]);
 
-
   return (
     <>
       <Button

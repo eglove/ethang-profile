@@ -8,7 +8,7 @@ import toPairs from "lodash/toPairs";
 
 import { queryKeys } from "./query-keys.ts";
 
-type Certification = {
+export type Certification = {
   createdAt: string;
   description: string;
   expires?: string;
@@ -55,7 +55,7 @@ export const queryFunctions = {
 
         const data: {
           count: number;
-          data: Certification;
+          data: Certification[];
         } = await response.json();
 
         return data.data;

@@ -2,12 +2,12 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 import { Button } from "@nextui-org/button";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 
-import type { GetCertificationsJson } from "../../pages/api/certification.ts";
+import type { Certification } from "../../query/query-functions.ts";
 
 import { useCertificationDelete } from "./use-certification-delete.ts";
 
 type CertificationDeleteProperties = {
-  readonly certification: GetCertificationsJson[0];
+  readonly certification: Certification;
 };
 
 export const CertificationDelete = ({

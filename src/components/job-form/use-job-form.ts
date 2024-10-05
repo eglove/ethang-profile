@@ -1,4 +1,3 @@
-
 import type { SharedSelection } from "@nextui-org/react";
 
 import isNil from "lodash/isNil";
@@ -75,7 +74,6 @@ export const useJobForm = ({ job, onSuccess }: UseJobFormProperties) => {
       title: "",
     }
     : job);
-
 
   const handleChange = useCallback((key: keyof Omit<JobUpsertForm, "methodologiesUsed" | "techUsed">) => {
     return (value: string) => {

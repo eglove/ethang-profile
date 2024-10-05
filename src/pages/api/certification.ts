@@ -11,7 +11,6 @@ import { neonSql } from "../../clients/neon.ts";
 export type GetCertificationsJson =
     Jsonify<Awaited<ReturnType<PrismaClient["certification"]["findMany"]>>>;
 
-
 export const GET = async () => {
   const certifications = await neonSql`
     select * from "Certification"
