@@ -1,13 +1,13 @@
 import { Spinner } from "@nextui-org/spinner";
+import { useQuery } from "@tanstack/react-query";
 import fromPairs from "lodash/fromPairs";
 import map from "lodash/map";
 import reverse from "lodash/reverse";
 import sortBy from "lodash/sortBy";
 import toPairs from "lodash/toPairs";
-import useSWR from "swr";
 
 import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
-import { fetcher } from "../../util/fetcher.ts";
+import { queryFunctions } from "../../query/query-functions.ts";
 import { SkillGauge } from "../common/skill-gauge.tsx";
 
 export const Skills = ({
@@ -23,10 +23,7 @@ export const Skills = ({
 };
 
 const SkillsWithProviders = () => {
-  const { data, isLoading } = useSWR<{
-    max: number;
-    skills: Record<string, number>;
-  }>("https://staging-ethang-api-izt2.encr.app/jobs/experience", fetcher);
+  const { data, isLoading } = useQuery(queryFunctions.experience());
 
   return (
     <div>

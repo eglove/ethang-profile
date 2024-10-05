@@ -23,6 +23,23 @@ export const queryFunctions = {
       queryKey: [...queryKeys.certifications, fetch],
     });
   },
+  experience: () => {
+    return queryOptions({
+      async queryFn() {
+        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/jobs/experience");
+
+        if (isError(response)) {
+          return;
+        }
+
+        return response.json() as unknown as {
+          max: number;
+          skills: Record<string, number>;
+        };
+      },
+      queryKey: [...queryKeys.experience, fetch],
+    });
+  },
   jobs: () => {
     return queryOptions<GetJobsJson | undefined>({
       async queryFn() {
