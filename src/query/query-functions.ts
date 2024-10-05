@@ -1,6 +1,10 @@
 import { attemptAsync } from "@ethang/toolbelt/functional/attempt-async";
 import { queryOptions } from "@tanstack/react-query";
+import fromPairs from "lodash/fromPairs";
 import isError from "lodash/isError";
+import reverse from "lodash/reverse";
+import sortBy from "lodash/sortBy";
+import toPairs from "lodash/toPairs";
 
 import type { GetCertificationsJson } from "../pages/api/certification.ts";
 import type { GetJobsJson } from "../pages/api/job.ts";
@@ -32,9 +36,14 @@ export const queryFunctions = {
           return;
         }
 
-        return response.json() as unknown as {
+        const data: {
           max: number;
           skills: Record<string, number>;
+        } = await response.json();
+
+        return {
+          max: data.max,
+          skills: fromPairs(reverse(sortBy(toPairs(data.skills), 1))),
         };
       },
       queryKey: [...queryKeys.experience, fetch],

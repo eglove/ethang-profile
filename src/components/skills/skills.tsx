@@ -1,10 +1,6 @@
 import { Spinner } from "@nextui-org/spinner";
 import { useQuery } from "@tanstack/react-query";
-import fromPairs from "lodash/fromPairs";
 import map from "lodash/map";
-import reverse from "lodash/reverse";
-import sortBy from "lodash/sortBy";
-import toPairs from "lodash/toPairs";
 
 import { MainLayout, type MainLayoutProperties } from "../../layouts/main-layout.tsx";
 import { queryFunctions } from "../../query/query-functions.ts";
@@ -33,7 +29,7 @@ const SkillsWithProviders = () => {
       {isLoading && <Spinner className="mx-auto my-4 w-full" />}
       {!isLoading && (
         <div className="mx-auto grid place-items-center gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {map(fromPairs(reverse(sortBy(toPairs(data?.skills), 1))),
+          {map(data?.skills,
             (years, label) => {
               return (
                 <SkillGauge
