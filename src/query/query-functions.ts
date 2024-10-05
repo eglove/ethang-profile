@@ -8,6 +8,8 @@ import toPairs from "lodash/toPairs";
 
 import { queryKeys } from "./query-keys.ts";
 
+const API_BASE_URL = import.meta.env["API_BASE_URL"] as string;
+
 export type Certification = {
   createdAt: string;
   description: string;
@@ -47,7 +49,7 @@ export const queryFunctions = {
   certifications: () => {
     return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/certification");
+        const response = await attemptAsync(fetch, `${API_BASE_URL}/certification`);
 
         if (isError(response)) {
           return;
@@ -60,13 +62,13 @@ export const queryFunctions = {
 
         return data.data;
       },
-      queryKey: [...queryKeys.certifications, fetch],
+      queryKey: [...queryKeys.certifications, fetch, API_BASE_URL],
     });
   },
   experience: () => {
     return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/jobs/experience");
+        const response = await attemptAsync(fetch, `${API_BASE_URL}/jobs/experience`);
 
         if (isError(response)) {
           return;
@@ -82,13 +84,13 @@ export const queryFunctions = {
           skills: fromPairs(reverse(sortBy(toPairs(data.skills), 1))),
         };
       },
-      queryKey: [...queryKeys.experience, fetch],
+      queryKey: [...queryKeys.experience, fetch, API_BASE_URL],
     });
   },
   jobs: () => {
     return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/jobs");
+        const response = await attemptAsync(fetch, `${API_BASE_URL}/jobs`);
 
         if (isError(response)) {
           return;
@@ -98,13 +100,13 @@ export const queryFunctions = {
 
         return data.data;
       },
-      queryKey: [...queryKeys.jobs, fetch],
+      queryKey: [...queryKeys.jobs, fetch, API_BASE_URL],
     });
   },
   projects: () => {
     return queryOptions({
       async queryFn() {
-        const response = await attemptAsync(fetch, "https://staging-ethang-api-izt2.encr.app/project");
+        const response = await attemptAsync(fetch, `${API_BASE_URL}/project`);
 
         if (isError(response)) {
           return;
@@ -114,7 +116,7 @@ export const queryFunctions = {
 
         return data.data;
       },
-      queryKey: [...queryKeys.projects, fetch],
+      queryKey: [...queryKeys.projects, fetch, API_BASE_URL],
     });
   },
 };
