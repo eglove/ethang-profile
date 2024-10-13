@@ -81,7 +81,13 @@ export const queryFunctions = {
 
         return {
           max: data.max,
-          skills: fromPairs(reverse(sortBy(toPairs(data.skills), 1))),
+          skills: fromPairs(
+            reverse(
+              sortBy(
+                toPairs(data.skills), 1,
+              ),
+            ),
+          ),
         };
       },
       queryKey: [...queryKeys.experience, fetch, API_BASE_URL],
