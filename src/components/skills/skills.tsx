@@ -26,9 +26,9 @@ const SkillsWithProviders = () => {
       <h1 className="my-4 text-center text-3xl font-bold">
         Years Experience
       </h1>
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
+      { }
       {isLoading && <Spinner className="mx-auto my-4 w-full" />}
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
+      { }
       {!isLoading && (
         <div className="mx-auto grid place-items-center gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {map(data?.skills,
